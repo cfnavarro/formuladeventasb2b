@@ -1673,6 +1673,8 @@ function sendEmails(scores, isc, nivel, perfil, topBrechas) {
     ...paramsProspecto,
     to_email:      CONSULTOR_EMAIL,
     to_name:       'Consultor',
+    prospecto_nombre:  state.nombre,
+    prospecto_email:   state.email,
     asunto_previo: `🔔 Nuevo diagnóstico — ${state.empresa} · ISC ${isc}/100 (${nivel.label})`,
   };
 
