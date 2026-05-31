@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Briefing Consultor — Fórmula de Ventas B2B</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+:root{--bg:#F7F5F0;--surface:#fff;--border:#E2DDD6;--text:#1A1814;--mid:#5C5850;--soft:#9C9890;--green:#1D6B52;--gd:#0F4030;--gl:#E8F4EF;--amber:#B8660A;--al:#FDF3E3;--red:#C0392B;--rl:#FCECEA;--blue:#1A4F8A;--bl:#EAF1FB;--pur:#4A3A8C;--pl:#EEEAFB;--rad:14px;--rsm:8px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+h1,h2,h3{font-family:'Fraunces',serif;font-weight:400;letter-spacing:-0.03em;line-height:1.2}
+.wrap{max-width:900px;margin:0 auto;padding:0 24px 60px}
+
+/* HEADER */
+.site-header{background:var(--gd);color:white;padding:16px 0;margin-bottom:32px}
+.site-header .inner{max-width:900px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
+.header-logo{font-family:'Fraunces',serif;font-size:15px;font-weight:400;color:#5DCAA5;letter-spacing:-0.02em}
+.header-logo span{color:rgba(255,255,255,0.4);font-weight:300}
+.header-badge{font-size:11px;color:rgba(255,255,255,0.5);padding:4px 12px;border:1px solid rgba(255,255,255,0.15);border-radius:20px}
+
+/* CARDS */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--rad);padding:24px;margin-bottom:20px}
+.sec-label{font-size:11px;font-weight:500;color:var(--soft);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px}
+
+/* COVER */
+.cover-grid{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:start}
+.cover-eyebrow{font-size:11px;font-weight:500;color:var(--green);letter-spacing:.07em;text-transform:uppercase;margin-bottom:8px}
+.cover-empresa{font-size:32px;font-weight:400;letter-spacing:-0.04em;margin-bottom:4px;font-family:'Fraunces',serif}
+.cover-meta{font-size:13px;color:var(--mid);margin-bottom:12px}
+.cover-perfil{display:inline-block;font-size:12px;font-weight:500;padding:4px 14px;border-radius:20px;margin-bottom:8px}
+.cover-perfil-desc{font-size:13px;color:var(--mid);line-height:1.65;max-width:540px}
+.isc-box{text-align:center;background:var(--bg);border:1px solid var(--border);border-radius:var(--rad);padding:20px 28px}
+.isc-num{font-family:'Fraunces',serif;font-size:56px;font-weight:300;line-height:1;letter-spacing:-0.06em}
+.isc-den{font-size:16px;color:var(--soft)}
+.isc-label{font-size:12px;color:var(--soft);margin-top:4px}
+.nivel-chip{display:inline-block;font-size:13px;font-weight:500;padding:4px 14px;border-radius:10px;margin-top:8px}
+
+/* MÓDULOS */
+.mod-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.mod-card{border:1px solid var(--border);border-radius:var(--rsm);padding:14px}
+.mod-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.mod-tag{font-size:11px;font-weight:600;padding:2px 9px;border-radius:8px}
+.mod-pts{font-family:'Fraunces',serif;font-size:22px;font-weight:300}
+.mod-name{font-size:11px;color:var(--soft);margin-bottom:6px}
+.bar-bg{height:5px;background:var(--bg);border-radius:3px;overflow:hidden}
+.bar-fill{height:100%;border-radius:3px}
+.mod-nivel{font-size:11px;font-weight:500;margin-top:6px}
+
+/* RADAR */
+.radar-wrap{max-width:400px;margin:0 auto}
+
+/* BRECHAS */
+.brecha-card{border:1px solid var(--border);border-radius:var(--rad);margin-bottom:16px;overflow:hidden}
+.brecha-header{padding:16px 20px;cursor:pointer;user-select:none}
+.brecha-header:hover{background:var(--bg)}
+.brecha-meta{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+.brecha-num{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
+.brecha-mod{font-size:11px;font-weight:600;padding:2px 9px;border-radius:10px}
+.brecha-urg{font-size:11px;padding:2px 9px;border-radius:10px;border:1px solid}
+.brecha-title{font-family:'Fraunces',serif;font-size:17px;font-weight:400;line-height:1.35;margin-bottom:4px}
+.brecha-resumen{font-size:12px;color:var(--mid);line-height:1.6}
+.bchev{float:right;font-size:16px;color:var(--soft);transition:transform .2s;margin-top:-22px}
+.bchev.open{transform:rotate(180deg)}
+.brecha-body{display:none;border-top:1px solid var(--border)}
+.brecha-body.open{display:block}
+.bcapa{padding:14px 20px;border-bottom:1px solid #F5F5F5;font-size:13px;color:var(--mid);line-height:1.75}
+.bcapa:last-child{border-bottom:none}
+.bcapa strong{color:var(--text);font-weight:500}
+.bcapa-label{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.bcapa-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.causa-row{display:flex;gap:10px;align-items:flex-start;padding:6px 0;border-bottom:1px solid #F5F5F5}
+.causa-row:last-child{border-bottom:none}
+.causa-dot{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;margin-top:2px}
+.cons-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+.cons-item{padding:8px 10px;border-radius:var(--rsm);font-size:12px;line-height:1.5}
+.sol-row{display:flex;gap:10px;align-items:flex-start;padding:6px 0;border-bottom:1px solid #F5F5F5}
+.sol-row:last-child{border-bottom:none}
+.sol-dot{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;color:white;margin-top:2px}
+
+/* RESPUESTAS */
+.resp-mod{margin-bottom:14px;border:1px solid var(--border);border-radius:var(--rsm);overflow:hidden}
+.resp-mod-header{padding:8px 14px;display:flex;align-items:center;justify-content:space-between}
+.resp-table{width:100%;border-collapse:collapse;font-size:12px}
+.resp-table tr:nth-child(even){background:#FAFAFA}
+.resp-table td{padding:6px 12px;border-bottom:1px solid #F0F0F0;vertical-align:middle;line-height:1.4}
+.resp-table tr:last-child td{border-bottom:none}
+.nivel-chip-sm{font-size:10px;font-weight:600;padding:2px 7px;border-radius:6px;white-space:nowrap}
+
+/* FOOTER */
+.briefing-footer{text-align:center;padding:24px 0;font-size:11px;color:var(--soft);border-top:1px solid var(--border);margin-top:8px}
+
+/* LOADING / ERROR */
+.loading-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;gap:16px;color:var(--mid)}
+.loading-icon{font-size:48px;animation:pulse 1.5s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
+.error-screen{max-width:480px;margin:80px auto;text-align:center;padding:0 24px}
+
+@media(max-width:600px){
+  .cover-grid{grid-template-columns:1fr}
+  .mod-grid{grid-template-columns:1fr}
+  .cons-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="inner">
+    <div class="header-logo">Fórmula de Ventas<span> B2B</span></div>
+    <span class="header-badge">🔒 Briefing Consultor · Uso interno</span>
+  </div>
+</header>
+
+<div class="wrap" id="app">
+  <div class="loading-screen">
+    <span class="loading-icon">📋</span>
+    <p>Cargando briefing del diagnóstico...</p>
+  </div>
+</div>
+
+<script>
+// ─── DATOS EMBEBIDOS ─────────────────────────────────────────────
+const MODULOS = [
+  {id:'M1',tag:'R', nombre:'Gestión de recurrencia',         color:'#1D6B52',bg:'#E8F4EF',fg:'#085041',max:24},
+  {id:'M2',tag:'Uᵣ',nombre:'Incertidumbre en recurrencia',   color:'#1A4F8A',bg:'#EAF1FB',fg:'#042C53',max:24},
+  {id:'M3',tag:'N', nombre:'Nuevas oportunidades',           color:'#4A3A8C',bg:'#EEEAFB',fg:'#26215C',max:32},
+  {id:'M4',tag:'Uₙ',nombre:'Incertidumbre en pipeline',      color:'#B8660A',bg:'#FDF3E3',fg:'#412402',max:24},
+  {id:'M5',tag:'T', nombre:'Forecast y planner de ingresos', color:'#C0392B',bg:'#FCECEA',fg:'#4A1B0C',max:24},
+  {id:'M6',tag:'C', nombre:'Coaching comercial',             color:'#6B7A2A',bg:'#F3F7E0',fg:'#173404',max:24},
+];
+
+const NIVELES_ISC = [
+  {min:0, max:30, label:'Crítico',       bg:'#FCECEA',border:'#E57166',fg:'#7A1F16'},
+  {min:31,max:50, label:'En desarrollo', bg:'#FDF3E3',border:'#C98A3A',fg:'#7A4206'},
+  {min:51,max:70, label:'Competente',    bg:'#F3F7E0',border:'#7A9C2A',fg:'#3A4410'},
+  {min:71,max:100,label:'Avanzado',      bg:'#E8F4EF',border:'#2D9B76',fg:'#0F4030'},
+];
+
+const NIVELES_MOD = [
+  {min:0, max:34, label:'Crítico',       color:'#C0392B'},
+  {min:35,max:54, label:'En desarrollo', color:'#B8660A'},
+  {min:55,max:74, label:'Competente',    color:'#6B7A2A'},
+  {min:75,max:100,label:'Avanzado',      color:'#1D6B52'},
+];
+
+const PERFILES = [
+  {min:0, max:20, label:'Negocio de nuevo mercado',       desc:'Su crecimiento depende casi exclusivamente de conquistar nuevos clientes.',bg:'#EEEAFB',fg:'#26215C'},
+  {min:21,max:39, label:'Modelo orientado al crecimiento',desc:'Predomina el nuevo negocio con algo de base recurrente.',              bg:'#FDF3E3',fg:'#7A4206'},
+  {min:40,max:60, label:'Modelo híbrido equilibrado',     desc:'Combina recurrencia y nuevo negocio en proporciones similares.',       bg:'#EAF1FB',fg:'#042C53'},
+  {min:61,max:79, label:'Modelo orientado a recurrencia', desc:'La base recurrente es el motor principal del negocio.',                bg:'#E8F4EF',fg:'#0F4030'},
+  {min:80,max:100,label:'Negocio de alta recurrencia',    desc:'Casi todo el negocio depende de clientes actuales.',                   bg:'#F3F7E0',fg:'#3A4410'},
+];
+
+const BRECHA_DATA = {
+  0:{urg:'Prioridad alta',urgBg:'#FCECEA',urgFg:'#7A1F16',
+    title:'Gestión insuficiente de la base recurrente',
+    resumen:'El equipo no conoce ni gestiona activamente el potencial real de sus clientes actuales.',
+    diag:'El diagnóstico revela que su equipo <strong>asume la continuidad de los clientes recurrentes en lugar de gestionarla activamente</strong>. Hay una diferencia crítica entre atender un cliente que llega a comprar y gestionar una relación recurrente con inteligencia comercial. Sus respuestas indican que el modelo opera principalmente en modo reactivo.',
+    causas:[
+      {t:'Confusión entre atención y gestión',d:'El vendedor cree que responder bien los pedidos equivale a gestionar la cuenta. No hay proceso proactivo de revisión de la salud de cada relación.'},
+      {t:'Ausencia de indicadores de alerta temprana',d:'No se monitorean señales como cambios en frecuencia de compra, reducción de ticket o rotación de contactos.'},
+      {t:'Relaciones unipersonales sin cobertura multinivel',d:'La cuenta depende del vínculo personal entre un vendedor y un contacto. Cualquier cambio de interlocutor pone en riesgo el negocio.'},
+      {t:'Propuesta de valor no gestionada activamente',d:'El vendedor no revisa ni reafirma periódicamente por qué el cliente nos prefiere. La relación se vuelve transaccional y vulnerable al precio.'},
+    ],
+    cons:[{i:'↘',t:'Erosión silenciosa de ingresos',s:'Clientes que reducen compras gradualmente sin que el equipo lo detecte'},{i:'⚡',t:'Pérdidas sorpresivas de cuentas',s:'El equipo se entera cuando el cliente ya tomó la decisión'},{i:'💸',t:'Forecast recurrente no confiable',s:'Los ingresos proyectados tienen mayor desviación'},{i:'🔁',t:'Dependencia del precio',s:'Sin propuesta de valor activa, el precio es el único argumento'}],
+    sol:[{t:'Mapa de salud de la cartera',d:'Clasificar cada cuenta por nivel de riesgo con base en indicadores objetivos: tendencia de compra, frecuencia, cobertura de contactos y satisfacción declarada.'},{t:'Protocolo de revisión periódica proactiva',d:'Definir cadencia de contacto por segmento de cliente con agenda que va más allá del pedido.'},{t:'Modelo de cobertura multinivel',d:'Construir relaciones con al menos 2-3 contactos en cada cuenta clave: comprador, usuario y decisor económico.'},{t:'Activación de la propuesta de valor',d:'Diseñar una conversación de valor periódica donde el vendedor refuerza los beneficios tangibles de la relación.'}]},
+  1:{urg:'Prioridad alta',urgBg:'#FCECEA',urgFg:'#7A1F16',
+    title:'Alta incertidumbre interna sobre la base de clientes recurrentes',
+    resumen:'El equipo comercial no tiene visibilidad suficiente sobre el estado real de las relaciones con sus clientes activos.',
+    diag:'Su diagnóstico revela que el equipo <strong>no tiene certeza sobre el estado real de sus relaciones recurrentes</strong>. No gestiona activamente la satisfacción, no monitorea el riesgo competitivo dentro de sus cuentas, y no tiene visibilidad sobre los ciclos presupuestales de sus clientes más importantes.',
+    causas:[
+      {t:'Satisfacción no medida ni gestionada',d:'El vendedor asume que el cliente está satisfecho porque sigue comprando. No hay conversaciones periódicas de revisión.'},
+      {t:'Riesgo competitivo invisible',d:'No se monitorea la actividad de la competencia dentro de las cuentas activas.'},
+      {t:'Dependencia de una sola persona en la cuenta',d:'Un cambio de cargo o de empresa del interlocutor puede colapsar el negocio.'},
+      {t:'Desconocimiento del ciclo presupuestal',d:'El vendedor llega tarde al proceso de definición de presupuesto, cuando la decisión ya está tomada.'},
+    ],
+    cons:[{i:'📉',t:'Pérdidas sin señal previa',s:'El equipo no detecta el deterioro hasta que el cliente ya decidió cambiar de proveedor'},{i:'🎯',t:'Propuesta de valor no diferenciada',s:'Cualquier descuento del competidor puede reemplazarnos'},{i:'⏰',t:'Llegada tarde al proceso presupuestal',s:'El vendedor no puede influir en el monto asignado'},{i:'🔗',t:'Fragilidad estructural de la cartera',s:'Las relaciones unipersonales son las más vulnerables'}],
+    sol:[{t:'Protocolo de revisión de la salud de la relación',d:'Conversaciones periódicas con cada cliente clave: satisfacción, riesgos y señales de alerta temprana.'},{t:'Inteligencia competitiva activa',d:'Definir indicadores de alerta: cambios en frecuencia de pedido, nuevos interlocutores, preguntas sobre competencia.'},{t:'Mapa de relaciones por cuenta',d:'Cobertura más allá del comprador habitual: nivel de usuario y nivel de decisión económica.'},{t:'Integración al ciclo presupuestal',d:'Estar presente en el proceso de definición de presupuestos antes de que la decisión se tome.'}]},
+  2:{urg:'Prioridad media-alta',urgBg:'#FDF3E3',urgFg:'#7A4206',
+    title:'Gestión de nuevas oportunidades sin metodología ni diferenciación por complejidad',
+    resumen:'El equipo identifica oportunidades pero no las gestiona con diferenciación según su complejidad ni con estrategia activa de cierre.',
+    diag:'El diagnóstico revela que el equipo <strong>trata todas las oportunidades con el mismo proceso independientemente de su valor, complejidad y ciclo de venta</strong>. En entornos B2B donde coexisten oportunidades transaccionales de días con proyectos complejos de meses, esta homogeneidad tiene un costo doble.',
+    causas:[
+      {t:'Sin clasificación formal por complejidad',d:'No existe criterio para separar oportunidades simples de complejas. El proceso de gestión es único para todo el portafolio.'},
+      {t:'Cobertura incompleta del comité de decisión',d:'El vendedor trabaja con el contacto que le facilita el acceso, que no siempre es quien decide.'},
+      {t:'Cierre pasivo: propuesta y espera',d:'Una vez presentada la propuesta, el proceso queda en manos del cliente. No hay estrategia activa de cierre.'},
+      {t:'Negociación por precio como primer recurso',d:'Cuando el cliente presiona, el equipo cede en precio antes de explorar otras variables de valor.'},
+    ],
+    cons:[{i:'⚖️',t:'Subutilización del talento',s:'Los mejores vendedores pierden tiempo en oportunidades que no requieren su nivel'},{i:'🏆',t:'Pérdida de oportunidades complejas',s:'Sin metodología para ciclos largos, la tasa de cierre en negocios grandes es baja'},{i:'💰',t:'Erosión de margen',s:'Las concesiones de precio acumulan impacto en la rentabilidad anual'},{i:'🔄',t:'Ciclos innecesariamente largos',s:'Sin gestión activa del proceso de decisión, las oportunidades se estancan'}],
+    sol:[{t:'Matriz de clasificación por complejidad',d:'Definir 2-3 categorías con procesos diferenciados: simples con ciclo ágil, complejas con plan de cuenta y mapa de decisores.'},{t:'Mapa del comité de decisión (DMU)',d:'Para cada oportunidad compleja: quién decide, quién influye técnicamente, quién controla el presupuesto.'},{t:'Plan de cierre por oportunidad',d:'Identificar los pasos que el cliente debe dar para decidir y acompañar activamente cada uno.'},{t:'Negociación basada en valor',d:'Anclar la negociación en el valor antes de hablar de precio, con concesiones priorizadas que protegen el margen.'}]},
+  3:{urg:'Prioridad alta',urgBg:'#FCECEA',urgFg:'#7A1F16',
+    title:'Pipeline con baja confiabilidad: probabilidades infladas y fechas aspiracionales',
+    resumen:'El pipeline existe como herramienta de registro, pero no como instrumento de gestión. Las cifras no reflejan la realidad comercial.',
+    diag:'El diagnóstico revela un patrón frecuente en equipos B2B: <strong>el pipeline se llena con optimismo y se vacía con sorpresas</strong>. Las oportunidades se registran cuando aparecen, pero no se someten a criterios objetivos de calificación.',
+    causas:[
+      {t:'Ausencia de criterios objetivos de calificación',d:'No existe estándar compartido para determinar si una oportunidad es real: necesidad, presupuesto, decisor y plazo.'},
+      {t:'Sesgo de optimismo comercial estructural',d:'El vendedor sube probabilidades para mostrar avance y las baja solo cuando la pérdida es un hecho consumado.'},
+      {t:'Fechas sin ancla en el proceso del cliente',d:'Las fechas reflejan cuándo le gustaría al vendedor cerrar, no cuándo el cliente decidirá.'},
+      {t:'Pipeline no actualizado como rutina',d:'El estado de las oportunidades no se actualiza después de cada interacción relevante.'},
+    ],
+    cons:[{i:'📊',t:'Forecast sistemáticamente alto',s:'El período siempre cierra por debajo de la proyección'},{i:'⏳',t:'Tiempo en falsas oportunidades',s:'Negocios que nunca cerrarán consumen recursos durante semanas'},{i:'🎯',t:'Sin priorización efectiva',s:'El director no sabe dónde intervenir para maximizar el resultado'},{i:'📉',t:'Pérdida de credibilidad',s:'La dirección general deja de creer en las proyecciones'}],
+    sol:[{t:'Scorecard de calificación',d:'Definir 5-6 criterios mínimos que una oportunidad debe cumplir para entrar al pipeline con probabilidad >25%.'},{t:'Probabilidades ligadas a etapas',d:'Una tabla de probabilidades vinculada al proceso, no a la percepción del vendedor.'},{t:'Anclaje de fechas a hitos del cliente',d:'Cada oportunidad debe tener identificado el próximo paso concreto del proceso de decisión del cliente.'},{t:'Ritual semanal de higiene del pipeline',d:'Revisión de 20 minutos: eliminar oportunidades sin movimiento, actualizar probabilidades y confirmar fechas.'}]},
+  4:{urg:'Prioridad media-alta',urgBg:'#FDF3E3',urgFg:'#7A4206',
+    title:'Forecast construido sin aplicar la Fórmula de Ventas ni gestionar el GAP',
+    resumen:'Los vendedores no construyen su número de forma estructurada ni identifican la brecha entre su potencial real y su cuota asignada.',
+    diag:'El diagnóstico revela que <strong>el forecast en su equipo es una declaración de intenciones, no un instrumento de gestión</strong>. Los vendedores trabajan hacia la meta sin saber cuánto viene de recurrencia asegurada, cuánto de nuevas oportunidades y cuánto está en riesgo por incertidumbre interna.',
+    causas:[
+      {t:'Forecast construido de arriba hacia abajo',d:'El vendedor parte de la meta y ajusta sus estimaciones para que cuadren, en lugar de partir de la realidad de su cartera.'},
+      {t:'Recurrencia y nuevo negocio no se separan',d:'El vendedor trata todos sus ingresos esperados como un bloque homogéneo.'},
+      {t:'GAP no cuantificado ni convertido en plan',d:'Cuando R+N no alcanza la cuota, esa diferencia no se nombra ni se convierte en acción.'},
+      {t:'Sin planner temporal de ingresos',d:'El forecast es un número global sin distribución interna por semanas o quincenas.'},
+    ],
+    cons:[{i:'📅',t:'Períodos sin posibilidad de corrección',s:'El equipo se da cuenta del faltante cuando ya no hay tiempo'},{i:'🎲',t:'Resultados impredecibles',s:'El cumplimiento de cuota depende del azar más que de la gestión'},{i:'🔍',t:'Dirección sin visibilidad real',s:'El director no puede anticipar problemas ni reasignar recursos'},{i:'😰',t:'Cultura de urgencia al cierre',s:'El equipo vive en modo reactivo los últimos días del mes'}],
+    sol:[{t:'Implementar la Fórmula R+N−U como rutina',d:'Cada vendedor descompone su forecast: ¿cuánto de R? ¿cuánto de N calificado? ¿cuánta U a descontar? El resultado se compara con la cuota.'},{t:'Gestión explícita del GAP',d:'Cuando el potencial es menor que la cuota, el GAP se convierte en el punto de partida del plan de acción.'},{t:'Planner semanal de ingresos',d:'Distribuir el forecast semana a semana para identificar períodos débiles y actuar con anticipación.'},{t:'Sesión quincenal de forecast',d:'Cada vendedor presenta su número con fundamento: R, N, U y GAP con plan de acción concreto.'}]},
+  5:{urg:'Prioridad media',urgBg:'#FDF3E3',urgFg:'#7A4206',
+    title:'Proceso de coaching sin metodología ni gestión del GAP individual',
+    resumen:'El equipo opera sin retroalimentación estructurada ni gestión del desempeño individual.',
+    diag:'El diagnóstico revela que <strong>el proceso de coaching comercial es reactivo y orientado a resultados, no a comportamientos ni a proceso</strong>. Las conversaciones ocurren cuando hay problemas visibles, no como cadencia proactiva. Esto hace que las intervenciones lleguen tarde.',
+    causas:[
+      {t:'Ausencia de cadencia proactiva',d:'No hay sesiones 1:1 periódicas con agenda definida. El coaching ocurre cuando hay urgencia.'},
+      {t:'Feedback orientado a números, no a comportamientos',d:'El director dice "debes cerrar más" en lugar de describir el comportamiento concreto que debe cambiar.'},
+      {t:'GAP individual no gestionado en tiempo real',d:'El director no tiene visibilidad del GAP de cada vendedor hasta el cierre del período.'},
+      {t:'Sin diagnóstico de habilidades por vendedor',d:'El equipo recibe capacitación genérica que no ataca las brechas específicas de cada persona.'},
+    ],
+    cons:[{i:'📊',t:'Intervenciones tarde',s:'El director actúa cuando el período ya está comprometido'},{i:'🔄',t:'Equipo que no mejora',s:'Sin feedback sobre proceso, los errores se repiten período a período'},{i:'👤',t:'Desarrollo por autointerés',s:'Los vendedores crecen por iniciativa propia, no por el sistema de coaching'},{i:'📉',t:'Cultura de resultados sin cultura de proceso',s:'El equipo sabe si cumplió, pero no qué cambiar para mejorar'}],
+    sol:[{t:'Cadencia semanal de sesiones 1:1',d:'Agenda estándar: forecast, pipeline activo, GAP vs. cuota, oportunidades en riesgo y compromisos de la semana.'},{t:'Feedback sobre comportamientos',d:'Conectar comportamientos específicos del vendedor con resultados concretos — no hablar de números sino de acciones.'},{t:'Dashboard individual de GAP',d:'Vista simple por vendedor: potencial (R+N−U), cuota, GAP y % del período transcurrido.'},{t:'Diagnóstico de habilidades individual',d:'Para cada vendedor, mapear 2-3 brechas críticas que impactan su resultado e incorporarlas al coaching.'}]},
+};
+
+const PREGUNTAS_TEXTO = [
+  {m:0,id:'1.1',text:'¿Su equipo tiene identificado y cuantificado el potencial de compra anual de cada cliente recurrente?'},
+  {m:0,id:'1.2',text:'¿Cómo describe el proceso de seguimiento a los clientes recurrentes activos?'},
+  {m:0,id:'1.3',text:'¿Con qué precisión puede proyectar los ingresos recurrentes del próximo mes o trimestre?'},
+  {m:0,id:'1.4',text:'¿Cómo gestiona las oportunidades de upselling y crosselling en clientes actuales?'},
+  {m:0,id:'1.5',text:'¿Cuál ha sido la tendencia de sus ingresos recurrentes en los últimos 12 meses?'},
+  {m:0,id:'1.6',text:'¿Cómo gestiona las renovaciones de contratos o acuerdos con clientes recurrentes?'},
+  {m:1,id:'2.1',text:'¿Con qué certeza conoce el nivel de satisfacción actual de cada cliente recurrente importante?'},
+  {m:1,id:'2.2',text:'¿Qué tan claro tiene quién es la competencia activa dentro de sus cuentas recurrentes?'},
+  {m:1,id:'2.3',text:'¿Qué tan seguro está de que los decisores de compra en sus clientes seguirán activos y favorables?'},
+  {m:1,id:'2.4',text:'¿Qué tan claro tiene si sus clientes recurrentes compran por valor diferencial o por precio?'},
+  {m:1,id:'2.5',text:'Cuando un cliente recurrente da señales de riesgo, ¿qué tan rápido lo detecta y actúa su equipo?'},
+  {m:1,id:'2.6',text:'¿Con qué claridad conoce la situación presupuestal de sus clientes recurrentes más importantes?'},
+  {m:2,id:'3.1',text:'¿Cómo identifica su equipo nuevas oportunidades de venta en clientes actuales y en prospectos?'},
+  {m:2,id:'3.2',text:'¿Con qué criterios decide si una oportunidad vale la pena trabajar y con qué intensidad?'},
+  {m:2,id:'3.3',text:'¿Cómo gestiona el desarrollo de una oportunidad desde que la califica hasta que presenta propuesta?'},
+  {m:2,id:'3.4',text:'¿Cómo gestiona su equipo la etapa final de cierre de una oportunidad de venta?'},
+  {m:2,id:'3.5',text:'¿Cómo describe el estado actual del pipeline de nuevas oportunidades de su equipo?'},
+  {m:2,id:'3.6',text:'¿Cuántas veces cubre el valor total de su pipeline la meta de ventas nuevas del período actual?'},
+  {m:2,id:'3.7',text:'¿Gestiona su equipo de forma diferenciada las oportunidades según su complejidad y ciclo de venta?'},
+  {m:2,id:'3.8',text:'¿Cómo describe la forma en que su equipo negocia las condiciones finales de una venta?'},
+  {m:3,id:'4.1',text:'¿Qué tan fielmente reflejan las oportunidades en su pipeline situaciones de venta reales y activas?'},
+  {m:3,id:'4.2',text:'¿Con qué base asigna su equipo la probabilidad de cierre a cada oportunidad en pipeline?'},
+  {m:3,id:'4.3',text:'¿Qué tan confiables son las fechas estimadas de cierre que su equipo asigna a las oportunidades?'},
+  {m:3,id:'4.4',text:'¿Cómo afecta el proceso de negociación la confiabilidad de las oportunidades en el pipeline?'},
+  {m:3,id:'4.5',text:'¿Con qué frecuencia y rigor se actualiza el pipeline de ventas del equipo comercial?'},
+  {m:3,id:'4.6',text:'¿En qué medida usa la dirección comercial el pipeline para tomar decisiones de intervención y alerta?'},
+  {m:4,id:'5.1',text:'¿Cómo construye su equipo la proyección de ventas del período (mes o trimestre)?'},
+  {m:4,id:'5.2',text:'Cuando el potencial proyectado es inferior a la cuota, ¿cómo gestiona ese GAP?'},
+  {m:4,id:'5.3',text:'¿Con qué precisión maneja su equipo el timing de los ingresos proyectados dentro del período?'},
+  {m:4,id:'5.4',text:'Cuando el vendedor presenta su forecast al director, ¿con qué nivel de fundamento puede defenderlo?'},
+  {m:4,id:'5.5',text:'¿Con qué frecuencia y rigor actualiza su equipo las proyecciones de forecast durante el período?'},
+  {m:4,id:'5.6',text:'En los últimos 6 meses, ¿cuál ha sido la desviación entre el forecast inicial y el resultado real?'},
+  {m:5,id:'6.1',text:'¿Cómo describe el proceso de revisión comercial entre el director y cada vendedor del equipo?'},
+  {m:5,id:'6.2',text:'¿Cómo describe la calidad del feedback que reciben los vendedores sobre su desempeño comercial?'},
+  {m:5,id:'6.3',text:'¿Cómo gestiona el director comercial la brecha entre el potencial de cada vendedor y su cuota?'},
+  {m:5,id:'6.4',text:'¿Cómo identifica y trabaja el director las brechas de habilidades específicas de cada vendedor?'},
+  {m:5,id:'6.5',text:'¿Con qué frecuencia y criterio acompaña el director a sus vendedores en reuniones con clientes?'},
+  {m:5,id:'6.6',text:'¿Cómo describe la cultura de cumplimiento de compromisos y rendición de cuentas del equipo?'},
+];
+
+const NIVEL_LABELS = {4:'Avanzado',3:'Competente',2:'En desarrollo',1:'Crítico'};
+const NIVEL_COLORS = {4:'#1D6B52',3:'#6B7A2A',2:'#B8660A',1:'#C0392B'};
+const NIVEL_BGS    = {4:'#E8F4EF',3:'#F3F7E0',2:'#FDF3E3',1:'#FCECEA'};
+
+// ─── DECODE DATA FROM URL ─────────────────────────────────────────
+function loadData() {
+  const hash = window.location.hash.slice(1);
+  if (!hash) return null;
+  try {
+    const json = decodeURIComponent(escape(atob(hash)));
+    return JSON.parse(json);
+  } catch(e) {
+    return null;
+  }
+}
+
+// ─── CALCULATIONS ─────────────────────────────────────────────────
+function getPesos(r) {
+  const n = 100 - r;
+  const pR  = Math.round((r/100)*35);
+  const pUr = Math.round((r/100)*35);
+  const pN  = Math.round((n/100)*35);
+  const pUn = 70 - pR - pUr - pN;
+  return [pR, pUr, pN, pUn, 15, 15];
+}
+
+function calcScores(answers) {
+  return MODULOS.map((m,mi) => {
+    const qs = PREGUNTAS_TEXTO.filter(q=>q.m===mi);
+    const raw = qs.reduce((s,q) => s+(answers[q.id]||0), 0);
+    const pct = Math.round((raw/m.max)*100);
+    return {raw, pct, max:m.max};
+  });
+}
+
+function calcISC(scores, mixR) {
+  const pesos = getPesos(mixR);
+  return Math.round(scores.reduce((s,sc,i) => s+(sc.pct*pesos[i])/100, 0));
+}
+
+function getNivelMod(pct) {
+  return NIVELES_MOD.find(n=>pct>=n.min&&pct<=n.max)||NIVELES_MOD[0];
+}
+
+function getTopBrechas(scores) {
+  return MODULOS.map((m,i)=>({i,pct:scores[i].pct,peso:getPesos(60)[i]}))
+    .sort((a,b)=>(a.pct*a.peso)-(b.pct*b.peso)).slice(0,4);
+}
+
+// ─── RENDER ───────────────────────────────────────────────────────
+function render(data) {
+  const scores = calcScores(data.answers);
+  const isc    = calcISC(scores, data.mixR||60);
+  const nivelISC = NIVELES_ISC.find(n=>isc>=n.min&&isc<=n.max)||NIVELES_ISC[0];
+  const perfil   = PERFILES.find(p=>data.mixR>=p.min&&data.mixR<=p.max)||PERFILES[2];
+  const topBrechas = getTopBrechas(scores);
+
+  const app = document.getElementById('app');
+  app.innerHTML = `
+    ${renderCover(data, isc, nivelISC, perfil)}
+    ${renderModulos(scores)}
+    ${renderRadar()}
+    ${renderBrechas(topBrechas, scores)}
+    ${renderRespuestas(data.answers)}
+    <div class="briefing-footer">
+      <p>formuladeventasb2b.com · Briefing Consultor · Uso interno · Generado el ${data.fecha||'—'}</p>
+      <p style="margin-top:4px">Este documento contiene información confidencial del diagnóstico de <strong>${data.empresa}</strong></p>
+    </div>
+  `;
+
+  // Draw radar after DOM ready
+  setTimeout(() => drawRadar(scores), 100);
+}
+
+function renderCover(data, isc, nivel, perfil) {
+  return `<div class="card" style="margin-bottom:20px">
+    <div class="cover-grid">
+      <div>
+        <p class="cover-eyebrow">Briefing de diagnóstico · Uso interno consultor</p>
+        <h1 class="cover-empresa">${data.empresa}</h1>
+        <p class="cover-meta">${data.cargo||'—'}: <strong>${data.nombre}</strong> &nbsp;·&nbsp; ${data.email} &nbsp;·&nbsp; ${data.sector||'—'}</p>
+        <span class="cover-perfil" style="background:${perfil.bg};color:${perfil.fg}">${perfil.label} · Mix ${data.mixR}% R / ${100-data.mixR}% N</span>
+        <p class="cover-perfil-desc">${perfil.desc}</p>
+      </div>
+      <div class="isc-box">
+        <div style="font-size:11px;color:var(--soft);margin-bottom:4px;text-transform:uppercase;letter-spacing:.05em">ISC Global</div>
+        <div class="isc-num" style="color:${nivel.fg}">${isc}<span class="isc-den">/100</span></div>
+        <span class="nivel-chip" style="background:${nivel.bg};color:${nivel.fg}">${nivel.label}</span>
+        <p style="font-size:11px;color:var(--soft);margin-top:8px;max-width:140px;line-height:1.5">${nivel.label==='Crítico'?'Requiere intervención inmediata en múltiples frentes':nivel.label==='En desarrollo'?'Proceso intuitivo sin metodología consistente':nivel.label==='Competente'?'Procesos estructurados con brechas puntuales':'Modelo sólido — foco en optimización'}</p>
+      </div>
+    </div>
+  </div>`;
+}
+
+function renderModulos(scores) {
+  const cards = MODULOS.map((m,i) => {
+    const s = scores[i];
+    const nm = getNivelMod(s.pct);
+    return `<div class="mod-card">
+      <div class="mod-top">
+        <span class="mod-tag" style="background:${m.bg};color:${m.fg}">${m.tag}</span>
+        <span class="mod-pts" style="color:${m.color}">${s.raw}<span style="font-size:13px;color:var(--soft);font-weight:300">/${m.max}</span></span>
+      </div>
+      <p class="mod-name">${m.nombre}</p>
+      <div class="bar-bg"><div class="bar-fill" style="width:${s.pct}%;background:${m.color}"></div></div>
+      <p class="mod-nivel" style="color:${nm.color}">${nm.label} · ${s.pct}%</p>
+    </div>`;
+  }).join('');
+  return `<div class="card">
+    <p class="sec-label">Resultado por módulo</p>
+    <div class="mod-grid">${cards}</div>
+  </div>`;
+}
+
+function renderRadar() {
+  return `<div class="card">
+    <p class="sec-label">Perfil radar</p>
+    <div class="radar-wrap"><canvas id="radarChart" height="300"></canvas></div>
+  </div>`;
+}
+
+function drawRadar(scores) {
+  const canvas = document.getElementById('radarChart');
+  if (!canvas) return;
+  new Chart(canvas, {
+    type:'radar',
+    data:{
+      labels:['Recurrencia\n(R)','Incert. rec.\n(Uᵣ)','Nuevas op.\n(N)','Incert. pip.\n(Uₙ)','Forecast\n(T)','Coaching\n(C)'],
+      datasets:[
+        {label:'Obtenido',data:scores.map(s=>s.pct),backgroundColor:'rgba(29,107,82,0.15)',borderColor:'#1D6B52',borderWidth:2,pointBackgroundColor:'#1D6B52',pointBorderColor:'#fff',pointRadius:5},
+        {label:'Máximo', data:[100,100,100,100,100,100],backgroundColor:'rgba(0,0,0,0)',borderColor:'rgba(0,0,0,0.1)',borderWidth:1,pointRadius:0,borderDash:[4,4]},
+      ]
+    },
+    options:{
+      responsive:true,
+      plugins:{legend:{display:false}},
+      scales:{r:{min:0,max:100,ticks:{display:false,stepSize:25},grid:{color:'rgba(0,0,0,0.07)'},angleLines:{color:'rgba(0,0,0,0.07)'},pointLabels:{font:{size:11},color:'#9C9890'}}}
+    }
+  });
+}
+
+function renderBrechas(topBrechas) {
+  const cards = topBrechas.map((b,bi) => {
+    const bd = BRECHA_DATA[b.i];
+    const m  = MODULOS[b.i];
+
+    const causas = bd.causas.map((c,ci)=>`<div class="causa-row">
+      <div class="causa-dot" style="background:${m.bg};color:${m.fg}">${ci+1}</div>
+      <div><p style="font-size:13px;font-weight:500;margin-bottom:2px">${c.t}</p><p style="font-size:12px;color:var(--mid);line-height:1.55">${c.d}</p></div>
+    </div>`).join('');
+
+    const cons = bd.cons.map(c=>`<div class="cons-item" style="background:${m.bg};border:1px solid ${m.color}20">
+      <div style="font-size:16px;margin-bottom:3px">${c.i}</div>
+      <div style="font-size:12px;font-weight:500;color:${m.fg};margin-bottom:1px">${c.t}</div>
+      <div style="font-size:11px;color:${m.fg};opacity:.8">${c.s}</div>
+    </div>`).join('');
+
+    const sols = bd.sol.map((s,si)=>`<div class="sol-row">
+      <div class="sol-dot" style="background:${m.color}">${si+1}</div>
+      <div><p style="font-size:13px;font-weight:500;margin-bottom:2px">${s.t}</p><p style="font-size:12px;color:var(--mid);line-height:1.55">${s.d}</p></div>
+    </div>`).join('');
+
+    return `<div class="brecha-card">
+      <div class="brecha-header" onclick="toggleB(${bi})">
+        <div class="brecha-meta">
+          <div class="brecha-num" style="background:${m.bg};color:${m.fg}">${bi+1}</div>
+          <span class="brecha-mod" style="background:${m.bg};color:${m.fg}">${m.id} · ${m.tag}</span>
+          <span class="brecha-urg" style="background:${bd.urgBg};color:${bd.urgFg};border-color:${bd.urgFg}30">${bd.urg}</span>
+        </div>
+        <h3 class="brecha-title">${bd.title}</h3>
+        <p class="brecha-resumen">${bd.resumen}</p>
+        <span class="bchev open" id="bchev-${bi}">▾</span>
+      </div>
+      <div class="brecha-body open" id="bbody-${bi}">
+        <div class="bcapa" style="background:#FAFAFA">
+          <p class="bcapa-label" style="color:${m.color}"><span class="bcapa-dot" style="background:${m.color}"></span>Diagnóstico</p>
+          <p>${bd.diag}</p>
+        </div>
+        <div class="bcapa">
+          <p class="bcapa-label" style="color:${m.color}"><span class="bcapa-dot" style="background:${m.color}"></span>Causas raíz identificadas</p>
+          ${causas}
+        </div>
+        <div class="bcapa" style="background:#FAFAFA">
+          <p class="bcapa-label" style="color:${m.color}"><span class="bcapa-dot" style="background:${m.color}"></span>Consecuencias en el negocio</p>
+          <div class="cons-grid">${cons}</div>
+        </div>
+        <div class="bcapa">
+          <p class="bcapa-label" style="color:${m.color}"><span class="bcapa-dot" style="background:${m.color}"></span>Palancas para la sesión 1:1</p>
+          ${sols}
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+
+  return `<div style="margin-bottom:20px">
+    <div class="card" style="margin-bottom:12px">
+      <p class="sec-label">Las 4 brechas prioritarias — análisis completo</p>
+      <p style="font-size:13px;color:var(--mid);line-height:1.65">Las brechas están abiertas por defecto. Cada una incluye diagnóstico, causas raíz, consecuencias y palancas concretas para trabajar en la sesión.</p>
+    </div>
+    ${cards}
+  </div>`;
+}
+
+function renderRespuestas(answers) {
+  const mods = MODULOS.map((m,mi) => {
+    const qs = PREGUNTAS_TEXTO.filter(q=>q.m===mi);
+    const filas = qs.map(q => {
+      const score = answers[q.id]||0;
+      const nColor = NIVEL_COLORS[score]||'#9C9890';
+      const nBg    = NIVEL_BGS[score]||'#F5F5F5';
+      const nLabel = NIVEL_LABELS[score]||'—';
+      return `<tr>
+        <td style="padding:7px 12px;font-size:11px;color:var(--soft);width:36px">${q.id}</td>
+        <td style="padding:7px 12px;font-size:12px;color:var(--text);line-height:1.5">${q.text}</td>
+        <td style="padding:7px 12px;text-align:center;width:100px">
+          <span class="nivel-chip-sm" style="background:${nBg};color:${nColor}">${nLabel}</span>
+        </td>
+        <td style="padding:7px 12px;text-align:center;width:36px;font-size:13px;font-weight:600;color:${nColor}">${score}</td>
+      </tr>`;
+    }).join('');
+    const total = qs.reduce((s,q)=>s+(answers[q.id]||0),0);
+    const pct   = Math.round((total/m.max)*100);
+    const nm    = getNivelMod(pct);
+    return `<div class="resp-mod">
+      <div class="resp-mod-header" style="background:${m.bg}">
+        <span style="font-size:13px;font-weight:500;color:${m.fg}">${m.id} · ${m.tag} — ${m.nombre}</span>
+        <span style="font-size:12px;color:${nm.color};font-weight:500">${total}/${m.max} · ${pct}% · ${nm.label}</span>
+      </div>
+      <table class="resp-table" width="100%">
+        <tr style="background:#F7F5F0">
+          <td style="padding:5px 12px;font-size:10px;font-weight:600;color:var(--soft)">ID</td>
+          <td style="padding:5px 12px;font-size:10px;font-weight:600;color:var(--soft)">Pregunta</td>
+          <td style="padding:5px 12px;font-size:10px;font-weight:600;color:var(--soft);text-align:center">Nivel</td>
+          <td style="padding:5px 12px;font-size:10px;font-weight:600;color:var(--soft);text-align:center">Pts</td>
+        </tr>
+        ${filas}
+      </table>
+    </div>`;
+  }).join('');
+
+  return `<div class="card">
+    <p class="sec-label">Respuestas completas por módulo</p>
+    <p style="font-size:13px;color:var(--mid);margin-bottom:16px;line-height:1.65">Respuesta elegida y nivel obtenido en cada uno de los 38 conceptos evaluados.</p>
+    ${mods}
+  </div>`;
+}
+
+function toggleB(i) {
+  const b  = document.getElementById('bbody-'+i);
+  const ch = document.getElementById('bchev-'+i);
+  if(!b||!ch) return;
+  const open = b.classList.contains('open');
+  b.classList.toggle('open',!open);
+  ch.classList.toggle('open',!open);
+}
+
+// ─── INIT ─────────────────────────────────────────────────────────
+const data = loadData();
+if (data) {
+  render(data);
+} else {
+  document.getElementById('app').innerHTML = `
+    <div class="error-screen">
+      <div style="font-size:48px;margin-bottom:16px">🔒</div>
+      <h2 style="margin-bottom:12px">Enlace no válido</h2>
+      <p style="font-size:14px;color:var(--mid);line-height:1.7">Este enlace de briefing no contiene datos de diagnóstico. Asegúrese de usar el enlace exacto que recibió en el email de briefing del consultor.</p>
+    </div>`;
+}
+</script>
+</body>
+</html>
