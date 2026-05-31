@@ -1639,17 +1639,6 @@ function sendEmails(scores, isc, nivel, perfil, topBrechas) {
     </tr>`;
   }).join('');
 
-  // ── Brechas resumen para el email (versión compacta) ──
-  const brechasHTML = topBrechas.map((b,i) => {
-    const bd = BRECHA_DATA[b.i];
-    const m  = MODULOS[b.i];
-    return `<tr>
-      <td style="padding:6px 10px;font-size:13px;font-weight:500;background:${m.bg};color:${m.fg};border-radius:4px">${i+1}. ${m.tag}</td>
-      <td style="padding:6px 10px;font-size:13px;color:#1A1814">${bd.title}</td>
-      <td style="padding:6px 10px;font-size:11px;color:#9C9890">${bd.urg}</td>
-    </tr>`;
-  }).join('');
-
   // ── Generar URL del briefing completo ──
   const briefingData = {
     nombre:  state.nombre,
@@ -1661,36 +1650,9 @@ function sendEmails(scores, isc, nivel, perfil, topBrechas) {
     fecha:   fecha,
     answers: state.answers,
   };
-  const briefingJson   = JSON.stringify(briefingData);
-  const briefingB64    = btoa(unescape(encodeURIComponent(briefingJson)));
-  const briefingURL    = `https://cfnavarro.github.io/formuladeventasb2b/briefing.html#${briefingB64}`;
-
-  // ── Email 1: Reporte al Prospecto ──
-        <td style="padding:6px 10px;text-align:center;width:90px">
-          <span style="font-size:11px;font-weight:600;padding:2px 8px;border-radius:6px;background:${nColor}18;color:${nColor};white-space:nowrap">${nLabel}</span>
-        </td>
-        <td style="padding:6px 10px;text-align:center;width:30px;font-size:12px;font-weight:700;color:${nColor}">${score}</td>
-      </tr>`;
-    }).join('');
-
-    return `
-      <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:16px;border:1px solid ${modColors[mi]}30;border-radius:8px;overflow:hidden">
-        <tr style="background:${modBgs[mi]}">
-          <td colspan="4" style="padding:8px 12px">
-            <span style="font-size:11px;font-weight:700;padding:2px 9px;border-radius:6px;background:${modFgs[mi]};color:white">${modLabels[mi]}</span>
-            <span style="font-size:12px;font-weight:500;color:${modFgs[mi]};margin-left:8px">${mod.nombre}</span>
-            <span style="font-size:11px;color:${modFgs[mi]};float:right;opacity:.7">${PREGUNTAS.filter(q=>q.m===mi).reduce((s,q)=>s+(state.answers[q.id]||0),0)}/${mod.max} pts · ${Math.round((PREGUNTAS.filter(q=>q.m===mi).reduce((s,q)=>s+(state.answers[q.id]||0),0)/mod.max)*100)}%</span>
-          </td>
-        </tr>
-        <tr style="background:#F7F5F0">
-          <td style="padding:5px 10px;font-size:10px;font-weight:600;color:#9C9890;text-transform:uppercase;letter-spacing:.04em">ID</td>
-          <td style="padding:5px 10px;font-size:10px;font-weight:600;color:#9C9890;text-transform:uppercase;letter-spacing:.04em">Pregunta</td>
-          <td style="padding:5px 10px;font-size:10px;font-weight:600;color:#9C9890;text-align:center;text-transform:uppercase;letter-spacing:.04em">Nivel</td>
-          <td style="padding:5px 10px;font-size:10px;font-weight:600;color:#9C9890;text-align:center;text-transform:uppercase;letter-spacing:.04em">Pts</td>
-        </tr>
-        ${filas}
-      </table>`;
-  }).join('');
+  const briefingJson = JSON.stringify(briefingData);
+  const briefingB64  = btoa(unescape(encodeURIComponent(briefingJson)));
+  const briefingURL  = `https://cfnavarro.github.io/formuladeventasb2b/briefing.html#${briefingB64}`;
 
   // ── Email 1: Reporte al Prospecto ──
   const paramsProspecto = {
