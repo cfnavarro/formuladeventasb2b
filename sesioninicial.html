@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sesión Inicial · Fórmula de Ventas B2B</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0F1F3D;--nm:#1A3260;--nl:#243F78;
+  --gold:#C9A84C;--gl:#E8C97A;--gd:#C9A84C22;
+  --off:#F7F5F0;--text:#1A1A2E;--mid:#3D3D5C;--soft:#7A7A9A;--bdr:#E2DDD4;
+  --green:#1E7B5E;--gbg:#E8F5F0;--yellow:#B07D00;--ybg:#FFF8E1;--red:#B02020;--rbg:#FFF0F0;
+  --r:#1A6FA0;--ur:#8B3A8B;--n:#1E7B5E;--un:#C05A00;--t:#5A5AA0;--c:#A03060;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:var(--off);color:var(--text);min-height:100vh;}
+
+.hdr{background:var(--navy);padding:13px 28px;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--gold);position:sticky;top:0;z-index:200;}
+.hdr-brand{font-family:'Playfair Display',serif;font-size:12px;font-weight:700;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;}
+.hdr-sub{font-size:11px;color:rgba(255,255,255,.45);margin-top:2px;}
+.hdr-right{display:flex;align-items:center;gap:10px;}
+.hdr-cliente{font-size:12px;color:rgba(255,255,255,.6);font-weight:500;}
+.hdr-cliente span{color:var(--gl);font-weight:700;}
+
+.stepper{background:white;border-bottom:1px solid var(--bdr);padding:0 24px;display:flex;overflow-x:auto;}
+.stab{display:flex;align-items:center;gap:7px;padding:13px 14px;border:none;background:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;color:var(--soft);border-bottom:3px solid transparent;white-space:nowrap;transition:all .15s;}
+.stab:hover{color:var(--navy);}
+.stab.active{color:var(--navy);border-bottom-color:var(--gold);font-weight:700;}
+.stab.done{color:var(--green);}
+.snum{width:20px;height:20px;border-radius:50%;background:var(--bdr);color:var(--soft);font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .15s;}
+.stab.active .snum{background:var(--navy);color:var(--gold);}
+.stab.done .snum{background:var(--green);color:white;}
+.ssep{color:var(--bdr);font-size:14px;align-self:center;padding:0 2px;}
+
+.app{max-width:1020px;margin:0 auto;padding:26px 22px 80px;}
+.sec{display:none;}.sec.active{display:block;}
+
+.panel{background:white;border:1px solid var(--bdr);border-radius:6px;overflow:hidden;margin-bottom:16px;}
+.ph{background:var(--navy);padding:12px 18px;display:flex;align-items:center;gap:10px;}
+.ph-bar{width:4px;border-radius:2px;flex-shrink:0;align-self:stretch;}
+.ph-info{flex:1;}
+.ph-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:white;}
+.ph-sub{font-size:11px;color:rgba(255,255,255,.45);margin-top:2px;}
+.pb{padding:20px;}
+
+.fg{display:flex;flex-direction:column;gap:5px;margin-bottom:13px;}
+.fg:last-child{margin-bottom:0;}
+.fl{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--soft);}
+.fh{font-size:10px;color:var(--soft);font-weight:400;text-transform:none;letter-spacing:0;margin-left:4px;}
+.fi{border:1px solid var(--bdr);border-radius:4px;padding:8px 11px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--text);background:var(--off);outline:none;transition:border-color .15s;width:100%;}
+.fi:focus{border-color:var(--navy);background:white;}
+.fta{border:1px solid var(--bdr);border-radius:4px;padding:8px 11px;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--text);background:var(--off);outline:none;resize:vertical;line-height:1.6;min-height:62px;width:100%;}
+.fta:focus{border-color:var(--navy);background:white;}
+.fsel{border:1px solid var(--bdr);border-radius:4px;padding:8px 11px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--text);background:var(--off);outline:none;cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237A7A9A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 11px center;padding-right:30px;width:100%;}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:13px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:13px;}
+
+.scores-row{display:grid;grid-template-columns:repeat(6,1fr);gap:7px;margin-bottom:11px;}
+.sc-pill{border-radius:5px;overflow:hidden;border:1px solid var(--bdr);text-align:center;}
+.sc-lbl{font-size:10px;font-weight:700;color:white;padding:5px 2px;}
+.sc-inp{width:100%;border:none;background:var(--off);font-family:'DM Mono',monospace;font-size:20px;font-weight:500;text-align:center;color:var(--text);padding:6px 4px;outline:none;}
+.sc-inp:focus{background:white;}
+.isc-row{display:flex;align-items:center;gap:13px;background:var(--navy);border-radius:5px;padding:11px 15px;}
+.isc-inp{width:66px;border:1px solid rgba(201,168,76,.4);border-radius:4px;padding:5px 7px;font-family:'DM Mono',monospace;font-size:22px;font-weight:500;text-align:center;color:var(--gold);background:rgba(255,255,255,.05);outline:none;}
+.isc-lbl{font-size:11px;color:rgba(255,255,255,.45);}
+.ntag{font-size:11px;font-weight:700;padding:3px 9px;border-radius:2px;}
+.nc{background:#5C1010;color:#FFB0B0;}.nd{background:#5C3A10;color:#FFD080;}.nco{background:#103A5C;color:#80C8FF;}.na{background:#103C20;color:#80FFB0;}
+
+.br-row{display:flex;align-items:flex-start;gap:9px;margin-bottom:9px;}
+.br-n{width:24px;height:24px;border-radius:50%;background:var(--navy);color:var(--gold);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:7px;}
+.br-fields{flex:1;display:grid;grid-template-columns:1fr 120px;gap:8px;}
+
+.rg{display:flex;flex-direction:column;gap:6px;}
+.ro{display:flex;align-items:flex-start;gap:9px;padding:9px 12px;border:1px solid var(--bdr);border-radius:4px;cursor:pointer;background:var(--off);transition:all .15s;}
+.ro:hover{border-color:var(--nl);background:white;}
+.ro input[type=radio]{margin-top:3px;flex-shrink:0;accent-color:var(--navy);}
+.ro-txt{font-size:13px;color:var(--mid);line-height:1.5;}
+.ro-txt strong{color:var(--text);}
+
+.esc-wrap{display:flex;align-items:center;gap:6px;margin-top:6px;}
+.ebu{width:34px;height:32px;border-radius:4px;border:1px solid var(--bdr);background:var(--off);font-family:'DM Mono',monospace;font-size:13px;font-weight:600;color:var(--soft);cursor:pointer;transition:all .15s;}
+.ebu:hover{border-color:var(--navy);color:var(--navy);}
+.ebu.esel{background:var(--navy);color:var(--gold);border-color:var(--navy);}
+.e-lbl{font-size:11px;color:var(--soft);font-style:italic;margin-left:3px;}
+
+.div{height:1px;background:var(--bdr);margin:16px 0;}
+.slbl{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.slbl::after{content:'';flex:1;height:1px;background:var(--bdr);}
+
+/* SEC 2: FORMULA */
+.fhero{background:var(--navy);border-radius:8px;padding:26px;margin-bottom:15px;text-align:center;}
+.fhero-lbl{font-family:'Playfair Display',serif;font-size:12px;font-weight:700;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;margin-bottom:5px;}
+.fhero-math{font-family:'DM Mono',monospace;font-size:19px;color:white;margin:12px 0;line-height:1.7;}
+.fhero-sub{font-size:13px;color:rgba(255,255,255,.55);line-height:1.7;}
+.vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin-bottom:15px;}
+.vc{border-radius:6px;overflow:hidden;border:1px solid var(--bdr);}
+.vc-hdr{padding:9px 13px;display:flex;align-items:center;gap:7px;}
+.vc-sym{font-family:'DM Mono',monospace;font-size:15px;font-weight:700;color:white;}
+.vc-name{font-size:11px;font-weight:600;color:rgba(255,255,255,.8);}
+.vc-score{font-family:'DM Mono',monospace;font-size:17px;font-weight:500;color:white;margin-left:auto;}
+.vc-score span{font-size:10px;opacity:.5;}
+.vc-body{padding:11px 13px;background:white;}
+.vc-desc{font-size:12px;color:var(--mid);line-height:1.6;}
+.vc-ctx{font-size:11px;color:var(--mid);margin-top:7px;padding-top:7px;border-top:1px dashed var(--bdr);line-height:1.5;}
+.vc-est{font-size:10px;font-weight:600;margin-top:6px;padding:2px 7px;border-radius:2px;display:inline-block;}
+.ea{background:var(--gbg);color:var(--green);}.em{background:var(--ybg);color:var(--yellow);}.eb2{background:var(--rbg);color:var(--red);}
+.mod-box{border-radius:6px;padding:16px 18px;border-left:4px solid;}
+.mod-box.rec{background:#EEF4FB;border-color:var(--r);}
+.mod-box.hib{background:var(--ybg);border-color:var(--yellow);}
+.mod-box.nue{background:var(--gbg);border-color:var(--green);}
+.mod-titulo{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px;}
+.mod-box.rec .mod-titulo{color:var(--r);}.mod-box.hib .mod-titulo{color:var(--yellow);}.mod-box.nue .mod-titulo{color:var(--green);}
+.mod-txt{font-size:13px;color:var(--mid);line-height:1.7;}
+.mod-txt strong{color:var(--text);}
+
+/* SEC 4: MAPA */
+.sint{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border-bottom:1px solid var(--bdr);cursor:pointer;transition:background .12s;}
+.sint:last-child{border-bottom:none;}
+.sint:hover{background:var(--off);}
+.sint.sel{background:#FDFBF5;}
+.sck{width:18px;height:18px;border-radius:3px;border:2px solid var(--bdr);flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;background:white;transition:all .12s;}
+.sint.sel .sck{border-color:var(--gold);background:var(--navy);}
+.sck-i{display:none;color:var(--gold);font-size:10px;font-weight:900;}
+.sint.sel .sck-i{display:block;}
+.sbd{flex:1;}
+.stx{font-size:13px;font-weight:600;color:var(--mid);line-height:1.5;}
+.sint.sel .stx{color:var(--text);}
+.sim{font-size:11px;color:var(--soft);margin-top:3px;line-height:1.4;}
+.svr{font-size:10px;font-weight:700;letter-spacing:.05em;padding:2px 6px;border-radius:2px;color:white;margin-top:4px;display:inline-block;}
+.sint-int{display:none;margin-top:8px;padding-top:8px;border-top:1px dashed var(--bdr);}
+.sint.sel .sint-int{display:block;}
+.i-lbl{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--soft);margin-bottom:4px;}
+.i-row{display:flex;gap:4px;}
+.ibi{width:27px;height:25px;border-radius:3px;border:1px solid var(--bdr);background:var(--off);font-size:11px;font-weight:600;color:var(--soft);cursor:pointer;transition:all .12s;}
+.ibi.i1{background:var(--gbg);border-color:var(--green);color:var(--green);}
+.ibi.i2{background:var(--ybg);border-color:var(--yellow);color:var(--yellow);}
+.ibi.i3{background:var(--rbg);border-color:var(--red);color:var(--red);}
+.i-mlbl{display:flex;gap:4px;margin-top:2px;}
+.iml{width:27px;text-align:center;font-size:9px;color:var(--soft);}
+.sol-box{background:var(--off);border:1px solid var(--bdr);border-radius:4px;padding:10px 12px;margin-top:9px;}
+.sol-t{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--soft);margin-bottom:6px;}
+.sol-item{display:flex;align-items:flex-start;gap:6px;margin-bottom:5px;}
+.sol-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:5px;}
+.sol-txt{font-size:12px;color:var(--mid);line-height:1.5;}
+
+/* SEC 5: CALCULADORA */
+.c-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.c-ig{display:flex;flex-direction:column;gap:4px;margin-bottom:11px;}
+.c-lbl{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;}
+.c-inp{border:1px solid var(--bdr);border-radius:4px;padding:8px 11px;font-family:'DM Mono',monospace;font-size:16px;font-weight:500;color:var(--text);background:var(--off);outline:none;width:100%;}
+.c-inp:focus{border-color:var(--navy);background:white;}
+.c-hint{font-size:11px;color:var(--soft);margin-top:2px;line-height:1.5;}
+.res-box{background:var(--navy);border-radius:8px;padding:20px;margin-top:16px;}
+.res-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--gold);margin-bottom:14px;}
+.res-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:16px;}
+.res-c{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:11px 13px;}
+.res-lbl{font-size:10px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;}
+.res-val{font-family:'DM Mono',monospace;font-size:20px;font-weight:500;color:var(--gold);}
+.res-val.warn{color:#FFB0B0;}.res-val.ok{color:#80FFB0;}
+.res-sub{font-size:10px;color:rgba(255,255,255,.3);margin-top:2px;}
+.esc-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px;}
+.esc-c{border-radius:5px;overflow:hidden;border:1px solid var(--bdr);}
+.esc-hdr{padding:8px 13px;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;}
+.esc-act{background:var(--nl);color:rgba(255,255,255,.7);}
+.esc-opt{background:var(--green);color:white;}
+.esc-cons{background:#5C3A10;color:#FFD080;}
+.esc-body{padding:13px;background:white;}
+.esc-val{font-family:'DM Mono',monospace;font-size:19px;font-weight:500;color:var(--text);}
+.esc-delta{font-size:12px;margin-top:3px;}
+.dp{color:var(--green);font-weight:600;}.dn{color:var(--red);font-weight:600;}
+.esc-det{font-size:11px;color:var(--soft);margin-top:7px;line-height:1.5;}
+
+/* PLAN DE ACCION */
+.plan-table{width:100%;border-collapse:collapse;margin-top:4px;}
+.plan-table th{background:var(--navy);color:var(--gl);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:9px 12px;text-align:left;}
+.plan-table th:first-child{width:32px;border-radius:0;}
+.plan-table td{padding:0;border-bottom:1px solid var(--bdr);vertical-align:top;}
+.plan-table tr:last-child td{border-bottom:none;}
+.plan-table tr:hover td{background:#FAFAF5;}
+.plan-num{width:32px;padding:10px 0;text-align:center;font-family:'DM Mono',monospace;font-size:13px;color:var(--gold);font-weight:700;}
+.plan-inp{width:100%;border:none;background:transparent;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--text);padding:10px 12px;outline:none;resize:none;line-height:1.5;min-height:38px;}
+.plan-inp:focus{background:#FDFBF5;}
+.plan-inp::placeholder{color:var(--soft);}
+.plan-sel{width:100%;border:none;background:transparent;font-family:'DM Sans',sans-serif;font-size:12px;color:var(--text);padding:10px 8px;outline:none;cursor:pointer;appearance:none;}
+.plan-sel:focus{background:#FDFBF5;}
+.btn-plan{padding:8px 16px;background:var(--nm);color:var(--gl);border:1px solid rgba(201,168,76,.4);border-radius:4px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all .15s;margin-bottom:12px;}
+.btn-plan:hover{background:var(--navy);border-color:var(--gold);}
+
+/* DIAGNOSTICO SINTESIS */
+.diagnostico-box{background:linear-gradient(135deg,var(--navy) 0%,var(--nm) 100%);border-radius:8px;padding:20px 22px;margin-bottom:16px;}
+.diagnostico-lbl{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+.diagnostico-ta{width:100%;border:1px solid rgba(255,255,255,.15);border-radius:4px;padding:10px 13px;font-family:'DM Sans',sans-serif;font-size:14px;color:white;background:rgba(255,255,255,.07);outline:none;resize:none;min-height:64px;line-height:1.7;}
+.diagnostico-ta::placeholder{color:rgba(255,255,255,.3);}
+.diagnostico-ta:focus{border-color:var(--gold);background:rgba(255,255,255,.1);}
+.diagnostico-hint{font-size:11px;color:rgba(255,255,255,.35);margin-top:6px;line-height:1.5;}
+
+/* NAV */
+.nav-bar{display:flex;justify-content:space-between;align-items:center;margin-top:22px;padding-top:18px;border-top:1px solid var(--bdr);}
+.btn-prev{padding:10px 20px;background:white;color:var(--navy);border:1px solid var(--bdr);border-radius:5px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all .15s;}
+.btn-prev:hover{border-color:var(--navy);}
+.btn-next{padding:10px 22px;background:var(--navy);color:var(--gold);border:2px solid var(--gold);border-radius:5px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .15s;}
+.btn-next:hover{background:var(--gold);color:var(--navy);}
+.btn-pdf{padding:10px 22px;background:var(--green);color:white;border:none;border-radius:5px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .15s;}
+.btn-pdf:hover{background:#155a44;}
+
+
+/* ══ REPORTE EN PANTALLA ══ */
+#rpt-overlay{display:none;position:fixed;inset:0;background:#888;z-index:500;overflow-y:auto;}
+#rpt-wrap{max-width:794px;margin:0 auto;background:white;}
+#rpt-barra{background:#1A3260;padding:10px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10;}
+#rpt-barra-txt{font-family:'DM Sans',sans-serif;font-size:12px;color:rgba(255,255,255,.65);}
+#rpt-barra-txt strong{color:#E8C97A;}
+.rpt-btn-bar{padding:8px 20px;background:#C9A84C;color:#0F1F3D;border:none;border-radius:4px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;cursor:pointer;margin-left:8px;}
+.rpt-btn-cerrar{padding:8px 16px;background:rgba(255,255,255,.15);color:white;border:1px solid rgba(255,255,255,.3);border-radius:4px;font-family:'DM Sans',sans-serif;font-size:13px;cursor:pointer;margin-left:8px;}
+
+/* Portada del reporte */
+.rpt-cover{background:#0F1F3D;padding:52px 52px 36px;min-height:680px;display:flex;flex-direction:column;}
+.rpt-gbar{height:3px;background:linear-gradient(90deg,#C9A84C,#E8C97A,#C9A84C);}
+
+/* Páginas internas */
+.rpt-page{background:white;padding:30px 36px;border-bottom:1px solid #ccc;}
+.rpt-phdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid #0F1F3D;}
+.rpt-pbrand{font-family:'Playfair Display',serif;font-size:9px;font-weight:700;color:#C9A84C;letter-spacing:.1em;text-transform:uppercase;}
+.rpt-pcli{font-size:10px;color:#999;}
+.rpt-sh{display:flex;align-items:center;gap:7px;margin:16px 0 10px;padding-bottom:5px;border-bottom:2px solid #0F1F3D;}
+.rpt-shb{width:4px;height:14px;border-radius:2px;flex-shrink:0;}
+.rpt-sht{font-family:'Playfair Display',serif;font-size:13px;font-weight:700;color:#0F1F3D;}
+.rpt-card{border:1px solid #E2DDD4;border-radius:4px;padding:9px 12px;background:white;margin-bottom:8px;}
+.rpt-cl{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#999;margin-bottom:3px;}
+.rpt-cv{font-size:12px;color:#1A1A2E;line-height:1.5;}
+.rpt-cv.dest{font-style:italic;color:#0F1F3D;font-weight:500;font-size:13px;}
+.rpt-g2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;}
+.rpt-isc{display:flex;align-items:center;gap:12px;background:#0F1F3D;border-radius:5px;padding:11px 14px;margin-bottom:10px;}
+.rpt-isc-num{font-family:'Courier New',monospace;font-size:30px;font-weight:700;color:#C9A84C;line-height:1;}
+.rpt-scores{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px;}
+.rpt-sp{border-radius:3px;overflow:hidden;text-align:center;border:1px solid #ddd;min-width:46px;}
+.rpt-spl{font-size:8px;font-weight:700;color:white;padding:2px;}
+.rpt-spv{font-size:13px;font-weight:700;padding:3px 2px;background:#F7F5F0;}
+.rpt-dolor{padding:8px 12px;border-left:3px solid;border:1px solid #E2DDD4;border-left-width:3px;border-radius:0 4px 4px 0;margin-bottom:6px;background:white;}
+.rpt-esc3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:10px;}
+.rpt-esc{border-radius:4px;overflow:hidden;border:1px solid #ddd;}
+.rpt-esc-hdr{padding:7px 10px;font-size:9px;font-weight:700;text-transform:uppercase;}
+.rpt-esc-body{padding:10px;background:white;}
+.rpt-esc-val{font-family:'Courier New',monospace;font-size:17px;font-weight:700;color:#1A1A2E;}
+.rpt-ptbl{width:100%;border-collapse:collapse;margin-top:5px;}
+.rpt-ptbl th{background:#0F1F3D;color:#E8C97A;font-size:9px;font-weight:600;letter-spacing:.05em;padding:6px 8px;text-align:left;}
+.rpt-ptbl td{padding:6px 8px;font-size:11px;border-bottom:1px solid #eee;color:#1A1A2E;vertical-align:top;}
+.rpt-ptbl tr:nth-child(even) td{background:#F9F8F5;}
+.rpt-ftr{background:#0F1F3D;padding:9px 32px;display:flex;justify-content:space-between;align-items:center;margin-top:24px;}
+.rpt-ft{font-size:8px;color:rgba(255,255,255,.35);}
+.rpt-fb{font-size:8px;color:rgba(201,168,76,.6);font-weight:700;letter-spacing:.07em;text-transform:uppercase;}
+.rpt-cta{background:#0F1F3D;border-radius:5px;padding:14px 18px;margin-top:12px;}
+.rpt-cta-lbl{font-size:9px;color:rgba(201,168,76,.7);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px;}
+.rpt-cta-txt{font-size:12px;color:rgba(255,255,255,.6);line-height:1.7;}
+
+/* ══ @MEDIA PRINT — optimizado para Safari ══ */
+@media print {
+  /* Ocultar TODO excepto el reporte */
+  .hdr, .stepper, .app, #rpt-barra { display:none !important; }
+  #rpt-overlay {
+    display:block !important;
+    position:static !important;
+    background:none !important;
+    overflow:visible !important;
+  }
+  #rpt-wrap { max-width:100% !important; margin:0 !important; }
+
+  /* Portada: página completa */
+  .rpt-cover {
+    min-height:100vh !important;
+    page-break-after:always !important;
+    -webkit-print-color-adjust:exact !important;
+    print-color-adjust:exact !important;
+  }
+  /* Cada página interna: salto de página */
+  .rpt-page {
+    page-break-after:always !important;
+    page-break-inside:avoid !important;
+    border-bottom:none !important;
+  }
+  .rpt-page:last-child { page-break-after:auto !important; }
+
+  /* Forzar colores de fondo en Safari */
+  .rpt-gbar, .rpt-phdr, .rpt-sh,
+  .rpt-isc, .rpt-esc-hdr, .rpt-ftr,
+  .rpt-cta, .rpt-ptbl th,
+  .rpt-spl, .rpt-dolor {
+    -webkit-print-color-adjust:exact !important;
+    print-color-adjust:exact !important;
+  }
+
+  /* Evitar cortes dentro de elementos */
+  .rpt-card, .rpt-dolor, .rpt-esc, .rpt-ptbl tr { page-break-inside:avoid !important; }
+
+  /* Configuración de página */
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  @page :first { margin:0; }
+}
+
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div>
+    <div class="hdr-brand">FORMULA DE VENTAS B2B</div>
+    <div class="hdr-sub">Sesion Inicial · Herramienta del Consultor</div>
+  </div>
+  <div class="hdr-right">
+    <div class="hdr-cliente">Sesion con: <span id="hdr-nom">—</span></div>
+  </div>
+</div>
+
+<div class="stepper">
+  <button class="stab active" id="t1" onclick="goTo(1)"><div class="snum" id="n1">1</div>Datos del cliente</button>
+  <span class="ssep">›</span>
+  <button class="stab" id="t2" onclick="goTo(2)"><div class="snum" id="n2">2</div>Formula en contexto</button>
+  <span class="ssep">›</span>
+  <button class="stab" id="t3" onclick="goTo(3)"><div class="snum" id="n3">3</div><span id="stab3lbl">Validacion</span></button>
+  <span class="ssep">›</span>
+  <button class="stab" id="t4" onclick="goTo(4)"><div class="snum" id="n4">4</div><span id="stab4lbl">Situacion comercial</span></button>
+  <span class="ssep">›</span>
+  <button class="stab" id="t5" onclick="goTo(5)"><div class="snum" id="n5">5</div>Calculadora</button>
+  <span class="ssep">›</span>
+  <button class="stab" id="t6" onclick="goTo(6)"><div class="snum" id="n6">6</div>Plan de accion</button>
+</div>
+
+<div class="app">
+
+<!-- ═══ SEC 1: DATOS ═══ -->
+<div class="sec active" id="s1">
+  <div class="panel">
+    <div class="ph"><div class="ph-bar" style="background:var(--gold)"></div><div class="ph-info"><div class="ph-title">Identificacion del cliente</div><div class="ph-sub">Complete antes de iniciar la sesion</div></div></div>
+    <div class="pb">
+      <div class="g2">
+        <div class="fg"><label class="fl">Nombre del director</label><input class="fi" id="d-nom" type="text" placeholder="Nombre completo" oninput="syncNom()"></div>
+        <div class="fg"><label class="fl">Empresa</label><input class="fi" id="d-emp" type="text" placeholder="Nombre de la empresa" oninput="syncNom()"></div>
+      </div>
+      <div class="g3">
+        <div class="fg"><label class="fl">Sector / Industria</label><input class="fi" id="d-sec" type="text" placeholder="Ej: Distribucion industrial"></div>
+        <div class="fg"><label class="fl">Pais</label><input class="fi" id="d-pai" type="text" placeholder="Ej: Colombia"></div>
+        <div class="fg"><label class="fl">Fecha de sesion</label><input class="fi" id="d-fec" type="date"></div>
+      </div>
+      <div class="fg"><label class="fl">Modalidad de ventas</label>
+        <select class="fsel" id="d-mod">
+          <option value="">Seleccione...</option>
+          <option value="rec">Alta recurrencia (mas del 70% recurrente)</option>
+          <option value="hib">Modelo hibrido (40-70% recurrente)</option>
+          <option value="nue">Nuevo negocio (menos del 40% recurrente)</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="ph"><div class="ph-bar" style="background:var(--gold)"></div><div class="ph-info"><div class="ph-title">Resultados del diagnostico ISC</div><div class="ph-sub">Base objetiva de la sesion de hoy</div></div></div>
+    <div class="pb">
+      <div class="scores-row">
+        <div class="sc-pill"><div class="sc-lbl" style="background:var(--r)">R</div><input class="sc-inp" id="sc-r" type="number" min="0" max="100" placeholder="--" oninput="csc(this)"></div>
+        <div class="sc-pill"><div class="sc-lbl" style="background:var(--ur)">Ur</div><input class="sc-inp" id="sc-ur" type="number" min="0" max="100" placeholder="--" oninput="csc(this)"></div>
+        <div class="sc-pill"><div class="sc-lbl" style="background:var(--n)">N</div><input class="sc-inp" id="sc-n" type="number" min="0" max="100" placeholder="--" oninput="csc(this)"></div>
+        <div class="sc-pill"><div class="sc-lbl" style="background:var(--un)">Un</div><input class="sc-inp" id="sc-un" type="number" min="0" max="100" placeholder="--" oninput="csc(this)"></div>
+        <div class="sc-pill"><div class="sc-lbl" style="background:var(--t)">T</div><input class="sc-inp" id="sc-t" type="number" min="0" max="100" placeholder="--" oninput="csc(this)"></div>
+        <div class="sc-pill"><div class="sc-lbl" style="background:var(--c)">C</div><input class="sc-inp" id="sc-c" type="number" min="0" max="100" placeholder="--" oninput="csc(this)"></div>
+      </div>
+      <div class="isc-row">
+        <div class="isc-lbl">ISC TOTAL</div>
+        <input class="isc-inp" id="sc-isc" type="number" min="0" max="100" placeholder="--" oninput="updN()">
+        <div id="ntag" class="ntag"></div>
+        <div style="flex:1"></div>
+        <div style="font-size:11px;color:rgba(255,255,255,.3)">Del reporte del cliente</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="ph"><div class="ph-bar" style="background:var(--gold)"></div><div class="ph-info"><div class="ph-title">Las 4 brechas identificadas en el diagnostico</div><div class="ph-sub">Ordene por impacto segun el reporte</div></div></div>
+    <div class="pb">
+      <div class="br-row"><div class="br-n">1</div><div class="br-fields"><textarea class="fta" id="b1t" rows="2" placeholder="Brecha #1 — la de mayor impacto segun el diagnostico..."></textarea><select class="fsel" id="b1p" style="width:auto"><option value="Critico">Critico</option><option value="Alto">Alto</option><option value="Medio" selected>Medio</option><option value="Bajo">Bajo</option></select></div></div>
+      <div class="br-row"><div class="br-n">2</div><div class="br-fields"><textarea class="fta" id="b2t" rows="2" placeholder="Brecha #2..."></textarea><select class="fsel" id="b2p" style="width:auto"><option value="Critico">Critico</option><option value="Alto" selected>Alto</option><option value="Medio">Medio</option><option value="Bajo">Bajo</option></select></div></div>
+      <div class="br-row"><div class="br-n">3</div><div class="br-fields"><textarea class="fta" id="b3t" rows="2" placeholder="Brecha #3..."></textarea><select class="fsel" id="b3p" style="width:auto"><option value="Critico">Critico</option><option value="Alto">Alto</option><option value="Medio" selected>Medio</option><option value="Bajo">Bajo</option></select></div></div>
+      <div class="br-row"><div class="br-n">4</div><div class="br-fields"><textarea class="fta" id="b4t" rows="2" placeholder="Brecha #4..."></textarea><select class="fsel" id="b4p" style="width:auto"><option value="Critico">Critico</option><option value="Alto">Alto</option><option value="Medio">Medio</option><option value="Bajo" selected>Bajo</option></select></div></div>
+    </div>
+  </div>
+  <div class="nav-bar"><div style="font-size:12px;color:var(--soft)">Complete los datos antes de iniciar</div><button class="btn-next" onclick="goTo(2)">Siguiente: Formula en contexto &rarr;</button></div>
+</div>
+
+<!-- ═══ SEC 2: FORMULA ═══ -->
+<div class="sec" id="s2">
+  <div id="fhero-c"></div>
+  <div id="vgrid-c"></div>
+  <div id="mod-c"></div>
+  <div class="nav-bar"><button class="btn-prev" onclick="goTo(1)">&larr; Datos</button><button class="btn-next" onclick="goTo(3)">Siguiente: Validacion &rarr;</button></div>
+</div>
+
+<!-- ═══ SEC 3: VALIDACION ═══ -->
+<div class="sec" id="s3">
+  <div class="panel">
+    <div class="ph"><div class="ph-bar" style="background:var(--r)"></div><div class="ph-info"><div class="ph-title" id="ph3a">Revisemos juntos los resultados del diagnostico</div><div class="ph-sub">Confirmando que el punto de partida refleja la realidad</div></div></div>
+    <div class="pb">
+      <div class="fg"><label class="fl">Los resultados del diagnostico reflejan la realidad de su modelo comercial?</label>
+        <div class="rg">
+          <label class="ro"><input type="radio" name="ref" value="si"><span class="ro-txt"><strong>Si, refleja con precision la situacion actual</strong></span></label>
+          <label class="ro"><input type="radio" name="ref" value="parcial"><span class="ro-txt"><strong>Parcialmente</strong> — hay dimensiones que reconoce mas que otras</span></label>
+          <label class="ro"><input type="radio" name="ref" value="mejor"><span class="ro-txt"><strong>La situacion real es mejor</strong> — el diagnostico fue conservador</span></label>
+          <label class="ro"><input type="radio" name="ref" value="peor"><span class="ro-txt"><strong>La situacion real es mas compleja</strong> — fue mas optimista al responder</span></label>
+        </div>
+      </div>
+      <div class="fg" style="margin-top:12px"><label class="fl">Hay algun aspecto que quiera matizar o precisar?</label><textarea class="fta" id="v-disc" placeholder="Comentarios o precisiones del cliente sobre los resultados..."></textarea></div>
+    </div>
+  </div>
+  <div class="panel">
+    <div class="ph"><div class="ph-bar" style="background:var(--ur)"></div><div class="ph-info"><div class="ph-title" id="ph3b">Contexto de su operacion comercial</div><div class="ph-sub">Para entender el alcance de la sesion</div></div></div>
+    <div class="pb">
+      <div class="g2">
+        <div class="fg"><label class="fl">Cuantos vendedores integran su equipo?</label><select class="fsel" id="v-eq"><option value="">Seleccione...</option><option value="1-3">1 a 3 vendedores</option><option value="4-8">4 a 8 vendedores</option><option value="9-15">9 a 15 vendedores</option><option value="16+">Mas de 15 vendedores</option></select></div>
+        <div class="fg"><label class="fl">Cuanto tiempo lleva liderando este equipo?</label><select class="fsel" id="v-ant"><option value="">Seleccione...</option><option value="menos1">Menos de 1 año</option><option value="1-3">1 a 3 años</option><option value="3-7">3 a 7 años</option><option value="7+">Mas de 7 años</option></select></div>
+      </div>
+      <div class="div"></div>
+      <div class="fg"><label class="fl">Situacion actual frente a la meta de ventas</label>
+        <div class="rg">
+          <label class="ro"><input type="radio" name="sit" value="sobre"><span class="ro-txt"><strong>Por encima de la meta</strong> — queremos sostenerlo y estructurar mejor el proceso</span></label>
+          <label class="ro"><input type="radio" name="sit" value="en"><span class="ro-txt"><strong>En meta</strong> — buscamos mayor predictibilidad y control</span></label>
+          <label class="ro"><input type="radio" name="sit" value="bajo"><span class="ro-txt"><strong>Por debajo de la meta</strong> — hay un GAP que necesitamos cerrar</span></label>
+          <label class="ro"><input type="radio" name="sit" value="sin"><span class="ro-txt"><strong>Sin meta claramente definida</strong></span></label>
+        </div>
+      </div>
+      <div class="fg" style="margin-top:12px"><label class="fl">Como gestiona actualmente el seguimiento comercial?</label>
+        <div class="rg">
+          <label class="ro"><input type="radio" name="crm" value="crm-a"><span class="ro-txt"><strong>CRM activo</strong> — el equipo lo usa de forma consistente</span></label>
+          <label class="ro"><input type="radio" name="crm" value="crm-b"><span class="ro-txt"><strong>CRM implementado con baja adopcion</strong></span></label>
+          <label class="ro"><input type="radio" name="crm" value="excel"><span class="ro-txt"><strong>Excel o herramientas manuales</strong></span></label>
+          <label class="ro"><input type="radio" name="crm" value="nada"><span class="ro-txt"><strong>Sin sistema estructurado de seguimiento</strong></span></label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel">
+    <div class="ph"><div class="ph-bar" style="background:var(--t)"></div><div class="ph-info"><div class="ph-title" id="ph3c">Cual es el resultado que mas le importa lograr hoy?</div><div class="ph-sub">El foco de nuestra sesion</div></div></div>
+    <div class="pb">
+      <div class="fg"><label class="fl">En sus propias palabras, que quiere resolver o lograr en esta sesion?</label><textarea class="fta" id="v-dolor" rows="3" placeholder="Escriba aqui el objetivo principal del cliente para la sesion..."></textarea></div>
+      <div class="fg"><label class="fl">Nivel de urgencia que percibe <span class="fh">(1 = puede esperar &nbsp;·&nbsp; 5 = impacta el resultado hoy)</span></label>
+        <div class="esc-wrap">
+          <button class="ebu" onclick="selU(1)">1</button><button class="ebu" onclick="selU(2)">2</button><button class="ebu" onclick="selU(3)">3</button><button class="ebu" onclick="selU(4)">4</button><button class="ebu" onclick="selU(5)">5</button>
+          <span class="e-lbl" id="ulbl"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-bar"><button class="btn-prev" onclick="goTo(2)">&larr; Formula</button><button class="btn-next" onclick="goTo(4)">Siguiente: Situacion comercial &rarr;</button></div>
+</div>
+
+<!-- ═══ SEC 4: MAPA ═══ -->
+<div class="sec" id="s4">
+  <div class="panel" style="margin-bottom:15px">
+    <div class="ph"><div class="ph-bar" style="background:var(--gold)"></div><div class="ph-info"><div class="ph-title" id="ph4t">Mapa de situacion comercial</div><div class="ph-sub" id="ph4s">Identificando las palancas de mayor impacto</div></div></div>
+    <div class="pb"><p id="p4intro" style="font-size:13px;color:var(--mid);line-height:1.7">A partir de los resultados del diagnostico y la conversacion de hoy, identifiquemos las situaciones que tienen mayor impacto en su resultado comercial.</p></div>
+  </div>
+  <div id="dolor-c"><!-- Se construye al cargar la pagina --></div>
+  <div class="panel"><div class="ph"><div class="ph-bar" style="background:var(--gold)"></div><div class="ph-info"><div class="ph-title">Otras situaciones relevantes</div></div></div><div class="pb"><textarea class="fta" id="dolor-lib" rows="2" placeholder="Situaciones adicionales que emergen en la conversacion..."></textarea></div></div>
+  <div class="nav-bar"><button class="btn-prev" onclick="goTo(3)">&larr; Validacion</button><button class="btn-next" onclick="preCalc();goTo(5)">Siguiente: Calculadora &rarr;</button></div>
+</div>
+
+<!-- ═══ SEC 5: CALCULADORA ═══ -->
+<div class="sec" id="s5">
+  <div class="panel">
+    <div class="ph"><div class="ph-bar" style="background:var(--gold)"></div><div class="ph-info"><div class="ph-title" id="ph5t">Su Formula de Ventas B2B en numeros</div><div class="ph-sub">Cuanto vale reducir la incertidumbre en su negocio?</div></div></div>
+    <div class="pb">
+      <div class="c-grid">
+        <div>
+          <div class="slbl">Ingresos recurrentes</div>
+          <div class="c-ig"><label class="c-lbl" style="color:var(--r)">R — Ingresos recurrentes estimados (anual)</label><input class="c-inp" id="c-R" type="number" placeholder="Valor anual" oninput="calcF()"><div class="c-hint">Total de ingresos de clientes que compran habitualmente o por contrato</div></div>
+          <div class="c-ig" style="margin-bottom:16px"><label class="c-lbl" style="color:var(--ur)">Ur — % de incertidumbre sobre esa recurrencia</label><input class="c-inp" id="c-Ur" type="number" min="0" max="100" placeholder="Ej: 20" oninput="calcF()"><div class="c-hint">Riesgo estimado de perder o reducir esos ingresos</div></div>
+          <div class="slbl">Pipeline de nuevas oportunidades</div>
+          <div class="c-ig"><label class="c-lbl" style="color:var(--n)">N — Valor total del pipeline (anual)</label><input class="c-inp" id="c-N" type="number" placeholder="Valor total" oninput="calcF()"></div>
+          <div class="c-ig"><label class="c-lbl" style="color:var(--un)">Un — % de incertidumbre sobre ese pipeline</label><input class="c-inp" id="c-Un" type="number" min="0" max="100" placeholder="Ej: 40" oninput="calcF()"><div class="c-hint">% de oportunidades que estimamos que no cerraran</div></div>
+        </div>
+        <div>
+          <div class="slbl">Meta y periodo</div>
+          <div class="c-ig"><label class="c-lbl" style="color:var(--t)">Meta anual de ventas</label><input class="c-inp" id="c-meta" type="number" placeholder="Meta en moneda local" oninput="calcF()"></div>
+          <div class="c-ig" style="margin-bottom:16px"><label class="c-lbl" style="color:var(--t)">Mes actual del año (1-12)</label><input class="c-inp" id="c-mes" type="number" min="1" max="12" placeholder="Ej: 6" oninput="calcF()"></div>
+          <div class="slbl">Simulacion — que pasa si mejoramos?</div>
+          <div class="c-ig"><label class="c-lbl" style="color:var(--green)">Reduccion de Ur en escenario optimista (%)</label><input class="c-inp" id="c-rUr" type="number" min="0" max="50" value="15" oninput="calcF()"><div class="c-hint">Puntos de reduccion del riesgo en recurrencia</div></div>
+          <div class="c-ig"><label class="c-lbl" style="color:var(--green)">Reduccion de Un en escenario optimista (%)</label><input class="c-inp" id="c-rUn" type="number" min="0" max="50" value="20" oninput="calcF()"><div class="c-hint">Puntos de mejora en la calidad del pipeline</div></div>
+        </div>
+      </div>
+      <div class="res-box">
+        <div class="res-title" id="res-t">Resultados de la Formula de Ventas B2B</div>
+        <div class="res-cards" id="res-cards"><div class="res-c"><div class="res-lbl">Ingrese los datos arriba</div><div class="res-val" style="font-size:14px;opacity:.5">—</div></div></div>
+        <div class="slbl" style="color:rgba(255,255,255,.4);margin-bottom:11px">Que pasaria si reducimos la incertidumbre?</div>
+        <div class="esc-row" id="esc-row"><div class="esc-c"><div class="esc-hdr esc-act">Ingrese los datos para ver la simulacion</div><div class="esc-body"><div class="esc-val" style="opacity:.4">—</div></div></div></div>
+        <div style="margin-top:12px;font-size:11px;color:rgba(255,255,255,.3);text-align:center">El valor de reducir la incertidumbre queda demostrado con los numeros del propio negocio</div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-bar"><button class="btn-prev" onclick="goTo(4)">&larr; Situacion comercial</button><button class="btn-next" onclick="goTo(6);buildPlan()">Siguiente: Plan de accion &rarr;</button></div>
+</div>
+
+<!-- ═══ SEC 6: PLAN DE ACCION ═══ -->
+<div class="sec" id="s6">
+
+  <div class="diagnostico-box">
+    <div class="diagnostico-lbl">Diagnostico en una frase</div>
+    <textarea class="diagnostico-ta" id="diag-frase" rows="2" placeholder="Sintetice en 2-3 lineas el hallazgo central de esta sesion en lenguaje del cliente, no tecnico. Esta frase ira en la portada del reporte..."></textarea>
+    <div class="diagnostico-hint">Ejemplo: &ldquo;Su equipo tiene potencial de ingreso no capturado, pero la incertidumbre no gestionada sobre el pipeline y la falta de un forecast estructurado le impiden convertir ese potencial en resultados predecibles.&rdquo;</div>
+  </div>
+
+  <div class="panel">
+    <div class="ph"><div class="ph-bar" style="background:var(--gold)"></div><div class="ph-info"><div class="ph-title" id="ph6t">Plan de accion — proximos 90 dias</div><div class="ph-sub" id="ph6s">Las 5 acciones concretas acordadas en sesion</div></div></div>
+    <div class="pb">
+      <p style="font-size:13px;color:var(--mid);line-height:1.7;margin-bottom:14px" id="plan-intro">Con base en el analisis de hoy, estas son las 5 acciones prioritarias para avanzar en la implementacion del modelo comercial.</p>
+      <button class="btn-plan" onclick="buildPlan()">Regenerar sugerencias desde el mapa de situacion</button>
+      <table class="plan-table" id="plan-tbl">
+        <thead><tr><th>#</th><th>Accion concreta</th><th style="width:140px">Responsable</th><th style="width:120px">Fecha limite</th></tr></thead>
+        <tbody id="plan-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="ph"><div class="ph-bar" style="background:var(--gold)"></div><div class="ph-info"><div class="ph-title">Acuerdos de continuidad</div><div class="ph-sub">Lo que construimos juntos hoy y el camino a seguir</div></div></div>
+    <div class="pb">
+      <div class="g2">
+        <div class="fg"><label class="fl">Principal aprendizaje de la sesion</label><textarea class="fta" id="cn-p" rows="3" placeholder="Cual es el hallazgo mas importante que quedo claro hoy?"></textarea></div>
+        <div class="fg"><label class="fl">Brechas prioritarias a trabajar</label><textarea class="fta" id="cn-b" rows="3" placeholder="Cuales son las 2 brechas de mayor impacto a resolver primero?"></textarea></div>
+        <div class="fg"><label class="fl">Propuesta de trabajo para las proximas sesiones</label><textarea class="fta" id="cn-a" rows="3" placeholder="Que trabajaremos en las siguientes sesiones? Que herramienta del modelo abordamos primero?"></textarea></div>
+        <div class="fg"><label class="fl">Proximo paso concreto y fecha</label><textarea class="fta" id="cn-s" rows="3" placeholder="Accion especifica, responsable y fecha antes de la proxima sesion..."></textarea></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-bar"><button class="btn-prev" onclick="goTo(5)">&larr; Calculadora</button><button class="btn-pdf" onclick="genPDF()">&#8659; Generar reporte para el cliente</button></div>
+
+</div><!-- /app -->
+
+
+<!-- ══ REPORTE IMPRIMIBLE ══ -->
+<div id="rpt-overlay">
+  <div id="rpt-barra">
+    <span id="rpt-barra-txt">Reporte de Sesion Inicial &nbsp;&middot;&nbsp; <strong id="rpt-barra-nom"></strong></span>
+    <div>
+      <button class="rpt-btn-cerrar" onclick="cerrarReporte()">&#8592; Volver a la sesion</button>
+      <button class="rpt-btn-bar" onclick="window.print()">Imprimir / Guardar como PDF</button>
+    </div>
+  </div>
+  <div id="rpt-wrap"></div>
+</div>
+
+<script>
+var urgV=null, sintI={}, curSec=1, dolorBuilt=false;
+var urgL={1:'Baja — puede esperar',2:'Moderada',3:'Media — hay presion',4:'Alta — impacta el resultado',5:'Critica — requiere accion inmediata'};
+var eqL={'1-3':'1-3 vendedores','4-8':'4-8 vendedores','9-15':'9-15 vendedores','16+':'Mas de 15 vendedores'};
+var antL={menos1:'Menos de 1 año','1-3':'1-3 años','3-7':'3-7 años','7+':'Mas de 7 años'};
+var sitL={sobre:'Por encima de la meta',en:'En meta',bajo:'Por debajo de la meta (GAP activo)',sin:'Sin meta definida'};
+var crmL={'crm-a':'CRM activo','crm-b':'CRM baja adopcion',excel:'Excel/herramientas manuales',nada:'Sin sistema estructurado'};
+var refL={si:'Si, refleja con precision la situacion actual',parcial:'Parcialmente — hay matices a explorar',mejor:'La situacion real es mejor de lo medido',peor:'La situacion real es mas compleja de lo medido'};
+var modL={rec:'Alta recurrencia',hib:'Modelo hibrido',nue:'Nuevo negocio'};
+var modTxtL={rec:'Alta Recurrencia',hib:'Modelo Hibrido',nue:'Nuevo Negocio'};
+
+function gv(id){var el=document.getElementById(id);return el?el.value:'';}
+function gr(n){var el=document.querySelector('input[name="'+n+'"]:checked');return el?el.value:null;}
+function st(id,txt){var el=document.getElementById(id);if(el)el.textContent=txt;}
+function getNivel(v){if(v>=80)return{l:'Avanzado',c:'na'};if(v>=60)return{l:'Competente',c:'nco'};if(v>=40)return{l:'En Desarrollo',c:'nd'};return{l:'Critico',c:'nc'};}
+
+function syncNom(){
+  var nom=gv('d-nom').trim();
+  var emp=gv('d-emp').trim();
+  var nc=nom.split(' ')[0]||'—';
+  st('hdr-nom', nom||(emp||'—'));
+  st('stab3lbl', nom?'Con '+nc:'Validacion');
+  st('stab4lbl', emp||'Situacion comercial');
+  st('ph3a', nom?'Revisemos juntos los resultados de '+nc:'Revisemos juntos los resultados del diagnostico');
+  st('ph3b', emp?'El contexto comercial de '+emp:'Contexto de su operacion comercial');
+  st('ph3c', nom?'Que quiere lograr hoy, '+nc+'?':'Cual es el resultado que mas le importa lograr hoy?');
+  st('ph4t', emp?'Mapa de situacion comercial — '+emp:'Mapa de situacion comercial');
+  st('ph4s', nom?'Trabajando con '+nc+' para identificar las palancas de mayor impacto':'Identificando las palancas de mayor impacto');
+  st('ph5t', nom?'La Formula de Ventas B2B de '+nc:'Su Formula de Ventas B2B en numeros');
+  st('res-t', emp?'Resultados de la Formula — '+emp:'Resultados de la Formula de Ventas B2B');
+  st('ph6t', nom?'Plan de accion acordado con '+nc:'Plan de accion — proximos 90 dias');
+  st('ph6s', emp?'Las 5 acciones prioritarias para '+emp:'Las 5 acciones concretas acordadas en sesion');
+  st('plan-intro', nom?nc+', con base en el analisis de hoy, estas son las 5 acciones prioritarias para avanzar en la implementacion del modelo comercial.':'Con base en el analisis de hoy, estas son las 5 acciones prioritarias para avanzar en la implementacion del modelo comercial.');
+  st('p4intro', nom?nom+', a partir de los resultados del diagnostico y la conversacion de hoy, identifiquemos las situaciones de mayor impacto en su resultado comercial.':'A partir de los resultados del diagnostico y la conversacion de hoy, identifiquemos las situaciones de mayor impacto en su resultado comercial.');
+}
+
+function goTo(n){
+  try{
+    var cur=document.getElementById('s'+curSec);
+    if(cur) cur.classList.remove('active');
+    for(var i=1;i<=6;i++){
+      var tab=document.getElementById('t'+i);
+      if(tab){tab.classList.remove('active','done');if(i===n)tab.classList.add('active');else if(i<n)tab.classList.add('done');}
+    }
+    curSec=n;
+    var next=document.getElementById('s'+n);
+    if(next) next.classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+    if(n===2) buildF();
+    if(n===5) { preCalc(); calcF(); }
+    syncNom();
+  }catch(e){console.error('goTo',e);}
+}
+
+function csc(el){var v=parseInt(el.value);el.style.color=isNaN(v)?'var(--text)':v>=70?'var(--green)':v>=50?'var(--yellow)':'var(--red)';}
+function updN(){
+  try{
+    var v=parseInt(gv('sc-isc'));
+    var tag=document.getElementById('ntag');
+    if(isNaN(v)){if(tag)tag.textContent='';return;}
+    var nv=getNivel(v);
+    if(tag){tag.textContent=nv.l;tag.className='ntag '+nv.c;}
+  }catch(e){}
+}
+function selU(v){
+  urgV=v;
+  document.querySelectorAll('.ebu').forEach(function(b,i){b.classList.toggle('esel',i+1===v);});
+  st('ulbl',urgL[v]);
+}
+
+/* ═══ FORMULA ═══ */
+var VD={
+  r:{sym:'R',name:'Potencial Recurrente',col:'#1A6FA0',desc:'Ingresos esperados de clientes que compran habitualmente o por contrato. Base estable del negocio.',ctx:{rec:'Variable central. Gestionar R es proteger el piso del negocio.',hib:'Componente clave que define la estabilidad del forecast.',nue:'Base necesaria para dar estabilidad al modelo.'}},
+  ur:{sym:'Ur',name:'Incertidumbre Recurrencia',col:'#8B3A8B',desc:'Riesgo de perder o reducir ingresos recurrentes. Incluye riesgo competitivo, insatisfaccion y debilidad relacional.',ctx:{rec:'Variable critica. Un Ur alto destruye la base sin seniales visibles previas.',hib:'Requiere gestion activa. Los clientes activos son el piso del forecast.',nue:'Cada cliente recurrente perdido es dificil de compensar.'}},
+  n:{sym:'N',name:'Nuevas Oportunidades',col:'#1E7B5E',desc:'Potencial de crecimiento de nuevos proyectos, clientes y expansion de cuentas.',ctx:{rec:'Variable de crecimiento. Necesaria para no depender solo de la base actual.',hib:'Variable de equilibrio. Debe compensar la variabilidad de la recurrencia.',nue:'Variable principal. Todo el modelo depende de la calidad del pipeline.'}},
+  un:{sym:'Un',name:'Incertidumbre Pipeline',col:'#C05A00',desc:'Probabilidad de no cierre. Refleja la calidad real del pipeline y los criterios de calificacion.',ctx:{rec:'La base recurrente amortigua las perdidas — aun asi requiere gestion.',hib:'Con alta Un el pipeline inflado hace el forecast impredecible.',nue:'Variable mas critica. Con alta Un el forecast pierde todo respaldo real.'}},
+  t:{sym:'T',name:'Factor Tiempo / Forecast',col:'#5A5AA0',desc:'Distribucion temporal del ingreso. Permite construir un forecast mensual confiable y gestionar el GAP con anticipacion.',ctx:{rec:'Permite anticipar cuando se materializa la recurrencia.',hib:'Clave para equilibrar cuando entra R vs cuando cierran las nuevas oportunidades.',nue:'Sin forecast por periodo el equipo no puede gestionar el GAP.'}},
+  c:{sym:'C',name:'Coaching Comercial',col:'#A03060',desc:'Calidad del proceso de coaching. Define si el director puede intervenir en las variables criticas a tiempo.',ctx:{rec:'Define si el equipo detecta el riesgo en clientes activos antes de la perdida.',hib:'Determina la capacidad de gestionar la cartera activa y el pipeline nuevo.',nue:'El diferenciador mas importante — el coaching sobre calificacion define el resultado.'}}
+};
+
+function buildF(){
+  try{
+    var mod=gv('d-mod')||'hib';
+    var sc={r:parseInt(gv('sc-r'))||0,ur:parseInt(gv('sc-ur'))||0,n:parseInt(gv('sc-n'))||0,un:parseInt(gv('sc-un'))||0,t:parseInt(gv('sc-t'))||0,c:parseInt(gv('sc-c'))||0};
+    var isc=parseInt(gv('sc-isc'))||0;
+    var nom=(gv('d-nom').trim().split(' ')[0])||'su empresa';
+    var nivel=getNivel(isc);
+    var modTxt=modTxtL[mod]||'B2B';
+    var fhc=document.getElementById('fhero-c');
+    if(!fhc)return;
+    fhc.innerHTML='<div class="fhero"><div class="fhero-lbl">Formula de Ventas B2B aplicada al modelo de '+modTxt+'</div><div class="fhero-math"><span style="color:#6BB8F0">R</span><span style="color:rgba(255,255,255,.35)"> + </span><span style="color:#80D4B0">N</span><span style="color:rgba(255,255,255,.35)"> — reducir — </span><span style="color:#D4A0D4">Ur</span><span style="color:rgba(255,255,255,.35)"> y </span><span style="color:#F0B870">Un</span><span style="color:rgba(255,255,255,.35)"> — en el tiempo — </span><span style="color:#A0A0E8">T</span><span style="color:rgba(255,255,255,.35)"> = </span><span style="color:var(--gl);font-size:22px">Ventas</span></div><div style="font-family:\'DM Mono\',monospace;font-size:13px;color:rgba(255,255,255,.45);margin:5px 0">Ventas = &Sigma; [(Ri + Ni) &middot; (1 - Ui) &middot; Ti]</div><div class="fhero-sub">ISC de '+nom+': <strong style="color:var(--gl)">'+isc+'/100 &middot; '+nivel.l+'</strong><br>La mision es convertir el potencial de compra en ingresos reales mediante la reduccion sistematica de la incertidumbre.</div></div>';
+    var keys=['r','ur','n','un','t','c'];
+    var cards=keys.map(function(k){var d=VD[k];var s=sc[k];var est=s>=70?'alto':s>=50?'med':'bajo';var eL={alto:'Fortaleza',med:'En desarrollo',bajo:'Oportunidad de mejora'}[est];var ctx=d.ctx[mod]||d.ctx.hib;return'<div class="vc"><div class="vc-hdr" style="background:'+d.col+'"><span class="vc-sym">'+d.sym+'</span><span class="vc-name">'+d.name+'</span><span class="vc-score">'+s+'<span>/100</span></span></div><div class="vc-body"><div class="vc-desc">'+d.desc+'</div><div class="vc-ctx"><strong style="color:'+d.col+'">En este modelo:</strong> '+ctx+'</div><div class="vc-est e'+est+'">'+eL+'</div></div></div>';}).join('');
+    document.getElementById('vgrid-c').innerHTML='<div class="vgrid">'+cards+'</div>';
+    var mis={
+      rec:{cls:'rec',t:'Alta recurrencia — como funciona la Formula en su modelo',txt:'Con mas del 70% de ingresos recurrentes, <strong>R es la variable mas importante</strong>. La base de clientes activos es el activo comercial mas valioso y el mas silenciosamente vulnerable.<br><br>El mayor riesgo esta en la <strong>Ur: la incertidumbre sobre esa recurrencia</strong>. Perder clientes activos sin haberlo anticipado erosiona el negocio antes de que aparezca en los numeros.'},
+      hib:{cls:'hib',t:'Modelo hibrido — como funciona la Formula en su modelo',txt:'Con un modelo hibrido, <strong>el equilibrio entre R y N determina la confiabilidad del forecast</strong>. Si R cae, el piso del negocio se debilita; si N no llena el pipeline con calidad, el crecimiento se estanca.<br><br>El desafio central es <strong>gestionar simultaneamente dos frentes de incertidumbre</strong>: Ur sobre la base activa y Un sobre el pipeline nuevo.'},
+      nue:{cls:'nue',t:'Nuevo negocio — como funciona la Formula en su modelo',txt:'En un modelo de nuevo negocio, <strong>N y Un son las variables que definen el resultado</strong>. La calidad del pipeline es mas determinante que su volumen: un pipeline inflado con alta Un convierte el forecast en una cifra sin respaldo real.<br><br>La palanca mas poderosa es la <strong>calificacion rigurosa de oportunidades</strong> con criterios objetivos compartidos por todo el equipo.'}
+    };
+    var mi=mis[mod]||mis.hib;
+    document.getElementById('mod-c').innerHTML='<div class="panel"><div class="ph"><div class="ph-bar" style="background:var(--gold)"></div><div class="ph-info"><div class="ph-title">Como se aplica esto a su realidad?</div></div></div><div class="pb"><div class="mod-box '+mi.cls+'"><div class="mod-titulo">'+mi.t+'</div><div class="mod-txt">'+mi.txt+'</div></div></div></div>';
+  }catch(e){console.error('buildF',e);}
+}
+
+/* ═══ MAPA ═══ */
+var SINTS=[
+  {cat:'Predictibilidad comercial',col:'#1A6FA0',vr:'T',tx:'El forecast mensual no refleja lo que realmente va a cerrarse',im:'Las proyecciones rara vez coinciden con el cierre real',plan:'Implementar el Planner de Ingresos consolidando R + pipeline ponderado',sols:['Implementar el Planner de Ingresos consolidando R + pipeline ponderado','Establecer revision quincenal del forecast con criterios objetivos','Definir el umbral de GAP que activa un plan de accion inmediato']},
+  {cat:'Predictibilidad comercial',col:'#1A6FA0',vr:'T',tx:'Las metas se definen sin un modelo de construccion del ingreso',im:'Se fijan por intuicion o incremento porcentual sin sustento real',plan:'Construir la meta a partir del R + N esperado y el pipeline necesario',sols:['Construir la meta a partir del R + N esperado','Validar el potencial real por cliente antes de fijar la cuota','Conectar la meta con el nivel de cobertura de pipeline requerido']},
+  {cat:'Predictibilidad comercial',col:'#1A6FA0',vr:'T',tx:'El GAP frente a la meta se detecta cuando ya es tarde',im:'Al identificar el problema ya no hay tiempo para corregir el mes',plan:'Implementar alerta temprana de GAP en el Tablero de Control',sols:['Implementar alerta temprana de GAP en el Tablero de Control','Establecer revision semanal de forecast vs meta por vendedor','Definir acciones de recuperacion por escenario de GAP']},
+  {cat:'Predictibilidad comercial',col:'#1A6FA0',vr:'R',tx:'No tenemos claridad sobre el potencial real de cada cliente activo',im:'El ingreso esperado de clientes recurrentes se estima, no se calcula',plan:'Construir el Mapa de Ingresos Recurrentes por cliente activo',sols:['Construir el Mapa de Ingresos Recurrentes por cliente','Calcular ticket promedio y frecuencia para cada cuenta','Identificar potencial de upselling no capturado']},
+  {cat:'Pipeline e incertidumbre',col:'#7A3A90',vr:'Un',tx:'El pipeline tiene oportunidades que llevan meses sin avanzar',im:'El valor total declarado no refleja lo que puede cerrarse',plan:'Implementar el Pipeline Inteligente con scorecard de calificacion objetivo',sols:['Implementar Pipeline Inteligente con scorecard de calificacion','Criterio de revision para oportunidades sin movimiento en 30+ dias','Calcular el pipeline ponderado real vs total declarado']},
+  {cat:'Pipeline e incertidumbre',col:'#7A3A90',vr:'Un',tx:'Las probabilidades de cierre dependen del optimismo de cada vendedor',im:'No hay criterio comun — el 70% de uno no significa lo mismo que el de otro',plan:'Implementar scorecard de incertidumbre con variables objetivas compartidas',sols:['Scorecard de incertidumbre con variables objetivas compartidas','Calibrar probabilidades con historico de cierre del equipo','Estandarizar calificacion con criterios comunes']},
+  {cat:'Pipeline e incertidumbre',col:'#7A3A90',vr:'Ur',tx:'Clientes activos reducen o cancelan sin seniales previas',im:'La perdida de ingresos recurrentes ocurre de forma sorpresiva',plan:'Implementar indicadores de alerta temprana de riesgo por cuenta activa',sols:['Indicadores de alerta temprana de riesgo por cuenta activa','Revision periodica de los clientes de mayor valor','Incluir nivel de riesgo por cliente en la sesion de revision mensual']},
+  {cat:'Pipeline e incertidumbre',col:'#7A3A90',vr:'Ur',tx:'Los ingresos recurrentes dependen de pocas cuentas clave',im:'Perder una o dos cuentas clave afecta el resultado de forma inmediata',plan:'Mapear el riesgo de concentracion y activar plan de diversificacion',sols:['Mapear riesgo de concentracion por cliente','Activar plan de diversificacion de la base recurrente','Priorizar retencion en las cuentas de mayor riesgo']},
+  {cat:'Gestion directiva y coaching',col:'#1E7B5E',vr:'C',tx:'El coaching es generico y no produce cambios concretos de comportamiento',im:'Las sesiones de revision no generan acuerdos de cambio medibles',plan:'Estructurar la Sesion de Revision Comercial con variables concretas de la Formula',sols:['Estructurar Sesion de Revision Comercial con variables de la Formula','Definir compromiso de cambio especifico por vendedor por sesion','Seguimiento explicito al cambio acordado en la revision siguiente']},
+  {cat:'Gestion directiva y coaching',col:'#1E7B5E',vr:'C',tx:'El seguimiento mide actividades, no variables que impactan el resultado',im:'Se reportan visitas y llamadas pero no lo que mueve la cuota',plan:'Reemplazar el reporte de actividades por las variables R, Ur, N, Un de la Formula',sols:['Reemplazar reporte de actividades por variables de la Formula','Implementar Tablero de Control con KPIs de incertidumbre y cobertura','Hacer que cada revision parta del pipeline real ponderado']},
+  {cat:'Gestion directiva y coaching',col:'#1E7B5E',vr:'C',tx:'El equipo no tiene metodologia comercial comun ni lenguaje compartido',im:'Cada vendedor trabaja con su propio criterio — sin estandar de gestion',plan:'Implementar la Formula de Ventas B2B como metodologia comun del equipo',sols:['Formula de Ventas B2B como metodologia comun','Usar el mismo lenguaje R, N, U, T en todas las revisiones','Estandarizar las 5 herramientas del modelo']},
+  {cat:'Gestion directiva y coaching',col:'#1E7B5E',vr:'C',tx:'Los compromisos de los vendedores no tienen respaldo en datos objetivos',im:'El director no puede validar si el numero del vendedor es real o es optimismo',plan:'Implementar el concepto de numero defendible en cada revision mensual',sols:['Forecast sustentado en R + pipeline ponderado con criterios objetivos','Implementar el concepto de numero defendible en la revision mensual','Usar el Planner de Ingresos como base de cada sesion de revision']}
+];
+
+function buildD(){
+  try{
+    var cats=[...new Set(SINTS.map(function(s){return s.cat;}))];
+    var html='';
+    cats.forEach(function(cat){
+      var ss=SINTS.filter(function(s){return s.cat===cat;});
+      var col=ss[0].col;
+      html+='<div class="panel" style="margin-bottom:14px"><div class="ph"><div class="ph-bar" style="background:'+col+'"></div><div class="ph-info"><div class="ph-title">'+cat+'</div></div></div><div>';
+      ss.forEach(function(s){
+        var idx=SINTS.indexOf(s);var id='sint-'+idx;
+        var sh=s.sols.map(function(sl){return'<div class="sol-item"><div class="sol-dot"></div><div class="sol-txt">'+sl+'</div></div>';}).join('');
+        html+='<div class="sint" id="'+id+'" onclick="togS(this)"><div class="sck"><span class="sck-i">&#x2713;</span></div><div class="sbd"><div class="stx">'+s.tx+'</div><div class="sim">'+s.im+'</div><div class="svr" style="background:'+col+'">'+s.vr+'</div><div class="sint-int"><div class="i-lbl">Intensidad del impacto</div><div class="i-row"><button class="ibi" onclick="setI(event,\''+id+'\',1)">1</button><button class="ibi" onclick="setI(event,\''+id+'\',2)">2</button><button class="ibi" onclick="setI(event,\''+id+'\',3)">3</button></div><div class="i-mlbl"><span class="iml">Baja</span><span class="iml">Media</span><span class="iml">Alta</span></div><div class="sol-box"><div class="sol-t">Lineas de solucion recomendadas</div>'+sh+'</div></div></div></div>';
+      });
+      html+='</div></div>';
+    });
+    document.getElementById('dolor-c').innerHTML=html;
+  }catch(e){console.error('buildD',e);}
+}
+
+function togS(el){el.classList.toggle('sel');}
+function setI(e,id,v){
+  e.stopPropagation();
+  sintI[id]=v;
+  var row=e.target.closest('.i-row');
+  row.querySelectorAll('.ibi').forEach(function(b,i){b.className='ibi';if(i+1===v)b.classList.add('i'+v);});
+}
+
+/* ═══ CALCULADORA ═══ */
+function preCalc(){
+  try{
+    var ur=parseInt(gv('sc-ur'))||30;
+    var un=parseInt(gv('sc-un'))||40;
+    var elUr=document.getElementById('c-Ur');
+    var elUn=document.getElementById('c-Un');
+    var elMes=document.getElementById('c-mes');
+    if(elUr&&!elUr.value) elUr.value=Math.round(100-ur);
+    if(elUn&&!elUn.value) elUn.value=Math.round(100-un);
+    if(elMes&&!elMes.value) elMes.value=new Date().getMonth()+1;
+  }catch(e){console.error('preCalc',e);}
+}
+
+function fmt(n){if(!n&&n!==0||isNaN(n))return'--';return new Intl.NumberFormat('es-CO',{maximumFractionDigits:0}).format(n);}
+
+function calcF(){
+  try{
+    var R=parseFloat(gv('c-R'))||0,Ur=(parseFloat(gv('c-Ur'))||0)/100;
+    var N=parseFloat(gv('c-N'))||0,Un=(parseFloat(gv('c-Un'))||0)/100;
+    var meta=parseFloat(gv('c-meta'))||0,mes=parseInt(gv('c-mes'))||6;
+    var rUr=(parseFloat(gv('c-rUr'))||15)/100,rUn=(parseFloat(gv('c-rUn'))||20)/100;
+    var T=mes/12,va=(R*(1-Ur))+(N*(1-Un)),vm=va*T;
+    var gap=meta>0?meta-va:null;
+    var UoR=Math.max(0,Ur-rUr),UoN=Math.max(0,Un-rUn);
+    var vaO=(R*(1-UoR))+(N*(1-UoN));
+    var vaC=(R*(1-Math.min(1,Ur+0.1)))+(N*(1-Math.min(1,Un+0.1)));
+    var gc=gap!=null?(gap<=0?'ok':'warn'):'';
+    var gt=gap!=null?(gap<=0?'+'+fmt(Math.abs(gap))+' sobre la meta':'GAP de '+fmt(gap)):fmt(vm)+' (mes actual)';
+    document.getElementById('res-cards').innerHTML='<div class="res-c"><div class="res-lbl">Ventas anuales esperadas</div><div class="res-val">'+fmt(va)+'</div><div class="res-sub">Con niveles actuales de incertidumbre</div></div><div class="res-c"><div class="res-lbl">Forecast acumulado — mes '+mes+'</div><div class="res-val">'+fmt(vm)+'</div><div class="res-sub">Proporcional al periodo transcurrido</div></div><div class="res-c"><div class="res-lbl">'+(meta>0?'Situacion vs meta anual':'Estimacion del periodo')+'</div><div class="res-val '+gc+'">'+gt+'</div><div class="res-sub">'+(meta>0?'Meta: '+fmt(meta):'')+'</div></div>';
+    var dO=vaO-va,dC=vaC-va;
+    document.getElementById('esc-row').innerHTML='<div class="esc-c"><div class="esc-hdr esc-act">Situacion actual</div><div class="esc-body"><div class="esc-val">'+fmt(va)+'</div><div class="esc-det">Ur: '+Math.round(Ur*100)+'% &middot; Un: '+Math.round(Un*100)+'%<br>Sin cambios en la gestion</div></div></div><div class="esc-c"><div class="esc-hdr esc-opt">Reduciendo la incertidumbre</div><div class="esc-body"><div class="esc-val">'+fmt(vaO)+'</div><div class="esc-delta dp">+'+fmt(dO)+' adicionales</div><div class="esc-det">Ur: '+Math.round(UoR*100)+'% &middot; Un: '+Math.round(UoN*100)+'%<br>Con mejor gestion de las variables</div></div></div><div class="esc-c"><div class="esc-hdr esc-cons">Si la incertidumbre aumenta</div><div class="esc-body"><div class="esc-val">'+fmt(vaC)+'</div><div class="esc-delta dn">'+fmt(dC)+'</div><div class="esc-det">Ur: '+Math.round(Math.min(1,Ur+0.1)*100)+'% &middot; Un: '+Math.round(Math.min(1,Un+0.1)*100)+'%<br>Sin intervencion en las brechas</div></div></div>';
+  }catch(e){console.error('calcF',e);}
+}
+
+/* ═══ PLAN DE ACCION ═══ */
+function buildPlan(){
+  try{
+    var sels=Array.from(document.querySelectorAll('.sint.sel'));
+    var acciones=[];
+    sels.forEach(function(el){
+      var idx=parseInt(el.id.replace('sint-',''));
+      if(!isNaN(idx)&&SINTS[idx]) acciones.push(SINTS[idx].plan);
+    });
+    // Rellenar hasta 5
+    if(acciones.length<5){
+      var defaults=['Construir el Mapa de Ingresos Recurrentes por cliente activo','Implementar el Pipeline Inteligente con scorecard de calificacion','Estructurar el Planner de Ingresos (Forecast mensual)','Implementar el Tablero de Control Comercial con KPIs de la Formula','Estructurar la Sesion de Revision Comercial mensual con el equipo'];
+      defaults.forEach(function(d){if(acciones.length<5&&acciones.indexOf(d)===-1)acciones.push(d);});
+    }
+    acciones=acciones.slice(0,5);
+    var tbody=document.getElementById('plan-body');
+    if(!tbody)return;
+    tbody.innerHTML=acciones.map(function(ac,i){
+      return'<tr><td class="plan-num">'+(i+1)+'</td><td><textarea class="plan-inp" rows="2">'+ac+'</textarea></td><td><select class="plan-sel"><option value="">Seleccione...</option><option>Director comercial</option><option>Equipo de ventas</option><option>Gerencia general</option><option>Consultor</option></select></td><td><input type="date" class="plan-inp" style="min-height:auto;padding:8px;"></td></tr>';
+    }).join('');
+  }catch(e){console.error('buildPlan',e);}
+}
+
+
+<!-- ══ REPORTE IMPRIMIBLE ══ -->
+function genPDF(){
+  try{
+
+  /* 1. Capturar todos los datos */
+  var nom   = gv('d-nom').trim()||'Director';
+  var emp   = gv('d-emp').trim()||'';
+  var sec   = gv('d-sec').trim()||'';
+  var modK  = gv('d-mod');
+  var modTx = (modTxtL[modK])||'B2B';
+  var fec   = gv('d-fec');
+  var isc   = parseInt(gv('sc-isc'))||0;
+  var niv   = getNivel(isc);
+  var diag  = gv('diag-frase').trim()||'Diagnostico en proceso de definicion.';
+  var ftxt  = fec;
+  try{var dd=new Date(fec+'T12:00:00');ftxt=dd.toLocaleDateString('es-CO',{weekday:'long',year:'numeric',month:'long',day:'numeric'});}catch(ex){}
+  var cliH  = nom + (emp ? ' &middot; ' + emp : '');
+
+  /* Scores */
+  var scKeys=['r','ur','n','un','t','c'];
+  var scLbl2={r:'R',ur:'Ur',n:'N',un:'Un',t:'T',c:'C'};
+  var scCol2={r:'#1A6FA0',ur:'#8B3A8B',n:'#1E7B5E',un:'#C05A00',t:'#5A5AA0',c:'#A03060'};
+  var pillsH='';
+  for(var pi=0;pi<scKeys.length;pi++){
+    var pk=scKeys[pi];
+    var pv=gv('sc-'+pk)||'--';
+    var pc=parseInt(pv)>=70?'#1E7B5E':parseInt(pv)>=50?'#B07D00':'#B02020';
+    pillsH+='<div class="rpt-sp"><div class="rpt-spl" style="background:'+scCol2[pk]+'">'+scLbl2[pk]+'</div>'+
+      '<div class="rpt-spv" style="color:'+pc+'">'+pv+'</div></div>';
+  }
+
+  /* Brechas */
+  var brH='';
+  for(var bii=1;bii<=4;bii++){
+    var bbt=gv('b'+bii+'t').trim(), bbp=gv('b'+bii+'p');
+    if(bbt){brH+='<div class="rpt-card" style="margin-bottom:6px"><div class="rpt-cl">Brecha '+bii+' &middot; Impacto: '+bbp+'</div>'+
+      '<div class="rpt-cv" style="font-weight:600">'+bbt+'</div></div>';}
+  }
+  if(!brH) brH='<p style="font-size:12px;color:#999">No registradas.</p>';
+
+  /* Validacion */
+  var refTx = refL[gr('ref')]||'No registrado';
+  var sitTx = sitL[gr('sit')]||'No registrado';
+  var crmTx = crmL[gr('crm')]||'No registrado';
+  var eqTx  = eqL[gv('v-eq')]||'--';
+  var antTx = antL[gv('v-ant')]||'--';
+  var dolor = gv('v-dolor').trim();
+  var disc  = gv('v-disc').trim();
+  var urgTx = urgV ? ({1:'Baja',2:'Moderada',3:'Media',4:'Alta',5:'Critica'}[urgV]+' ('+urgV+'/5)') : '';
+
+  /* Mapa de situacion */
+  var selsEl=Array.from(document.querySelectorAll('.sint.sel'));
+  var dolorH='';
+  if(!selsEl.length){
+    dolorH='<p style="font-size:12px;color:#999;padding:5px 0">No se seleccionaron situaciones en esta sesion.</p>';
+  } else {
+    for(var di=0;di<selsEl.length;di++){
+      var del2=selsEl[di];
+      var didx=parseInt(del2.id.replace('sint-',''));
+      var ds=SINTS[didx]; if(!ds)continue;
+      var div3=sintI[del2.id]||2;
+      var diL2={1:'Baja',2:'Media',3:'Alta'}[div3];
+      dolorH+='<div class="rpt-dolor" style="border-left-color:'+ds.col+'">'+
+        '<div class="rpt-cv" style="font-weight:600;margin-bottom:2px">'+ds.tx+'</div>'+
+        '<div style="font-size:10px;color:#999">'+ds.im+' &middot; Variable: '+ds.vr+' &middot; Intensidad: '+diL2+'</div></div>';
+    }
+  }
+  var dlibV=gv('dolor-lib').trim();
+  if(dlibV){dolorH+='<div class="rpt-dolor" style="border-left-color:#C9A84C">'+
+    '<div class="rpt-cv" style="font-style:italic">&ldquo;'+dlibV+'&rdquo;</div></div>';}
+
+  /* Calculadora */
+  var cR=parseFloat(gv('c-R'))||0, cUr=(parseFloat(gv('c-Ur'))||0)/100;
+  var cN=parseFloat(gv('c-N'))||0, cUn=(parseFloat(gv('c-Un'))||0)/100;
+  var cMt=parseFloat(gv('c-meta'))||0;
+  var crUr=(parseFloat(gv('c-rUr'))||15)/100, crUn=(parseFloat(gv('c-rUn'))||20)/100;
+  var va2=(cR*(1-cUr))+(cN*(1-cUn));
+  var vaO=(cR*(1-Math.max(0,cUr-crUr)))+(cN*(1-Math.max(0,cUn-crUn)));
+  var vaC=(cR*(1-Math.min(1,cUr+0.1)))+(cN*(1-Math.min(1,cUn+0.1)));
+  /* 3. Construir documento y abrir en pestaña nueva */
+  function fmtD(n){if(!n||isNaN(n)||n===0)return'--';return'$ '+new Intl.NumberFormat('es-CO',{maximumFractionDigits:0}).format(n);}
+
+  // Calculadora completa con $
+  var escH='<p style="font-size:12px;color:#7A7A9A;font-family:Arial,Helvetica,sans-serif">Calculadora no completada en esta sesi&oacute;n.</p>';
+  if(cR>0||cN>0){
+    var UoR=Math.max(0,cUr-crUr), UoN=Math.max(0,cUn-crUn);
+    var gD=cMt>0?(va2>=cMt?'En camino de cumplir la meta':'GAP estimado: '+fmtD(cMt-va2)):'';
+    escH=
+    '<table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:10px">'+
+    '<tr>'+
+      '<td width="32%" valign="top" style="padding-right:6px">'+
+        '<table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #E2DDD4;border-radius:4px;overflow:hidden">'+
+          '<tr><td style="background:#1A3260;padding:7px 10px;font-family:Arial,Helvetica,sans-serif;font-size:9px;font-weight:700;color:rgba(255,255,255,.75);text-transform:uppercase;letter-spacing:.05em">Situaci&oacute;n actual</td></tr>'+
+          '<tr><td style="background:white;padding:11px 12px">'+
+            '<div style="font-family:\'Courier New\',Courier,monospace;font-size:17px;font-weight:700;color:#1A1A2E">'+fmtD(va2)+'</div>'+
+            '<div style="font-family:Arial,Helvetica,sans-serif;font-size:10px;color:#7A7A9A;margin-top:4px">R: '+fmtD(cR)+'</div>'+
+            '<div style="font-family:Arial,Helvetica,sans-serif;font-size:10px;color:#7A7A9A">N: '+fmtD(cN)+'</div>'+
+            '<div style="font-family:Arial,Helvetica,sans-serif;font-size:10px;color:#7A7A9A;margin-top:4px">Ur: '+Math.round(cUr*100)+'% &nbsp;&middot;&nbsp; Un: '+Math.round(cUn*100)+'%</div>'+
+          '</td></tr>'+
+        '</table>'+
+      '</td>'+
+      '<td width="36%" valign="top" style="padding:0 3px">'+
+        '<table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #E2DDD4;border-radius:4px;overflow:hidden">'+
+          '<tr><td style="background:#1E7B5E;padding:7px 10px;font-family:Arial,Helvetica,sans-serif;font-size:9px;font-weight:700;color:white;text-transform:uppercase;letter-spacing:.05em">Reduciendo incertidumbre</td></tr>'+
+          '<tr><td style="background:white;padding:11px 12px">'+
+            '<div style="font-family:\'Courier New\',Courier,monospace;font-size:17px;font-weight:700;color:#1A1A2E">'+fmtD(vaO)+'</div>'+
+            '<div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#1E7B5E;font-weight:700;margin-top:4px">+ '+fmtD(vaO-va2)+' adicionales</div>'+
+            '<div style="font-family:Arial,Helvetica,sans-serif;font-size:10px;color:#7A7A9A;margin-top:4px">Ur: '+Math.round(UoR*100)+'% &nbsp;&middot;&nbsp; Un: '+Math.round(UoN*100)+'%</div>'+
+            '<div style="font-family:Arial,Helvetica,sans-serif;font-size:10px;color:#7A7A9A">Reducci&oacute;n aplicada: -'+Math.round(crUr*100)+'% Ur / -'+Math.round(crUn*100)+'% Un</div>'+
+          '</td></tr>'+
+        '</table>'+
+      '</td>'+
+      '<td width="32%" valign="top" style="padding-left:6px">'+
+        '<table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #E2DDD4;border-radius:4px;overflow:hidden">'+
+          '<tr><td style="background:#5C3A10;padding:7px 10px;font-family:Arial,Helvetica,sans-serif;font-size:9px;font-weight:700;color:#FFD080;text-transform:uppercase;letter-spacing:.05em">Si aumenta incertidumbre</td></tr>'+
+          '<tr><td style="background:white;padding:11px 12px">'+
+            '<div style="font-family:\'Courier New\',Courier,monospace;font-size:17px;font-weight:700;color:#1A1A2E">'+fmtD(vaC)+'</div>'+
+            '<div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#B02020;font-weight:700;margin-top:4px">'+fmtD(vaC-va2)+'</div>'+
+            '<div style="font-family:Arial,Helvetica,sans-serif;font-size:10px;color:#7A7A9A;margin-top:4px">Ur: '+Math.round(Math.min(1,cUr+0.1)*100)+'% &nbsp;&middot;&nbsp; Un: '+Math.round(Math.min(1,cUn+0.1)*100)+'%</div>'+
+          '</td></tr>'+
+        '</table>'+
+      '</td>'+
+    '</tr></table>'+
+    (cMt>0?
+      '<table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #E2DDD4;border-radius:4px;margin-bottom:6px">'+
+        '<tr><td style="padding:7px 11px"><span style="font-family:Arial,Helvetica,sans-serif;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#7A7A9A">META ANUAL VS VENTAS ESPERADAS</span><br>'+
+        '<span style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#1A1A2E">Meta: '+fmtD(cMt)+' &nbsp;&middot;&nbsp; Ventas esperadas: '+fmtD(va2)+' &nbsp;&middot;&nbsp; '+gD+'</span></td></tr>'+
+      '</table>'
+    :'');
+  }
+
+  // Capturar plan de accion del DOM
+  var planEl=Array.from(document.querySelectorAll('#plan-body tr'));
+  var planH='';
+  for(var pii=0;pii<planEl.length;pii++){
+    var ptr=planEl[pii];
+    var pinps=ptr.querySelectorAll('.plan-inp');
+    var psel=ptr.querySelector('.plan-sel');
+    var pac=pinps[0]?pinps[0].value.trim():'';
+    var pfec=pinps[1]?pinps[1].value:'';
+    var prsp=psel?psel.value:'';
+    var pbg=pii%2===0?'white':'#F9F8F5';
+    planH+='<tr style="background:'+pbg+'">'+
+      '<td style="text-align:center;font-family:\'Courier New\',Courier,monospace;font-weight:700;color:#C9A84C;width:22px;padding:7px 5px;border-bottom:1px solid #eee">'+(pii+1)+'</td>'+
+      '<td style="padding:7px 8px;font-size:11px;color:#1A1A2E;border-bottom:1px solid #eee">'+pac+'</td>'+
+      '<td style="padding:7px 8px;font-size:11px;color:#1A1A2E;border-bottom:1px solid #eee;white-space:nowrap;width:115px">'+prsp+'</td>'+
+      '<td style="padding:7px 8px;font-size:11px;color:#1A1A2E;border-bottom:1px solid #eee;white-space:nowrap;width:85px">'+pfec+'</td></tr>';
+  }
+
+  // Capturar acuerdos
+  var acp=gv('cn-p').trim(), acb=gv('cn-b').trim(), aca=gv('cn-a').trim(), acs=gv('cn-s').trim();
+
+  // CSS del reporte
+  var RCSS=
+    '<style>'+
+    '*{margin:0;padding:0;box-sizing:border-box;}'+
+    'body{font-family:\'DM Sans\',Arial,Helvetica,sans-serif;background:#F7F5F0;color:#1A1A2E;}'+
+    '.wrap{max-width:794px;margin:0 auto;}'+
+    // Portada
+    '.cover{background:#0F1F3D;padding:52px 52px 36px;min-height:100vh;display:flex;flex-direction:column;}'+
+    '.cover-logo{font-family:Georgia,\'Times New Roman\',serif;font-size:11px;font-weight:700;color:#C9A84C;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px;}'+
+    '.cover-cons{font-size:9px;color:rgba(255,255,255,.4);margin-bottom:0;}'+
+    '.cover-spacer{flex:1;min-height:60px;}'+
+    '.cover-tipo{font-size:9px;font-weight:700;color:rgba(201,168,76,.7);letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px;}'+
+    '.cover-h1{font-family:Georgia,\'Times New Roman\',serif;font-size:34px;font-weight:700;color:white;line-height:1.2;margin-bottom:5px;}'+
+    '.cover-h1 span{color:#C9A84C;}'+
+    '.cover-empresa{font-size:16px;color:rgba(255,255,255,.5);margin-bottom:30px;}'+
+    '.cover-diag{border-left:4px solid #C9A84C;padding:14px 18px;margin-bottom:30px;background:rgba(201,168,76,.08);}'+
+    '.cover-diag-lbl{font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(201,168,76,.7);margin-bottom:7px;}'+
+    '.cover-diag-txt{font-size:14px;color:white;line-height:1.75;font-style:italic;}'+
+    '.cover-isc{display:flex;align-items:center;gap:16px;margin-bottom:28px;}'+
+    '.cover-isc-num{font-family:\'Courier New\',Courier,monospace;font-size:48px;font-weight:700;color:#C9A84C;line-height:1;}'+
+    '.cover-isc-lbl{font-size:8px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.07em;}'+
+    '.cover-isc-nivel{font-size:15px;font-weight:700;color:white;margin-top:3px;}'+
+    '.cover-isc-mod{font-size:11px;color:rgba(255,255,255,.4);margin-top:2px;}'+
+    '.cover-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:14px;display:flex;justify-content:space-between;align-items:center;}'+
+    '.cover-fecha{font-size:10px;color:rgba(255,255,255,.4);}'+
+    '.cover-url{font-size:9px;color:rgba(201,168,76,.5);font-weight:700;letter-spacing:.07em;}'+
+    '.gbar{height:3px;background:linear-gradient(90deg,#C9A84C,#E8C97A,#C9A84C);}'+
+    // Paginas internas
+    '.page{background:white;padding:30px 36px;border-bottom:2px solid #F0EDE8;}'+
+    '.page-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid #0F1F3D;}'+
+    '.page-brand{font-family:Georgia,\'Times New Roman\',serif;font-size:9px;font-weight:700;color:#C9A84C;letter-spacing:.1em;text-transform:uppercase;}'+
+    '.page-cli{font-size:10px;color:#7A7A9A;}'+
+    '.sec-h{display:flex;align-items:center;gap:8px;margin:14px 0 10px;padding-bottom:5px;border-bottom:2px solid #0F1F3D;}'+
+    '.sec-hbar{width:4px;border-radius:2px;flex-shrink:0;}'+
+    '.sec-htxt{font-family:Georgia,\'Times New Roman\',serif;font-size:13px;font-weight:700;color:#0F1F3D;}'+
+    '.card{border:1px solid #E2DDD4;border-radius:4px;padding:9px 12px;background:white;margin-bottom:7px;}'+
+    '.card-lbl{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#7A7A9A;margin-bottom:3px;}'+
+    '.card-val{font-size:12px;color:#1A1A2E;line-height:1.55;}'+
+    '.card-val.dest{font-style:italic;color:#0F1F3D;font-weight:500;font-size:13px;}'+
+    '.isc-band{display:flex;align-items:center;gap:12px;background:#0F1F3D;border-radius:5px;padding:11px 14px;margin-bottom:10px;}'+
+    '.isc-num{font-family:\'Courier New\',Courier,monospace;font-size:30px;font-weight:700;color:#C9A84C;line-height:1;}'+
+    '.isc-lbl{font-size:8px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.06em;}'+
+    '.isc-nivel{font-size:12px;font-weight:700;color:white;margin-top:2px;}'+
+    '.scores{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px;}'+
+    '.sc-pill{border-radius:3px;overflow:hidden;text-align:center;border:1px solid #E2DDD4;min-width:46px;}'+
+    '.sc-lbl{font-size:8px;font-weight:700;color:white;padding:3px 2px;display:block;}'+
+    '.sc-val{font-size:13px;font-weight:700;padding:4px 2px;background:#F7F5F0;display:block;}'+
+    '.brecha{display:flex;align-items:flex-start;gap:8px;padding:8px 10px;border:1px solid #E2DDD4;border-radius:4px;margin-bottom:6px;background:white;}'+
+    '.br-n{width:19px;height:19px;border-radius:50%;background:#0F1F3D;color:#C9A84C;font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}'+
+    '.dolor-item{padding:8px 12px;border-left:3px solid;border:1px solid #E2DDD4;border-left-width:3px;border-radius:0 4px 4px 0;margin-bottom:6px;background:white;}'+
+    '.dolor-txt{font-size:12px;font-weight:600;color:#1A1A2E;margin-bottom:2px;}'+
+    '.dolor-sub{font-size:10px;color:#7A7A9A;}'+
+    '.ptbl{width:100%;border-collapse:collapse;margin-top:5px;}'+
+    '.ptbl th{background:#0F1F3D;color:#E8C97A;font-size:9px;font-weight:600;letter-spacing:.05em;padding:6px 8px;text-align:left;}'+
+    '.ptbl td{padding:7px 8px;font-size:11px;border-bottom:1px solid #eee;color:#1A1A2E;vertical-align:top;}'+
+    '.ptbl tr:nth-child(even) td{background:#F9F8F5;}'+
+    '.ptbl td:first-child{text-align:center;font-family:\'Courier New\',Courier,monospace;font-weight:700;color:#C9A84C;width:22px;}'+
+    '.ftr{background:#0F1F3D;padding:9px 32px;display:flex;justify-content:space-between;align-items:center;margin-top:20px;}'+
+    '.ftr-l{font-size:8px;color:rgba(255,255,255,.35);}'+
+    '.ftr-r{font-size:8px;color:rgba(201,168,76,.6);font-weight:700;letter-spacing:.07em;text-transform:uppercase;}'+
+    '.cta{background:#0F1F3D;border-radius:5px;padding:14px 18px;margin-top:14px;}'+
+    '.cta-lbl{font-size:9px;color:rgba(201,168,76,.7);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px;}'+
+    '.cta-txt{font-size:12px;color:rgba(255,255,255,.6);line-height:1.7;}'+
+    '@media print{'+
+      'body{background:white;}'+
+      '.cover,.gbar,.isc-band,.ftr,.cta,.sc-lbl,.sec-hbar,.br-n,.ptbl th{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}'+
+      '.page{page-break-after:always;border-bottom:none;}'+
+      '.page:last-child{page-break-after:auto;}'+
+      '.cover{min-height:100vh;page-break-after:always;}'+
+      '@page{size:A4;margin:0;}'+
+    '}'+
+    '</style>';
+
+  // Helpers
+  function sh(col,txt){return '<div class="sec-h"><div class="sec-hbar" style="background:'+col+';height:14px;"></div><div class="sec-htxt">'+txt+'</div></div>';}
+  function card(lbl,val){return val?'<div class="card"><div class="card-lbl">'+lbl+'</div><div class="card-val">'+val+'</div></div>':'';}
+  function phdr(){return '<div class="page-hdr"><div class="page-brand">F&Oacute;RMULA DE VENTAS B2B</div><div class="page-cli">'+cliH+'</div></div>';}
+  var FTR='<div class="ftr"><div class="ftr-l">Reporte confidencial &middot; Sesi&oacute;n Inicial &middot; F&oacute;rmula de Ventas B2B</div><div class="ftr-r">formuladeventasb2b.com</div></div>';
+
+  // HTML del reporte
+  var D='<div class="wrap">';
+
+  // PORTADA
+  D+='<div class="cover">';
+  D+='<div class="cover-logo">F&Oacute;RMULA DE VENTAS B2B</div>';
+  D+='<div class="cover-cons">Carlos Fernando Navarro &nbsp;&middot;&nbsp; carlos.navarro@formuladeventasb2b.com</div>';
+  D+='<div class="cover-spacer"></div>';
+  D+='<div class="cover-tipo">SESI&Oacute;N INICIAL DE CONSULTOR&Iacute;A B2B</div>';
+  D+='<div class="cover-h1">Reporte de <span>'+nom+'</span></div>';
+  D+='<div class="cover-empresa">'+(emp?emp+(sec?' &middot; '+sec:''):'')+'</div>';
+  D+='<div class="cover-diag"><div class="cover-diag-lbl">Diagn&oacute;stico principal de la sesi&oacute;n</div><div class="cover-diag-txt">'+diag+'</div></div>';
+  D+='<div class="cover-isc"><div class="cover-isc-num">'+isc+'</div><div>';
+  D+='<div class="cover-isc-lbl">&Iacute;NDICE DE SALUD COMERCIAL</div>';
+  D+='<div class="cover-isc-nivel">'+niv.l+'</div>';
+  D+='<div class="cover-isc-mod">'+modTx+'</div></div></div>';
+  D+='<div class="cover-bottom"><div class="cover-fecha">'+ftxt+'</div><div class="cover-url">FORMULADEVENTASB2B.COM</div></div>';
+  D+='</div><div class="gbar"></div>';
+
+  // PAG 2: ISC + Brechas + Validacion
+  D+='<div class="page">'+phdr();
+  D+=sh('#C9A84C','Diagn&oacute;stico ISC &mdash; Resultados');
+  D+='<div class="isc-band"><div class="isc-num">'+isc+'</div><div>';
+  D+='<div class="isc-lbl">&Iacute;NDICE DE SALUD COMERCIAL</div>';
+  D+='<div class="isc-nivel">'+niv.l+' &nbsp;&middot;&nbsp; '+modTx+'</div>';
+  D+='<div class="scores">'+pillsH+'</div></div></div>';
+  D+=sh('#C9A84C','Las 4 brechas de mayor impacto');
+  D+=brH;
+  D+=sh('#1A6FA0','Validaci&oacute;n y contexto &mdash; construido en sesi&oacute;n');
+  D+='<table width="100%" cellpadding="0" cellspacing="4" border="0" style="margin-bottom:8px"><tr>';
+  D+='<td width="50%" valign="top">'+card('Los resultados reflejan la realidad?',refTx)+card('Equipo comercial &middot; Antig&uuml;edad en el cargo',eqTx+' &middot; '+antTx)+'</td>';
+  D+='<td width="50%" valign="top" style="padding-left:4px">'+card('Situaci&oacute;n vs meta',sitTx)+card('Herramienta de gesti&oacute;n',crmTx)+'</td>';
+  D+='</tr></table>';
+  if(dolor){D+='<div class="card"><div class="card-lbl">Objetivo declarado para la sesi&oacute;n'+(urgTx?' &middot; Urgencia: '+urgTx:'')+'</div><div class="card-val dest">&ldquo;'+dolor+'&rdquo;</div></div>';}
+  if(disc&&disc!==refTx){D+=card('Matices o precisiones detectadas en sesi&oacute;n',disc);}
+  D+=FTR+'</div>';
+
+  // PAG 3: Mapa de situacion
+  D+='<div class="page">'+phdr();
+  D+=sh('#7A3A90','Mapa de situaci&oacute;n comercial &mdash; identificado en sesi&oacute;n');
+  D+=dolorH;
+  D+=FTR+'</div>';
+
+  // PAG 4: Simulacion de escenarios
+  D+='<div class="page">'+phdr();
+  D+=sh('#5A5AA0','F&oacute;rmula de Ventas B2B &mdash; simulaci&oacute;n de escenarios');
+  D+=escH;
+  D+=FTR+'</div>';
+
+  // PAG 5: Plan de accion + Acuerdos
+  D+='<div class="page">'+phdr();
+  D+=sh('#C9A84C','Plan de acci&oacute;n &mdash; pr&oacute;ximos 90 d&iacute;as');
+  D+='<table class="ptbl"><thead><tr>';
+  D+='<th style="width:22px">#</th><th>Acci&oacute;n concreta</th>';
+  D+='<th style="width:115px">Responsable</th><th style="width:85px">Fecha</th>';
+  D+='</tr></thead><tbody>'+planH+'</tbody></table>';
+  D+=sh('#C9A84C','Acuerdos y continuidad');
+  D+='<table width="100%" cellpadding="0" cellspacing="4" border="0" style="margin-bottom:12px"><tr>';
+  D+='<td width="50%" valign="top">'+card('Principal aprendizaje de la sesi&oacute;n',acp)+card('Propuesta de continuidad',aca)+'</td>';
+  D+='<td width="50%" valign="top" style="padding-left:4px">'+card('Brechas prioritarias a trabajar',acb)+card('Pr&oacute;ximo paso concreto',acs)+'</td>';
+  D+='</tr></table>';
+  D+='<div class="cta"><div class="cta-lbl">Siguientes pasos con Carlos Fernando Navarro</div>';
+  D+='<div class="cta-txt">Para continuar con la implementaci&oacute;n de la F&oacute;rmula de Ventas B2B, contacte a Carlos Fernando Navarro en <strong style="color:#C9A84C">carlos.navarro@formuladeventasb2b.com</strong> o visite <strong style="color:#C9A84C">formuladeventasb2b.com</strong></div></div>';
+  D+=FTR+'</div>';
+
+  D+='</div>';
+
+  // Documento completo
+  var DOC='<!DOCTYPE html><html lang="es"><head>'+
+    '<meta charset="UTF-8">'+
+    '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">'+
+    '<title>Reporte Sesi&oacute;n Inicial &mdash; '+nom+'</title>'+
+    '<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@500&display=swap" rel="stylesheet">'+
+    RCSS+
+    '</head><body><div style="background:#F7F5F0;padding:0">'+D+'</div></body></html>';
+
+  var w=window.open('','_blank');
+  if(!w){alert('Permita ventanas emergentes en Safari para generar el reporte.');return;}
+  w.document.open('text/html','replace');
+  w.document.write(DOC);
+  w.document.close();
+
+  var CSS='*{box-sizing:border-box;margin:0;padding:0;}'+
+    'body{font-family:Georgia,serif;background:#0F1F3D;}'+
+    '.rc{background:#0F1F3D;padding:52px 52px 36px;min-height:100vh;display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;page-break-after:always;-webkit-print-color-adjust:exact;print-color-adjust:exact;}'+
+    '.gb{height:3px;background:linear-gradient(90deg,#C9A84C,#E8C97A,#C9A84C);-webkit-print-color-adjust:exact;print-color-adjust:exact;}'+
+    '.pg{background:white;padding:28px 34px;page-break-after:always;-webkit-print-color-adjust:exact;print-color-adjust:exact;}'+
+    '.pg:last-child{page-break-after:auto;}'+
+    '.ph{display:-webkit-flex;display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;padding-bottom:7px;border-bottom:2px solid #0F1F3D;}'+
+    '.pb{font-size:9px;font-weight:700;color:#C9A84C;letter-spacing:.1em;text-transform:uppercase;font-family:Arial,sans-serif;}'+
+    '.pc{font-size:10px;color:#999;font-family:Arial,sans-serif;}'+
+    '.sh{display:-webkit-flex;display:flex;align-items:center;gap:7px;margin:14px 0 9px;padding-bottom:5px;border-bottom:2px solid #0F1F3D;}'+
+    '.sb{width:4px;height:13px;border-radius:2px;flex-shrink:0;-webkit-print-color-adjust:exact;print-color-adjust:exact;}'+
+    '.st{font-size:12px;font-weight:700;color:#0F1F3D;font-family:Arial,sans-serif;}'+
+    '.ca{border:1px solid #E2DDD4;border-radius:4px;padding:8px 11px;background:white;margin-bottom:7px;}'+
+    '.cl{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#999;margin-bottom:2px;font-family:Arial,sans-serif;}'+
+    '.cv{font-size:12px;color:#1A1A2E;line-height:1.5;font-family:Arial,sans-serif;}'+
+    '.cv.ds{font-style:italic;color:#0F1F3D;font-weight:500;font-size:13px;}'+
+    '.isc{display:-webkit-flex;display:flex;align-items:center;gap:12px;background:#0F1F3D;border-radius:5px;padding:11px 14px;margin-bottom:10px;-webkit-print-color-adjust:exact;print-color-adjust:exact;}'+
+    '.in{font-family:"Courier New",monospace;font-size:28px;font-weight:700;color:#C9A84C;line-height:1;}'+
+    '.sc{display:-webkit-flex;display:flex;gap:5px;flex-wrap:wrap;margin-top:6px;}'+
+    '.sp{border-radius:3px;overflow:hidden;text-align:center;border:1px solid #ddd;min-width:44px;-webkit-print-color-adjust:exact;print-color-adjust:exact;}'+
+    '.sl{font-size:8px;font-weight:700;color:white;padding:2px;display:block;-webkit-print-color-adjust:exact;print-color-adjust:exact;}'+
+    '.sv{font-size:13px;font-weight:700;padding:3px 2px;background:#F7F5F0;display:block;}'+
+    '.dl{padding:7px 11px;border-left:3px solid #ccc;border:1px solid #E2DDD4;border-left-width:3px;border-radius:0 4px 4px 0;margin-bottom:6px;background:white;-webkit-print-color-adjust:exact;print-color-adjust:exact;}'+
+    '.ft{background:#0F1F3D;padding:8px 30px;margin-top:18px;-webkit-print-color-adjust:exact;print-color-adjust:exact;}'+
+    '.fa{font-size:8px;color:rgba(255,255,255,.5);font-family:Arial,sans-serif;}'+
+    '.fb{font-size:8px;color:rgba(201,168,76,.7);font-weight:700;text-transform:uppercase;font-family:Arial,sans-serif;float:right;}'+
+    '.ct{background:#0F1F3D;border-radius:5px;padding:14px 18px;margin-top:12px;-webkit-print-color-adjust:exact;print-color-adjust:exact;}'+
+    '@page{size:A4;margin:0;}'+
+    '@media print{body{background:white;}.rc,.pg,.isc,.ft,.ct,.sl,.sp,.sh,.sb{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}}';
+
+  // helpers con clases cortas
+  function rsh2(col,txt){return '<div class="sh"><div class="sb" style="background:'+col+';-webkit-print-color-adjust:exact;print-color-adjust:exact"></div><div class="st">'+txt+'</div></div>';}
+  function rca2(lbl,val){return val?'<div class="ca"><div class="cl">'+lbl+'</div><div class="cv">'+val+'</div></div>':'';}
+  function rph2(){return '<div class="ph"><div class="pb">FORMULA DE VENTAS B2B</div><div class="pc">'+cliH+'</div></div>';}
+  var FT2='<div class="ft"><span class="fb">formuladeventasb2b.com</span><span class="fa">Reporte confidencial &middot; Sesi&oacute;n Inicial &middot; F&oacute;rmula de Ventas B2B</span></div>';
+
+  // Recalcular escenarios con $ para el reporte
+  var escH='<p style="font-size:12px;color:#999;font-family:Arial,sans-serif">Calculadora no completada en esta sesi&oacute;n.</p>';
+  if(cR>0||cN>0){
+    var gapTx2='';
+    if(cMt>0){gapTx2=va2>=cMt?'En camino de cumplir la meta':'GAP estimado: '+fmtD(cMt-va2);}
+    // Usar tabla en lugar de grid para compatibilidad total con Safari
+    escH='<table style="width:100%;border-collapse:collapse;margin-bottom:10px">'+
+      '<tr>'+
+      '<td style="width:33%;padding-right:5px;vertical-align:top">'+
+        '<div style="border-radius:4px;overflow:hidden;border:1px solid #ddd;-webkit-print-color-adjust:exact;print-color-adjust:exact">'+
+          '<div style="padding:6px 9px;font-size:9px;font-weight:700;text-transform:uppercase;background:#243F78;color:rgba(255,255,255,.7);font-family:Arial,sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact">Situaci&oacute;n actual</div>'+
+          '<div style="padding:10px;background:white">'+
+            '<div style="font-family:\'Courier New\',monospace;font-size:16px;font-weight:700;color:#1A1A2E">'+fmtD(va2)+'</div>'+
+            '<div style="font-size:10px;color:#999;margin-top:2px;font-family:Arial,sans-serif">Ur:'+Math.round(cUr*100)+'% &middot; Un:'+Math.round(cUn*100)+'%</div>'+
+            '<div style="font-size:10px;color:#666;margin-top:4px;font-family:Arial,sans-serif">R: '+fmtD(cR)+' &middot; N: '+fmtD(cN)+'</div>'+
+          '</div>'+
+        '</div>'+
+      '</td>'+
+      '<td style="width:33%;padding:0 5px;vertical-align:top">'+
+        '<div style="border-radius:4px;overflow:hidden;border:1px solid #ddd;-webkit-print-color-adjust:exact;print-color-adjust:exact">'+
+          '<div style="padding:6px 9px;font-size:9px;font-weight:700;text-transform:uppercase;background:#1E7B5E;color:white;font-family:Arial,sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact">Reduciendo incertidumbre</div>'+
+          '<div style="padding:10px;background:white">'+
+            '<div style="font-family:\'Courier New\',monospace;font-size:16px;font-weight:700;color:#1A1A2E">'+fmtD(vaO)+'</div>'+
+            '<div style="font-size:10px;color:#1E7B5E;margin-top:2px;font-weight:600;font-family:Arial,sans-serif">+ '+fmtD(vaO-va2)+' adicionales</div>'+
+            '<div style="font-size:10px;color:#666;margin-top:4px;font-family:Arial,sans-serif">Ur: '+(Math.round(Math.max(0,cUr-crUr)*100))+'% &middot; Un: '+(Math.round(Math.max(0,cUn-crUn)*100))+'%</div>'+
+          '</div>'+
+        '</div>'+
+      '</td>'+
+      '<td style="width:33%;padding-left:5px;vertical-align:top">'+
+        '<div style="border-radius:4px;overflow:hidden;border:1px solid #ddd;-webkit-print-color-adjust:exact;print-color-adjust:exact">'+
+          '<div style="padding:6px 9px;font-size:9px;font-weight:700;text-transform:uppercase;background:#5C3A10;color:#FFD080;font-family:Arial,sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact">Si aumenta incertidumbre</div>'+
+          '<div style="padding:10px;background:white">'+
+            '<div style="font-family:\'Courier New\',monospace;font-size:16px;font-weight:700;color:#1A1A2E">'+fmtD(vaC)+'</div>'+
+            '<div style="font-size:10px;color:#B02020;margin-top:2px;font-weight:600;font-family:Arial,sans-serif">'+fmtD(vaC-va2)+'</div>'+
+            '<div style="font-size:10px;color:#666;margin-top:4px;font-family:Arial,sans-serif">Ur: '+Math.round(Math.min(1,cUr+0.1)*100)+'% &middot; Un: '+Math.round(Math.min(1,cUn+0.1)*100)+'%</div>'+
+          '</div>'+
+        '</div>'+
+      '</td>'+
+      '</tr>'+
+    '</table>'+
+    (cMt>0?'<div class="ca"><div class="cl">Meta anual vs ventas esperadas</div>'+
+      '<div class="cv">Meta: '+fmtD(cMt)+' &nbsp;&middot;&nbsp; Ventas esperadas: '+fmtD(va2)+' &nbsp;&middot;&nbsp; '+gapTx2+'</div></div>':'');
+  }
+
+  // HTML del reporte (portada + 4 paginas)
+  var H2='';
+
+  // PORTADA
+  H2+='<div class="rc">';
+  H2+='<div style="font-family:Georgia,serif;font-size:10px;font-weight:700;color:#C9A84C;letter-spacing:.14em;text-transform:uppercase;margin-bottom:3px">FORMULA DE VENTAS B2B</div>';
+  H2+='<div style="font-size:9px;color:rgba(255,255,255,.4);font-family:Arial,sans-serif">Carlos Fernando Navarro &nbsp;&middot;&nbsp; carlos.navarro@formuladeventasb2b.com</div>';
+  H2+='<div style="-webkit-flex:1;flex:1;min-height:60px"></div>';
+  H2+='<div style="font-size:9px;font-weight:700;color:rgba(201,168,76,.7);letter-spacing:.1em;text-transform:uppercase;margin-bottom:11px;font-family:Arial,sans-serif">SESI&Oacute;N INICIAL DE CONSULTOR&Iacute;A B2B</div>';
+  H2+='<div style="font-family:Georgia,serif;font-size:30px;font-weight:700;color:white;line-height:1.2;margin-bottom:5px">Reporte de <span style="color:#C9A84C">'+nom+'</span></div>';
+  H2+='<div style="font-size:15px;color:rgba(255,255,255,.5);margin-bottom:26px;font-family:Arial,sans-serif">'+(emp?emp+(sec?' &middot; '+sec:''):'')+'</div>';
+  H2+='<div style="border-left:4px solid #C9A84C;padding:14px 18px;margin-bottom:26px;background:rgba(201,168,76,.08);-webkit-print-color-adjust:exact;print-color-adjust:exact">';
+  H2+='<div style="font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(201,168,76,.7);margin-bottom:6px;font-family:Arial,sans-serif">DIAGN&Oacute;STICO PRINCIPAL DE LA SESI&Oacute;N</div>';
+  H2+='<div style="font-size:13px;color:white;line-height:1.75;font-style:italic;font-family:Arial,sans-serif">'+diag+'</div></div>';
+  H2+='<div style="display:-webkit-flex;display:flex;align-items:center;gap:16px;margin-bottom:28px">';
+  H2+='<div style="font-family:\'Courier New\',monospace;font-size:48px;font-weight:700;color:#C9A84C;line-height:1">'+isc+'</div>';
+  H2+='<div><div style="font-size:8px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.07em;font-family:Arial,sans-serif">&Iacute;NDICE DE SALUD COMERCIAL</div>';
+  H2+='<div style="font-size:15px;font-weight:700;color:white;margin-top:3px;font-family:Arial,sans-serif">'+niv.l+'</div>';
+  H2+='<div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:2px;font-family:Arial,sans-serif">'+modTx+'</div></div></div>';
+  H2+='<div style="border-top:1px solid rgba(255,255,255,.1);padding-top:14px;display:-webkit-flex;display:flex;justify-content:space-between;align-items:center">';
+  H2+='<div style="font-size:10px;color:rgba(255,255,255,.4);font-family:Arial,sans-serif">'+ftxt+'</div>';
+  H2+='<div style="font-size:9px;color:rgba(201,168,76,.5);font-weight:700;font-family:Arial,sans-serif">FORMULADEVENTASB2B.COM</div></div></div>';
+  H2+='<div class="gb"></div>';
+
+  // PAG 2: ISC + Brechas + Validacion
+  H2+='<div class="pg">'+rph2();
+  H2+=rsh2('#C9A84C','Diagn&oacute;stico ISC &mdash; Resultados');
+  H2+='<div class="isc"><div class="in">'+isc+'</div>';
+  H2+='<div><div style="font-size:8px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.06em;font-family:Arial,sans-serif">&Iacute;NDICE DE SALUD COMERCIAL</div>';
+  H2+='<div style="font-size:12px;font-weight:700;color:white;margin-top:2px;font-family:Arial,sans-serif">'+niv.l+' &middot; '+modTx+'</div>';
+  H2+='<div class="sc">'+pillsH+'</div></div></div>';
+  H2+=rsh2('#C9A84C','Las 4 brechas de mayor impacto');
+  H2+=brH;
+  H2+=rsh2('#1A6FA0','Validaci&oacute;n y contexto &mdash; construido en sesi&oacute;n');
+  H2+='<table style="width:100%;border-collapse:collapse;margin-bottom:8px"><tr>'+
+    '<td style="width:50%;padding-right:4px;vertical-align:top">'+rca2('Los resultados reflejan la realidad?',refTx)+rca2('Equipo comercial &middot; Antig&uuml;edad',eqTx+' &middot; '+antTx)+'</td>'+
+    '<td style="width:50%;padding-left:4px;vertical-align:top">'+rca2('Situaci&oacute;n vs meta',sitTx)+rca2('Herramienta de gesti&oacute;n',crmTx)+'</td>'+
+    '</tr></table>';
+  if(dolor){H2+='<div class="ca"><div class="cl">Objetivo declarado para la sesi&oacute;n'+(urgTx?' &middot; Urgencia: '+urgTx:'')+'</div><div class="cv ds">&ldquo;'+dolor+'&rdquo;</div></div>';}
+  if(disc&&disc!==refTx){H2+=rca2('Matices o precisiones detectadas en sesi&oacute;n',disc);}
+  H2+=FT2+'</div>';
+
+  // PAG 3: Mapa de situacion
+  H2+='<div class="pg">'+rph2();
+  H2+=rsh2('#7A3A90','Mapa de situaci&oacute;n comercial &mdash; identificado en sesi&oacute;n');
+  H2+=dolorH;
+  H2+=FT2+'</div>';
+
+  // PAG 4: Plan de accion + Calculadora
+  H2+='<div class="pg">'+rph2();
+  H2+=rsh2('#C9A84C','Plan de acci&oacute;n &mdash; pr&oacute;ximos 90 d&iacute;as');
+  H2+='<table style="width:100%;border-collapse:collapse;margin-bottom:18px">'+
+    '<thead><tr>'+
+    '<th style="background:#0F1F3D;color:#E8C97A;font-size:9px;font-weight:600;padding:6px 7px;text-align:left;width:20px;-webkit-print-color-adjust:exact;print-color-adjust:exact">#</th>'+
+    '<th style="background:#0F1F3D;color:#E8C97A;font-size:9px;font-weight:600;padding:6px 7px;text-align:left;-webkit-print-color-adjust:exact;print-color-adjust:exact">Acci&oacute;n concreta</th>'+
+    '<th style="background:#0F1F3D;color:#E8C97A;font-size:9px;font-weight:600;padding:6px 7px;text-align:left;width:115px;-webkit-print-color-adjust:exact;print-color-adjust:exact">Responsable</th>'+
+    '<th style="background:#0F1F3D;color:#E8C97A;font-size:9px;font-weight:600;padding:6px 7px;text-align:left;width:85px;-webkit-print-color-adjust:exact;print-color-adjust:exact">Fecha</th>'+
+    '</tr></thead><tbody>'+planH+'</tbody></table>';
+  H2+=rsh2('#5A5AA0','F&oacute;rmula de Ventas B2B &mdash; simulaci&oacute;n de escenarios');
+  H2+=escH;
+  H2+=FT2+'</div>';
+
+  // PAG 5: Acuerdos
+  H2+='<div class="pg">'+rph2();
+  H2+=rsh2('#C9A84C','Acuerdos y continuidad');
+  H2+='<table style="width:100%;border-collapse:collapse;margin-bottom:14px"><tr>'+
+    '<td style="width:50%;padding-right:4px;vertical-align:top">'+rca2('Principal aprendizaje de la sesi&oacute;n',acp)+rca2('Propuesta de continuidad',aca)+'</td>'+
+    '<td style="width:50%;padding-left:4px;vertical-align:top">'+rca2('Brechas prioritarias a trabajar',acb)+rca2('Pr&oacute;ximo paso concreto',acs)+'</td>'+
+    '</tr></table>';
+  H2+='<div class="ct"><div style="font-size:9px;color:rgba(201,168,76,.7);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px;font-family:Arial,sans-serif">SIGUIENTES PASOS CON CARLOS FERNANDO NAVARRO</div>'+
+    '<div style="font-size:12px;color:rgba(255,255,255,.6);line-height:1.7;font-family:Arial,sans-serif">Para continuar con la implementaci&oacute;n de la F&oacute;rmula de Ventas B2B, contacte a Carlos Fernando Navarro en <strong style="color:#C9A84C">carlos.navarro@formuladeventasb2b.com</strong> o visite <strong style="color:#C9A84C">formuladeventasb2b.com</strong></div></div>';
+  H2+=FT2+'</div>';
+
+  var DOC='<!DOCTYPE html><html lang="es"><head>'+
+    '<meta charset="UTF-8">'+
+    '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">'+
+    '<title>Reporte Sesi&oacute;n Inicial - '+nom+'</title>'+
+    '<style>'+CSS+'</style></head><body>'+H2+'</body></html>';
+
+  var w=window.open('','_blank');
+  if(!w){alert('Permita ventanas emergentes en Safari para generar el reporte.');return;}
+  w.document.open('text/html','replace');
+  w.document.write(DOC);
+  w.document.close();
+
+  }catch(ex){console.error('genPDF:',ex);alert('Error al generar el reporte: '+ex.message);}
+}
+
+function cerrarReporte(){
+  document.getElementById('rpt-overlay').style.display='none';
+}
+
+// INIT — construir secciones persistentes al cargar
+try{document.getElementById('d-fec').valueAsDate=new Date();}catch(e){}
+try{buildD();}catch(e){console.error('init buildD',e);}
+try{buildPlan();}catch(e){console.error('init buildPlan',e);}
+</script>
+</body>
+</html>
