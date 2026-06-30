@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía de Trabajo — Fórmula de Ventas B2B · Modelo Híbrido</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ── RESET & BASE ── */
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:#F7F5F0;color:#1A1A2E;font-size:15px;line-height:1.75;-webkit-font-smoothing:antialiased;}
+
+/* ── VARIABLES ── */
+:root{
+  --navy:#0F1F3D;
+  --navy-mid:#1A3260;
+  --gold:#C9A84C;
+  --gold-light:#E8C97A;
+  --off:#F7F5F0;
+  --text:#1A1A2E;
+  --mid:#3D3D5C;
+  --soft:#7A7A9A;
+  --border:#E2DDD4;
+  --r:#1A6FA0;
+  --ur:#8B3A8B;
+  --n:#1E7B5E;
+  --un:#C05A00;
+  --t:#5A5AA0;
+  --gbg:#E8F5F0;
+  --ybg:#FFF8E1;
+  --rbg:#FFF0F0;
+}
+
+/* ── LAYOUT ── */
+.doc{max-width:794px;margin:0 auto;}
+
+/* ── PORTADA ── */
+.cover{
+  background:var(--navy);
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  padding:0;
+  position:relative;
+  overflow:hidden;
+  page-break-after:always;
+}
+.cover-accent{
+  position:absolute;
+  top:0;right:0;
+  width:320px;height:320px;
+  background:radial-gradient(circle at 80% 20%, rgba(201,168,76,.18) 0%, transparent 70%);
+}
+.cover-accent2{
+  position:absolute;
+  bottom:80px;left:-60px;
+  width:280px;height:280px;
+  background:radial-gradient(circle, rgba(26,50,96,.6) 0%, transparent 70%);
+}
+.cover-top{padding:44px 52px 0;position:relative;z-index:2;}
+.cover-brand{
+  font-family:'Playfair Display',serif;
+  font-size:11px;font-weight:700;
+  color:var(--gold);
+  letter-spacing:.16em;text-transform:uppercase;
+  margin-bottom:4px;
+}
+.cover-brand-sub{font-size:9px;color:rgba(255,255,255,.4);letter-spacing:.04em;}
+
+.cover-label{
+  position:absolute;top:44px;right:52px;
+  background:rgba(201,168,76,.15);
+  border:1px solid rgba(201,168,76,.3);
+  border-radius:3px;
+  padding:5px 14px;
+  font-size:10px;font-weight:600;
+  color:var(--gold-light);
+  letter-spacing:.08em;text-transform:uppercase;
+}
+
+.cover-center{
+  flex:1;
+  display:flex;flex-direction:column;
+  justify-content:center;
+  padding:0 52px;
+  position:relative;z-index:2;
+}
+.cover-eyebrow{
+  font-size:10px;font-weight:600;
+  color:rgba(201,168,76,.65);
+  letter-spacing:.14em;text-transform:uppercase;
+  margin-bottom:18px;
+}
+.cover-title{
+  font-family:'Playfair Display',serif;
+  font-size:46px;font-weight:800;
+  color:white;line-height:1.1;
+  margin-bottom:10px;
+}
+.cover-title span{color:var(--gold);}
+.cover-subtitle{
+  font-size:17px;color:rgba(255,255,255,.55);
+  margin-bottom:40px;line-height:1.5;
+}
+.cover-modelo{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(201,168,76,.1);
+  border:1px solid rgba(201,168,76,.25);
+  border-radius:4px;padding:10px 18px;
+  margin-bottom:48px;
+}
+.cover-modelo-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);}
+.cover-modelo-txt{font-size:12px;font-weight:600;color:var(--gold-light);letter-spacing:.04em;}
+
+.cover-formula{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.1);
+  border-left:3px solid var(--gold);
+  border-radius:0 5px 5px 0;
+  padding:14px 20px;
+  margin-bottom:0;
+}
+.cover-formula-lbl{font-size:9px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px;}
+.cover-formula-math{
+  font-family:'DM Mono',monospace;
+  font-size:15px;color:white;
+  letter-spacing:.02em;
+}
+.cover-formula-math .vr{color:var(--gold);}
+.cover-formula-math .op{color:rgba(255,255,255,.35);}
+
+.cover-bottom{
+  padding:24px 52px;
+  border-top:1px solid rgba(255,255,255,.08);
+  display:flex;justify-content:space-between;align-items:center;
+  position:relative;z-index:2;
+}
+.cover-bottom-autor{font-size:11px;color:rgba(255,255,255,.4);}
+.cover-bottom-autor strong{color:rgba(255,255,255,.7);}
+.cover-bottom-url{font-size:9px;color:rgba(201,168,76,.5);font-weight:600;letter-spacing:.08em;text-transform:uppercase;}
+
+/* ── BANDA DORADA ── */
+.gbar{height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-light),var(--gold));}
+
+/* ── PÁGINAS INTERNAS ── */
+.page{
+  background:white;
+  padding:44px 52px;
+  page-break-after:always;
+  border-bottom:4px solid var(--off);
+}
+.page:last-child{page-break-after:auto;border-bottom:none;}
+
+/* ── ENCABEZADO DE PÁGINA ── */
+.page-hdr{
+  display:flex;justify-content:space-between;align-items:center;
+  padding-bottom:12px;margin-bottom:28px;
+  border-bottom:2px solid var(--navy);
+}
+.page-hdr-brand{
+  font-family:'Playfair Display',serif;
+  font-size:9px;font-weight:700;
+  color:var(--gold);letter-spacing:.12em;text-transform:uppercase;
+}
+.page-hdr-seccion{font-size:10px;color:var(--soft);}
+
+/* ── NÚMERO DE PARTE ── */
+.parte-eyebrow{
+  font-size:9px;font-weight:700;
+  color:var(--gold);letter-spacing:.14em;
+  text-transform:uppercase;margin-bottom:6px;
+}
+.parte-titulo{
+  font-family:'Playfair Display',serif;
+  font-size:26px;font-weight:700;
+  color:var(--navy);line-height:1.2;
+  margin-bottom:18px;
+}
+.parte-intro{
+  font-size:14px;color:var(--mid);line-height:1.75;
+  margin-bottom:28px;
+  padding-bottom:24px;
+  border-bottom:1px solid var(--border);
+}
+.parte-intro strong{color:var(--text);}
+
+/* ── SECCIÓN HEADER INTERNO ── */
+.sh{
+  display:flex;align-items:center;gap:10px;
+  margin:24px 0 12px;
+}
+.sh-bar{width:3px;border-radius:2px;align-self:stretch;flex-shrink:0;}
+.sh-txt{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--navy);}
+
+/* ── BODY TEXT ── */
+p{font-size:13.5px;color:var(--mid);line-height:1.75;margin-bottom:14px;}
+p:last-child{margin-bottom:0;}
+p strong{color:var(--text);}
+
+/* ── FÓRMULA VISUAL ── */
+.formula-visual{
+  background:var(--navy);
+  border-radius:8px;padding:28px 32px;
+  margin:24px 0;text-align:center;
+}
+.formula-visual-lbl{
+  font-size:9px;font-weight:700;
+  color:rgba(201,168,76,.65);
+  letter-spacing:.12em;text-transform:uppercase;
+  margin-bottom:10px;
+}
+.formula-visual-math{
+  font-family:'DM Mono',monospace;
+  font-size:18px;color:white;
+  margin-bottom:6px;
+}
+.fv-r{color:#6BB8F0;}
+.fv-ur{color:#D4A0D4;}
+.fv-n{color:#80D4B0;}
+.fv-un{color:#F0B870;}
+.fv-t{color:#A8A8F0;}
+.fv-op{color:rgba(255,255,255,.3);}
+.fv-eq{color:var(--gold);font-size:22px;}
+.formula-visual-sub{font-size:11px;color:rgba(255,255,255,.4);margin-top:8px;}
+
+/* ── VARIABLE CARD ── */
+.var-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0;}
+.var-card{border-radius:6px;overflow:hidden;border:1px solid var(--border);}
+.var-card-hdr{padding:10px 14px;display:flex;align-items:center;gap:10px;}
+.var-card-sym{
+  font-family:'DM Mono',monospace;
+  font-size:16px;font-weight:700;color:white;
+  width:36px;height:36px;
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;font-size:13px;
+}
+.var-card-name{font-size:12px;font-weight:600;color:white;}
+.var-card-body{padding:12px 14px;background:white;}
+.var-card-desc{font-size:12px;color:var(--mid);line-height:1.65;}
+.var-card-ejemplos{margin-top:8px;padding-top:8px;border-top:1px dashed var(--border);}
+.var-card-ej-lbl{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--soft);margin-bottom:4px;}
+.var-card-ej-item{font-size:11px;color:var(--mid);line-height:1.6;padding-left:10px;position:relative;}
+.var-card-ej-item::before{content:'·';position:absolute;left:0;color:var(--gold);}
+
+/* ── INCERTIDUMBRE ── */
+.u-escala{
+  background:var(--off);border:1px solid var(--border);
+  border-radius:6px;padding:20px;margin:16px 0;
+}
+.u-escala-titulo{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--soft);margin-bottom:14px;}
+.u-nivel{display:flex;align-items:flex-start;gap:12px;margin-bottom:12px;}
+.u-nivel:last-child{margin-bottom:0;}
+.u-barra{width:48px;height:8px;border-radius:4px;flex-shrink:0;margin-top:6px;}
+.u-nivel-info{}
+.u-nivel-rango{font-size:11px;font-weight:700;color:var(--text);margin-bottom:2px;}
+.u-nivel-desc{font-size:11px;color:var(--mid);line-height:1.55;}
+
+.senial-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0;}
+.senial-card{
+  border-radius:5px;padding:12px 14px;
+  border-left:3px solid;
+}
+.senial-card.alto{background:var(--rbg);border-color:#B02020;}
+.senial-card.bajo{background:var(--gbg);border-color:var(--n);}
+.senial-card-titulo{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;}
+.senial-card.alto .senial-card-titulo{color:#B02020;}
+.senial-card.bajo .senial-card-titulo{color:var(--n);}
+.senial-item{font-size:11px;color:var(--mid);line-height:1.6;padding-left:12px;position:relative;margin-bottom:3px;}
+.senial-item::before{content:'→';position:absolute;left:0;font-size:10px;}
+.senial-card.alto .senial-item::before{color:#B02020;}
+.senial-card.bajo .senial-item::before{color:var(--n);}
+
+/* ── RECOMENDACIONES ── */
+.rec-item{
+  display:flex;align-items:flex-start;gap:14px;
+  padding:14px 16px;
+  border:1px solid var(--border);
+  border-radius:6px;
+  margin-bottom:10px;
+  background:white;
+}
+.rec-num{
+  width:28px;height:28px;border-radius:50%;
+  background:var(--navy);color:var(--gold);
+  font-family:'DM Mono',monospace;font-size:11px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;margin-top:1px;
+}
+.rec-body{}
+.rec-titulo{font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px;}
+.rec-desc{font-size:12px;color:var(--mid);line-height:1.65;}
+.rec-accion{
+  font-size:11px;font-weight:600;color:var(--navy);
+  margin-top:6px;padding-top:6px;
+  border-top:1px dashed var(--border);
+}
+.rec-accion::before{content:'Acción concreta: ';}
+
+/* ── PREGUNTAS CLAVE ── */
+.pregunta{
+  padding:12px 16px 12px 20px;
+  border-left:3px solid var(--gold);
+  background:rgba(201,168,76,.05);
+  border-radius:0 5px 5px 0;
+  margin-bottom:8px;
+  font-size:13px;color:var(--mid);line-height:1.6;
+}
+.pregunta strong{color:var(--navy);}
+
+/* ── CONTEXTO DEL MODELO ── */
+.contexto-intro{font-size:14px;color:var(--mid);line-height:1.8;margin-bottom:24px;}
+.sector-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0 26px;}
+.sector-card{
+  border:1px solid var(--border);border-radius:6px;
+  padding:14px 16px;background:white;
+}
+.sector-icono{font-size:18px;margin-bottom:8px;display:block;}
+.sector-nombre{font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px;}
+.sector-desc{font-size:11.5px;color:var(--soft);line-height:1.55;}
+.reto-item{
+  display:flex;gap:14px;
+  padding:16px 0;
+  border-bottom:1px solid var(--border);
+}
+.reto-item:last-child{border-bottom:none;}
+.reto-num{
+  font-family:'Playfair Display',serif;
+  font-size:26px;font-weight:700;
+  color:var(--gold);opacity:.55;
+  width:36px;flex-shrink:0;line-height:1;
+}
+.reto-titulo{font-size:13.5px;font-weight:600;color:var(--navy);margin-bottom:5px;}
+.reto-desc{font-size:12.5px;color:var(--mid);line-height:1.65;}
+
+/* ── RUTINA DEL ASESOR ── */
+.rutina-box{
+  background:var(--off);border:1px solid var(--border);
+  border-radius:6px;padding:4px;margin:18px 0;
+}
+.rutina-dia{
+  display:flex;gap:14px;
+  padding:14px 16px;
+  background:white;border-radius:5px;
+  margin-bottom:4px;
+}
+.rutina-dia:last-child{margin-bottom:0;}
+.rutina-momento{
+  width:96px;flex-shrink:0;
+  font-size:11px;font-weight:700;
+  color:var(--navy);
+  letter-spacing:.03em;
+  padding-top:1px;
+}
+.rutina-momento-sub{display:block;font-size:9px;font-weight:400;color:var(--soft);margin-top:2px;text-transform:none;letter-spacing:0;}
+.rutina-contenido{flex:1;}
+.rutina-titulo{font-size:12.5px;font-weight:600;color:var(--text);margin-bottom:3px;}
+.rutina-desc{font-size:12px;color:var(--mid);line-height:1.6;}
+.rutina-var{
+  display:inline-block;
+  font-family:'DM Mono',monospace;
+  font-size:10px;font-weight:700;
+  padding:1px 6px;border-radius:2px;
+  color:white;margin-right:4px;
+}
+
+/* ── EJEMPLO NUMÉRICO ── */
+.ejemplo{
+  background:var(--navy);border-radius:8px;
+  padding:22px 26px;margin:20px 0;
+}
+.ejemplo-lbl{
+  font-size:9px;font-weight:700;
+  color:rgba(201,168,76,.65);
+  letter-spacing:.12em;text-transform:uppercase;
+  margin-bottom:12px;
+}
+.ejemplo-titulo{
+  font-family:'Playfair Display',serif;
+  font-size:15px;font-weight:700;color:white;
+  margin-bottom:14px;
+}
+.ejemplo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px;}
+.ejemplo-item{background:rgba(255,255,255,.07);border-radius:4px;padding:10px 12px;}
+.ejemplo-item-lbl{font-size:9px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;}
+.ejemplo-item-val{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;color:var(--gold);}
+.ejemplo-item-sub{font-size:10px;color:rgba(255,255,255,.35);margin-top:2px;}
+.ejemplo-resultado{
+  background:rgba(201,168,76,.12);
+  border:1px solid rgba(201,168,76,.25);
+  border-radius:5px;padding:12px 16px;
+  display:flex;align-items:center;gap:16px;
+}
+.ejemplo-resultado-num{
+  font-family:'DM Mono',monospace;
+  font-size:24px;font-weight:700;color:var(--gold);
+}
+.ejemplo-resultado-txt{font-size:12px;color:rgba(255,255,255,.55);line-height:1.5;}
+
+/* ── TABLA ── */
+.tabla{width:100%;border-collapse:collapse;margin:16px 0;font-size:12px;}
+.tabla th{
+  background:var(--navy);color:var(--gold-light);
+  font-size:10px;font-weight:600;letter-spacing:.05em;
+  padding:8px 12px;text-align:left;
+}
+.tabla td{
+  padding:9px 12px;border-bottom:1px solid var(--border);
+  color:var(--mid);vertical-align:top;line-height:1.55;
+}
+.tabla tr:nth-child(even) td{background:var(--off);}
+.tabla tr:last-child td{border-bottom:none;}
+
+/* ── CTA FINAL ── */
+.cta-final{
+  background:var(--navy);border-radius:8px;
+  padding:28px 32px;margin-top:24px;
+}
+.cta-final-titulo{
+  font-family:'Playfair Display',serif;
+  font-size:20px;font-weight:700;color:white;
+  margin-bottom:8px;
+}
+.cta-final-txt{font-size:13px;color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:18px;}
+.cta-final-contacto{
+  display:flex;gap:24px;
+  padding-top:16px;border-top:1px solid rgba(255,255,255,.1);
+}
+.cta-final-item-lbl{font-size:9px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.07em;margin-bottom:3px;}
+.cta-final-item-val{font-size:13px;font-weight:600;color:var(--gold);}
+
+/* ── FOOTER ── */
+.page-ftr{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-top:28px;padding-top:14px;
+  border-top:1px solid var(--border);
+}
+.page-ftr-l{font-size:9px;color:var(--soft);}
+.page-ftr-r{font-size:9px;color:var(--soft);font-weight:600;}
+
+/* ── CALLOUT BOX ── */
+.callout{
+  border-radius:6px;padding:16px 18px;margin:16px 0;
+  border-left:4px solid;
+}
+.callout.info{background:#EEF4FB;border-color:var(--r);}
+.callout.warning{background:var(--ybg);border-color:#B07D00;}
+.callout.key{background:rgba(201,168,76,.06);border-color:var(--gold);}
+.callout-titulo{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:5px;}
+.callout.info .callout-titulo{color:var(--r);}
+.callout.warning .callout-titulo{color:#B07D00;}
+.callout.key .callout-titulo{color:var(--gold);}
+.callout p{font-size:12.5px;margin-bottom:0;}
+
+/* ── PRINT ── */
+@media print{
+  /* Ocultar pantalla de acceso */
+  #acceso{display:none!important;}
+  /* Mostrar documento */
+  #doc-contenido{display:block!important;}
+  body{background:white;}
+  /* Portada página completa */
+  .cover{
+    min-height:100vh;
+    page-break-after:always;
+    -webkit-print-color-adjust:exact!important;
+    print-color-adjust:exact!important;
+  }
+  /* Cada página interna: salto limpio */
+  .page{
+    page-break-after:always;
+    page-break-inside:avoid;
+    border-bottom:none!important;
+    -webkit-print-color-adjust:exact!important;
+    print-color-adjust:exact!important;
+  }
+  .page:last-child{page-break-after:auto;}
+  /* Forzar colores de fondo en todos los elementos con color */
+  .formula-visual,.ejemplo,.cta-final,.gbar,
+  .var-card-hdr,.senial-card,.rec-num,.sh-bar,
+  .cover-accent,.cover-accent2,.tabla th,
+  .callout,.u-barra,.parte-eyebrow{
+    -webkit-print-color-adjust:exact!important;
+    print-color-adjust:exact!important;
+  }
+  /* Evitar cortes dentro de elementos clave */
+  .rec-item,.var-card,.senial-card,.ejemplo-item,
+  .pregunta,.callout,.tabla tr{
+    page-break-inside:avoid!important;
+  }
+  /* Márgenes de página A4 */
+  @page{size:A4;margin:0;}
+  @page:first{margin:0;}
+}
+</style>
+</head>
+
+<!-- ── PANTALLA DE ACCESO ── -->
+<div id="acceso" style="
+  position:fixed;inset:0;z-index:9999;
+  background:#0F1F3D;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  font-family:'DM Sans',Arial,sans-serif;
+">
+  <div style="text-align:center;margin-bottom:32px">
+    <div style="font-family:'Playfair Display',Georgia,serif;font-size:12px;font-weight:700;color:#C9A84C;letter-spacing:.16em;text-transform:uppercase;margin-bottom:6px">Fórmula de Ventas B2B</div>
+    <div style="font-size:10px;color:rgba(255,255,255,.35);letter-spacing:.04em">Carlos Fernando Navarro · Consultor B2B</div>
+  </div>
+  <div style="
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:8px;
+    padding:36px 40px;
+    width:100%;max-width:360px;
+    text-align:center;
+  ">
+    <div style="font-family:'Playfair Display',Georgia,serif;font-size:20px;font-weight:700;color:white;margin-bottom:6px">Guía de Trabajo</div>
+    <div style="font-size:13px;color:rgba(255,255,255,.45);margin-bottom:28px;line-height:1.5">Fórmula de Ventas B2B<br>Modelo Híbrido</div>
+    <div style="font-size:11px;color:rgba(255,255,255,.4);margin-bottom:10px;text-align:left;text-transform:uppercase;letter-spacing:.07em">Clave de acceso</div>
+    <input
+      id="inp-clave"
+      type="password"
+      placeholder="Ingrese la clave"
+      onkeydown="if(event.key==='Enter')verificar()"
+      style="
+        width:100%;padding:11px 14px;
+        background:rgba(255,255,255,.07);
+        border:1px solid rgba(255,255,255,.15);
+        border-radius:4px;color:white;
+        font-family:'DM Sans',Arial,sans-serif;
+        font-size:14px;outline:none;
+        margin-bottom:14px;
+      "
+    >
+    <div id="acceso-error" style="
+      font-size:11px;color:#FFB0B0;
+      margin-bottom:12px;display:none;
+    ">Clave incorrecta. Verifique con su consultor.</div>
+    <button
+      onclick="verificar()"
+      style="
+        width:100%;padding:12px;
+        background:#C9A84C;color:#0F1F3D;
+        border:none;border-radius:4px;
+        font-family:'DM Sans',Arial,sans-serif;
+        font-size:13px;font-weight:700;
+        cursor:pointer;letter-spacing:.03em;
+      "
+    >Acceder a la guía</button>
+  </div>
+  <div style="margin-top:28px;font-size:10px;color:rgba(255,255,255,.2)">
+    Material exclusivo para clientes de Fórmula de Ventas B2B
+  </div>
+</div>
+
+<!-- ── CONTENIDO (oculto hasta autenticación) ── -->
+<div id="doc-contenido" style="display:none">
+<div class="doc">
+
+<!-- ══════════════ PORTADA ══════════════ -->
+<div class="cover">
+  <div class="cover-accent"></div>
+  <div class="cover-accent2"></div>
+  <div class="cover-top">
+    <div class="cover-brand">Fórmula de Ventas B2B</div>
+    <div class="cover-brand-sub">Carlos Fernando Navarro · carlos.navarro@formuladeventasb2b.com</div>
+    <div class="cover-label">Guía de Trabajo</div>
+  </div>
+  <div class="cover-center">
+    <div class="cover-eyebrow">Serie: Guías de Trabajo · Documento 1 de 3</div>
+    <div class="cover-title">La Fórmula de<br>Ventas <span>B2B</span></div>
+    <div class="cover-subtitle">Guía práctica para directores comerciales<br>que quieren convertir el potencial en resultados predecibles</div>
+    <div class="cover-modelo">
+      <div class="cover-modelo-dot"></div>
+      <div class="cover-modelo-txt">Modelo Híbrido · 40–70% de ingresos recurrentes</div>
+    </div>
+    <div class="cover-formula">
+      <div class="cover-formula-lbl">La Fórmula de Ventas B2B</div>
+      <div class="cover-formula-math">
+        Ventas <span class="op">=</span> Σ [(<span class="vr" style="color:#6BB8F0">Rᵢ</span> <span class="op">+</span> <span class="vr" style="color:#80D4B0">Nᵢ</span>) <span class="op">·</span> (<span class="op">1 −</span> <span class="vr" style="color:#D4A0D4">Uᵢ</span>) <span class="op">·</span> <span class="vr" style="color:#A8A8F0">Tᵢ</span>]
+      </div>
+    </div>
+  </div>
+  <div class="cover-bottom">
+    <div class="cover-bottom-autor">Un documento de trabajo de <strong>Carlos Fernando Navarro</strong> · Consultor B2B</div>
+    <div class="cover-bottom-url">formuladeventasb2b.com</div>
+  </div>
+</div>
+<div class="gbar"></div>
+
+<!-- ══════════════ CONTEXTO DEL MODELO ══════════════ -->
+<div class="page">
+  <div class="page-hdr">
+    <div class="page-hdr-brand">Fórmula de Ventas B2B</div>
+    <div class="page-hdr-seccion">Contexto · El modelo híbrido</div>
+  </div>
+
+  <div class="parte-eyebrow">Antes de empezar</div>
+  <div class="parte-titulo">El modelo híbrido:<br>su realidad comercial</div>
+  <div class="contexto-intro">
+    Si su empresa combina una base de clientes que compra de forma habitual con un esfuerzo activo de conseguir nuevos negocios o expandir cuentas existentes, opera bajo un <strong>modelo híbrido</strong> — entre el 40% y el 70% de sus ingresos provienen de la recurrencia, y el resto depende de la capacidad del equipo de generar y cerrar nuevas oportunidades. Esta guía está escrita pensando en ese contexto específico.
+  </div>
+
+  <div class="sh">
+    <div class="sh-bar" style="background:var(--navy)"></div>
+    <div class="sh-txt">Sectores donde se presenta este modelo</div>
+  </div>
+  <p>El modelo híbrido es el más común entre las empresas B2B de Latinoamérica. Se presenta de forma característica en:</p>
+
+  <div class="sector-grid">
+    <div class="sector-card">
+      <span class="sector-icono">🏭</span>
+      <div class="sector-nombre">Distribución especializada</div>
+      <div class="sector-desc">Clientes recurrentes de reposición, combinados con la apertura de nuevos canales o territorios.</div>
+    </div>
+    <div class="sector-card">
+      <span class="sector-icono">💻</span>
+      <div class="sector-nombre">Tecnología y software B2B</div>
+      <div class="sector-desc">Contratos de licencia o suscripción vigentes, junto con la venta de nuevos módulos o nuevos clientes.</div>
+    </div>
+    <div class="sector-card">
+      <span class="sector-icono">⚙️</span>
+      <div class="sector-nombre">Servicios industriales y mantenimiento</div>
+      <div class="sector-desc">Contratos de servicio recurrente con clientes activos, más proyectos nuevos de instalación o ampliación.</div>
+    </div>
+    <div class="sector-card">
+      <span class="sector-icono">📊</span>
+      <div class="sector-nombre">Consultoría y servicios profesionales</div>
+      <div class="sector-desc">Clientes con engagement continuo combinados con la prospección activa de nuevos mandatos.</div>
+    </div>
+    <div class="sector-card">
+      <span class="sector-icono">🏗️</span>
+      <div class="sector-nombre">Proveedores industriales B2B</div>
+      <div class="sector-desc">Suministro regular a plantas o clientes industriales, junto con licitaciones y proyectos puntuales.</div>
+    </div>
+    <div class="sector-card">
+      <span class="sector-icono">🩺</span>
+      <div class="sector-nombre">Equipos y suministros especializados</div>
+      <div class="sector-desc">Reposición de consumibles o insumos recurrentes, combinada con venta de nuevos equipos o líneas.</div>
+    </div>
+  </div>
+
+  <div class="sh">
+    <div class="sh-bar" style="background:var(--gold)"></div>
+    <div class="sh-txt">Los retos característicos de este modelo</div>
+  </div>
+  <p>Dirigir un equipo comercial en un modelo híbrido tiene una complejidad particular: <strong>no se gestiona un solo negocio, se gestionan dos negocios distintos al mismo tiempo</strong>, con dinámicas, riesgos y ciclos diferentes. Estos son los retos más frecuentes:</p>
+
+  <div class="reto-item">
+    <div class="reto-num">01</div>
+    <div>
+      <div class="reto-titulo">Doble atención con un solo equipo</div>
+      <div class="reto-desc">El mismo vendedor debe atender la relación con clientes activos (que requiere cuidado y prevención) y al mismo tiempo cazar nuevas oportunidades (que requiere prospección activa). Cuando la presión de la meta sube, el equipo casi siempre sacrifica la atención a la base recurrente — y ahí empiezan las pérdidas silenciosas.</div>
+    </div>
+  </div>
+  <div class="reto-item">
+    <div class="reto-num">02</div>
+    <div>
+      <div class="reto-titulo">Forecast que mezcla certezas con apuestas</div>
+      <div class="reto-desc">Construir un número de ventas confiable es más difícil que en un modelo puro, porque hay que combinar ingresos relativamente predecibles (la recurrencia) con ingresos inciertos (el pipeline nuevo) en una sola cifra. Sin una metodología clara, el forecast termina siendo un promedio optimista que rara vez se cumple.</div>
+    </div>
+  </div>
+  <div class="reto-item">
+    <div class="reto-num">03</div>
+    <div>
+      <div class="reto-titulo">Pérdida de clientes activos que pasa desapercibida</div>
+      <div class="reto-desc">Como el equipo está enfocado en conseguir negocio nuevo, las señales tempranas de riesgo en clientes activos —menor frecuencia de compra, quejas sin resolver, cambio de contacto— no se detectan a tiempo. El director se entera cuando el cliente ya redujo su compra o se fue.</div>
+    </div>
+  </div>
+  <div class="reto-item">
+    <div class="reto-num">04</div>
+    <div>
+      <div class="reto-titulo">Falta de un lenguaje común para hablar de la cuota</div>
+      <div class="reto-desc">Sin una metodología compartida, cada vendedor tiene su propio criterio para decidir qué tan probable es que cierre un cliente o una oportunidad. Esto hace que las reuniones de revisión comercial se conviertan en negociaciones de percepción en lugar de análisis basado en datos.</div>
+    </div>
+  </div>
+
+  <div class="callout key">
+    <div class="callout-titulo">Por qué esta guía le sirve</div>
+    <p>La Fórmula de Ventas B2B fue diseñada precisamente para resolver esta tensión: separa con claridad la gestión de la recurrencia (R, Uᵣ) de la gestión de nuevas oportunidades (N, Uₙ), y le da al director un solo número defendible que combina ambas. Las páginas siguientes le muestran exactamente cómo hacerlo en su operación.</p>
+  </div>
+
+  <div class="page-ftr">
+    <div class="page-ftr-l">Guía de Trabajo · Fórmula de Ventas B2B · Modelo Híbrido</div>
+    <div class="page-ftr-r">formuladeventasb2b.com</div>
+  </div>
+</div>
+
+<!-- ══════════════ PARTE 1 — LA FÓRMULA ══════════════ -->
+<div class="page">
+  <div class="page-hdr">
+    <div class="page-hdr-brand">Fórmula de Ventas B2B</div>
+    <div class="page-hdr-seccion">Parte 1 · La Fórmula y sus componentes</div>
+  </div>
+
+  <div class="parte-eyebrow">Parte 1 de 4</div>
+  <div class="parte-titulo">La Fórmula de Ventas B2B:<br>sus componentes y su lógica</div>
+  <div class="parte-intro">
+    La mayoría de los modelos comerciales B2B miden resultados pero no gestionan las variables que los producen. Los equipos reportan actividades — visitas, llamadas, propuestas — pero no las variables que determinan si el mes cierra en meta o no. <strong>La Fórmula de Ventas B2B cambia eso.</strong> Convierte la gestión comercial en un sistema estructurado donde cada variable es observable, medible y accionable.
+  </div>
+
+  <div class="formula-visual">
+    <div class="formula-visual-lbl">La Fórmula de Ventas B2B</div>
+    <div class="formula-visual-math">
+      Ventas <span class="fv-op">=</span> Σ [(<span class="fv-r">R</span><span class="fv-op">ᵢ +</span> <span class="fv-n">N</span><span class="fv-op">ᵢ</span>) <span class="fv-op">·</span> (<span class="fv-op">1 −</span> <span class="fv-ur">U</span><span class="fv-op">ᵢ</span>) <span class="fv-op">·</span> <span class="fv-t">T</span><span class="fv-op">ᵢ</span>]
+    </div>
+    <div class="formula-visual-sub">Donde cada componente es una palanca directiva concreta — no una estimación subjetiva</div>
+  </div>
+
+  <div class="sh">
+    <div class="sh-bar" style="background:var(--navy)"></div>
+    <div class="sh-txt">Qué expresa la fórmula</div>
+  </div>
+  <p>La fórmula establece que las ventas de un período son el resultado de sumar, para cada cliente u oportunidad, el potencial de ingreso disponible (<strong>R + N</strong>), reducido por el nivel de incertidumbre que existe sobre ese ingreso (<strong>U</strong>), y distribuido en el tiempo según cuándo se espera que se materialice (<strong>T</strong>).</p>
+  <p>Esto tiene una implicación directa para la gestión: <strong>el director comercial no gestiona vendedores, gestiona variables</strong>. Su trabajo es reducir la incertidumbre sobre el potencial existente y asegurarse de que el tiempo de cierre es realista.</p>
+
+  <div class="sh">
+    <div class="sh-bar" style="background:var(--navy)"></div>
+    <div class="sh-txt">Los cinco componentes</div>
+  </div>
+
+  <div class="var-grid">
+    <div class="var-card">
+      <div class="var-card-hdr" style="background:#1A3260">
+        <div class="var-card-sym" style="background:#1A6FA0">R</div>
+        <div class="var-card-name">Potencial Recurrente (R)</div>
+      </div>
+      <div class="var-card-body">
+        <div class="var-card-desc">Los ingresos que puede generar cada cliente activo basándose en su historial de compra, contrato vigente o patrón de reposición. Es la base estable del negocio — los ingresos que "ya están ganados" si el equipo los cuida bien.</div>
+        <div class="var-card-ejemplos">
+          <div class="var-card-ej-lbl">En su modelo híbrido:</div>
+          <div class="var-card-ej-item">Contratos de mantenimiento o servicio vigentes</div>
+          <div class="var-card-ej-item">Clientes que recompran con frecuencia definida</div>
+          <div class="var-card-ej-item">Renovaciones anuales de licencias o suscripciones</div>
+        </div>
+      </div>
+    </div>
+    <div class="var-card">
+      <div class="var-card-hdr" style="background:#1A3260">
+        <div class="var-card-sym" style="background:#1E7B5E">N</div>
+        <div class="var-card-name">Nuevas Oportunidades (N)</div>
+      </div>
+      <div class="var-card-body">
+        <div class="var-card-desc">El valor total de las oportunidades nuevas activas en el pipeline: proyectos nuevos, expansión de cuentas existentes, nuevos clientes. Es el componente de crecimiento. Sin N suficiente, el negocio depende exclusivamente de R.</div>
+        <div class="var-card-ejemplos">
+          <div class="var-card-ej-lbl">En su modelo híbrido:</div>
+          <div class="var-card-ej-item">Propuestas activas en evaluación por el cliente</div>
+          <div class="var-card-ej-item">Upselling o crosselling en cuentas activas</div>
+          <div class="var-card-ej-item">Prospectos en proceso de calificación</div>
+        </div>
+      </div>
+    </div>
+    <div class="var-card">
+      <div class="var-card-hdr" style="background:#1A3260">
+        <div class="var-card-sym" style="background:#8B3A8B">Uᵣ</div>
+        <div class="var-card-name">Incertidumbre en Recurrencia (Uᵣ)</div>
+      </div>
+      <div class="var-card-body">
+        <div class="var-card-desc">El riesgo de que los ingresos recurrentes esperados no se materialicen. Incluye riesgo de pérdida del cliente, reducción de volumen, insatisfacción no detectada o competencia activa sobre la cuenta.</div>
+        <div class="var-card-ejemplos">
+          <div class="var-card-ej-lbl">Señales de Uᵣ alta:</div>
+          <div class="var-card-ej-item">Cliente que no ha recomprado en más tiempo del habitual</div>
+          <div class="var-card-ej-item">Contacto clave reemplazado sin transición</div>
+          <div class="var-card-ej-item">Queja reciente sin resolución confirmada</div>
+        </div>
+      </div>
+    </div>
+    <div class="var-card">
+      <div class="var-card-hdr" style="background:#1A3260">
+        <div class="var-card-sym" style="background:#C05A00">Uₙ</div>
+        <div class="var-card-name">Incertidumbre en Pipeline (Uₙ)</div>
+      </div>
+      <div class="var-card-body">
+        <div class="var-card-desc">La probabilidad de que las oportunidades nuevas no se cierren. Refleja la calidad real del pipeline — cuántas oportunidades tienen condiciones reales de cierre y cuántas son optimismo sin respaldo.</div>
+        <div class="var-card-ejemplos">
+          <div class="var-card-ej-lbl">Señales de Uₙ alta:</div>
+          <div class="var-card-ej-item">No se conoce al decisor final</div>
+          <div class="var-card-ej-item">Presupuesto no confirmado por el cliente</div>
+          <div class="var-card-ej-item">Oportunidad sin movimiento en más de 30 días</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="var-card" style="margin-top:10px">
+    <div class="var-card-hdr" style="background:#1A3260">
+      <div class="var-card-sym" style="background:#5A5AA0">T</div>
+      <div class="var-card-name">Factor Tiempo — Forecast (T)</div>
+    </div>
+    <div class="var-card-body">
+      <div class="var-card-desc">La distribución temporal del ingreso esperado. Permite construir un forecast mensual real: no cuánto puede vender el equipo en el año, sino cuánto va a cerrar <em>este mes</em> y en qué meses se distribuye el resto. T convierte la fórmula anual en una herramienta de gestión mensual.</div>
+      <div class="var-card-ejemplos">
+        <div class="var-card-ej-lbl">Cómo usar T en el modelo híbrido:</div>
+        <div class="var-card-ej-item">La recurrencia generalmente tiene T predecible (frecuencia conocida)</div>
+        <div class="var-card-ej-item">Las nuevas oportunidades tienen T más variable (depende del ciclo de venta)</div>
+        <div class="var-card-ej-item">El forecast mensual = suma de (R+N)·(1-U)·T de cada cliente para ese mes</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-ftr">
+    <div class="page-ftr-l">Guía de Trabajo · Fórmula de Ventas B2B · Modelo Híbrido</div>
+    <div class="page-ftr-r">formuladeventasb2b.com</div>
+  </div>
+</div>
+
+<!-- ══════════════ PARTE 2 — INCERTIDUMBRE ══════════════ -->
+<div class="page">
+  <div class="page-hdr">
+    <div class="page-hdr-brand">Fórmula de Ventas B2B</div>
+    <div class="page-hdr-seccion">Parte 2 · El concepto de incertidumbre</div>
+  </div>
+
+  <div class="parte-eyebrow">Parte 2 de 4</div>
+  <div class="parte-titulo">La incertidumbre:<br>la variable que lo explica todo</div>
+  <div class="parte-intro">
+    La incertidumbre es el corazón de la fórmula. No es un factor externo del mercado — <strong>es una medida del control comercial que el equipo tiene sobre cada oportunidad</strong>. Un equipo que gestiona bien la incertidumbre produce forecasts confiables, detecta riesgos antes de que ocurran y cierra más de lo que promete. Un equipo que no la gestiona opera con optimismo, no con datos.
+  </div>
+
+  <div class="callout key">
+    <div class="callout-titulo">Principio fundamental</div>
+    <p>La incertidumbre <strong>no es mala suerte ni el mercado</strong> — es la consecuencia directa de acciones comerciales que no se tomaron. Reducirla es el trabajo central del vendedor y del director comercial.</p>
+  </div>
+
+  <div class="sh">
+    <div class="sh-bar" style="background:var(--ur)"></div>
+    <div class="sh-txt">Uᵣ — Incertidumbre sobre la recurrencia</div>
+  </div>
+  <p>En un modelo híbrido, entre el 40% y el 70% del ingreso esperado proviene de clientes activos. Uᵣ mide el riesgo de que ese ingreso no llegue. El problema es que <strong>Uᵣ es silenciosa</strong>: un cliente que está a punto de reducir sus compras o cancelar raramente lo anuncia. El equipo lo descubre cuando ya ocurrió.</p>
+  <p>Por eso Uᵣ requiere un sistema de detección activa, no reactiva. El vendedor debe buscar las señales antes de que se conviertan en pérdida.</p>
+
+  <div class="u-escala">
+    <div class="u-escala-titulo">Escala de Uᵣ — Cómo interpretar el nivel de incertidumbre en la recurrencia</div>
+    <div class="u-nivel">
+      <div class="u-barra" style="background:#1E7B5E;width:48px;"></div>
+      <div class="u-nivel-info">
+        <div class="u-nivel-rango">Uᵣ 0–20% · Recurrencia sólida</div>
+        <div class="u-nivel-desc">El cliente compra con regularidad, la relación está activa y no hay señales de riesgo. El ingreso recurrente es predecible con alta confianza.</div>
+      </div>
+    </div>
+    <div class="u-nivel">
+      <div class="u-barra" style="background:#B07D00;width:48px;"></div>
+      <div class="u-nivel-info">
+        <div class="u-nivel-rango">Uᵣ 21–50% · Atención activa requerida</div>
+        <div class="u-nivel-desc">Hay señales leves de debilitamiento: frecuencia de compra irregular, contacto reducido o cambios en el interlocutor. El ingreso es probable pero no seguro.</div>
+      </div>
+    </div>
+    <div class="u-nivel">
+      <div class="u-barra" style="background:#C05A00;width:48px;"></div>
+      <div class="u-nivel-info">
+        <div class="u-nivel-rango">Uᵣ 51–75% · Riesgo alto de pérdida</div>
+        <div class="u-nivel-desc">El cliente ha mostrado señales claras de alejamiento: queja sin resolver, competidor activo en la cuenta, o reducción reciente del volumen. El ingreso está en riesgo real.</div>
+      </div>
+    </div>
+    <div class="u-nivel">
+      <div class="u-barra" style="background:#B02020;width:48px;"></div>
+      <div class="u-nivel-info">
+        <div class="u-nivel-rango">Uᵣ 76–100% · Pérdida probable</div>
+        <div class="u-nivel-desc">El cliente ha comunicado intención de reducir, cancelar o cambiar de proveedor. El ingreso no debe incluirse en el forecast a menos que se actúe de inmediato.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="senial-grid">
+    <div class="senial-card alto">
+      <div class="senial-card-titulo">Señales de Uᵣ alta — actuar ahora</div>
+      <div class="senial-item">No compra desde hace más del doble de su frecuencia habitual</div>
+      <div class="senial-item">El contacto clave fue reemplazado y el nuevo no conoce al vendedor</div>
+      <div class="senial-item">Hay una queja o incidente sin resolución confirmada</div>
+      <div class="senial-item">El volumen de compra ha disminuido en los últimos 2 períodos</div>
+      <div class="senial-item">El cliente pidió cotización a un competidor conocido</div>
+    </div>
+    <div class="senial-card bajo">
+      <div class="senial-card-titulo">Señales de Uᵣ baja — relación sólida</div>
+      <div class="senial-item">El cliente compra con regularidad y dentro de su frecuencia habitual</div>
+      <div class="senial-item">Hay comunicación fluida con el contacto clave y con su equipo</div>
+      <div class="senial-item">El cliente ha referido a la empresa con terceros</div>
+      <div class="senial-item">Ha renovado o ampliado el contrato en el último año</div>
+      <div class="senial-item">Comparte información estratégica con el vendedor</div>
+    </div>
+  </div>
+
+  <div class="sh">
+    <div class="sh-bar" style="background:var(--un)"></div>
+    <div class="sh-txt">Uₙ — Incertidumbre sobre las nuevas oportunidades</div>
+  </div>
+  <p>Uₙ mide cuánto del valor declarado en el pipeline tiene respaldo real. En la mayoría de los equipos comerciales, el pipeline está inflado: contiene oportunidades optimistas, mal calificadas o abandonadas que el vendedor no ha eliminado. <strong>Un pipeline con Uₙ alta no es un activo — es una ilusión de seguridad.</strong></p>
+
+  <div class="u-escala">
+    <div class="u-escala-titulo">Escala de Uₙ — Cómo interpretar el nivel de incertidumbre en el pipeline</div>
+    <div class="u-nivel">
+      <div class="u-barra" style="background:#1E7B5E;width:48px;"></div>
+      <div class="u-nivel-info">
+        <div class="u-nivel-rango">Uₙ 0–25% · Pipeline de alta calidad</div>
+        <div class="u-nivel-desc">Las oportunidades están bien calificadas: hay acceso al decisor, presupuesto confirmado, necesidad validada y timing claro. El pipeline es defendible.</div>
+      </div>
+    </div>
+    <div class="u-nivel">
+      <div class="u-barra" style="background:#B07D00;width:48px;"></div>
+      <div class="u-nivel-info">
+        <div class="u-nivel-rango">Uₙ 26–50% · Pipeline aceptable con brechas</div>
+        <div class="u-nivel-desc">Hay oportunidades reales pero también algunas sin calificación completa. El forecast es aproximado — puede cerrarse el 50–75% de lo declarado si el equipo actúa bien.</div>
+      </div>
+    </div>
+    <div class="u-nivel">
+      <div class="u-barra" style="background:#C05A00;width:48px;"></div>
+      <div class="u-nivel-info">
+        <div class="u-nivel-rango">Uₙ 51–75% · Pipeline inflado</div>
+        <div class="u-nivel-desc">La mayoría de las oportunidades no están calificadas o llevan más de 30 días sin avanzar. El valor declarado no refleja el potencial real de cierre.</div>
+      </div>
+    </div>
+    <div class="u-nivel">
+      <div class="u-barra" style="background:#B02020;width:48px;"></div>
+      <div class="u-nivel-info">
+        <div class="u-nivel-rango">Uₙ 76–100% · Pipeline ficticio</div>
+        <div class="u-nivel-desc">El pipeline contiene oportunidades sin condiciones básicas de cierre. El forecast construido sobre este pipeline no es defendible y engaña a la dirección.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout warning">
+    <div class="callout-titulo">El error más común en modelos híbridos</div>
+    <p>Los directores de modelos híbridos suelen <strong>subestimar Uᵣ</strong> (asumen que los clientes activos seguirán comprando sin verificarlo) y <strong>sobreestimar el pipeline</strong> (incluyen oportunidades sin calificación real). El resultado: un forecast que parece sólido en papel pero que colapsa en el cierre del mes.</p>
+  </div>
+
+  <div class="page-ftr">
+    <div class="page-ftr-l">Guía de Trabajo · Fórmula de Ventas B2B · Modelo Híbrido</div>
+    <div class="page-ftr-r">formuladeventasb2b.com</div>
+  </div>
+</div>
+
+<!-- ══════════════ PARTE 3 — REDUCIR LA INCERTIDUMBRE ══════════════ -->
+<div class="page">
+  <div class="page-hdr">
+    <div class="page-hdr-brand">Fórmula de Ventas B2B</div>
+    <div class="page-hdr-seccion">Parte 3 · Cómo reducir la incertidumbre</div>
+  </div>
+
+  <div class="parte-eyebrow">Parte 3 de 4</div>
+  <div class="parte-titulo">Guías prácticas para reducir<br>la incertidumbre en su modelo</div>
+  <div class="parte-intro">
+    Reducir la incertidumbre no es suerte ni talento natural — es el resultado de aplicar acciones concretas y repetibles sobre cada oportunidad y cada cliente. En un modelo híbrido, la gestión de la incertidumbre se trabaja simultáneamente en dos frentes: <strong>proteger la base recurrente</strong> (bajar Uᵣ) y <strong>mejorar la calidad del pipeline</strong> (bajar Uₙ).
+  </div>
+
+  <div class="sh">
+    <div class="sh-bar" style="background:var(--ur)"></div>
+    <div class="sh-txt">Cómo reducir Uᵣ — Proteger la base recurrente</div>
+  </div>
+
+  <div class="rec-item">
+    <div class="rec-num">1</div>
+    <div class="rec-body">
+      <div class="rec-titulo">Mapear y monitorear el potencial real de cada cliente activo</div>
+      <div class="rec-desc">No asuma que el cliente seguirá comprando lo mismo. Documente el potencial máximo de compra de cada cuenta, su frecuencia histórica y su tendencia reciente. Un cliente cuyo volumen disminuyó dos períodos seguidos tiene Uᵣ alta aunque no lo haya comunicado.</div>
+      <div class="rec-accion">Construya el Mapa de Ingresos Recurrentes con frecuencia de compra, ticket promedio y nivel de Uᵣ por cliente. Revíselo mensualmente.</div>
+    </div>
+  </div>
+  <div class="rec-item">
+    <div class="rec-num">2</div>
+    <div class="rec-body">
+      <div class="rec-titulo">Establecer una rutina de contacto proactiva con cuentas clave</div>
+      <div class="rec-desc">La relación con el cliente no puede depender de que él llame para recomprar. El vendedor debe tener un calendario de contacto preventivo, especialmente con las cuentas de mayor valor. Una visita de "chequeo de salud" antes de la fecha de renovación vale más que diez visitas reactivas después de una crisis.</div>
+      <div class="rec-accion">Defina la frecuencia mínima de contacto por segmento de cliente (alta, media, baja rotación) y conviértala en un compromiso de agenda, no una intención.</div>
+    </div>
+  </div>
+  <div class="rec-item">
+    <div class="rec-num">3</div>
+    <div class="rec-body">
+      <div class="rec-titulo">Detectar y resolver insatisfacciones antes de que sean pérdidas</div>
+      <div class="rec-desc">La mayoría de los clientes que se van no avisan. Primero reducen el volumen, luego dejan de responder, luego cancelan. El equipo necesita un protocolo de alerta temprana: cualquier reducción de volumen, demora en respuesta o queja sin resolución debe activar una acción inmediata del vendedor y visibilidad del director.</div>
+      <div class="rec-accion">Cree una lista de las 5 cuentas con mayor Uᵣ y asigne un plan de retención específico para cada una en los próximos 30 días.</div>
+    </div>
+  </div>
+  <div class="rec-item">
+    <div class="rec-num">4</div>
+    <div class="rec-body">
+      <div class="rec-titulo">Diversificar la base recurrente para reducir el riesgo de concentración</div>
+      <div class="rec-desc">En modelos híbridos es frecuente que el 20% de los clientes represente el 80% de la recurrencia. Esa concentración eleva la Uᵣ sistémica del modelo: perder una cuenta crítica puede destruir el forecast de un trimestre. La diversificación no es un objetivo de largo plazo — es una palanca de reducción de Uᵣ a nivel de cartera.</div>
+      <div class="rec-accion">Identifique qué porcentaje de su R proviene de las 3 cuentas más grandes. Si supera el 50%, active una estrategia de profundización en las siguientes 5 cuentas con mayor potencial no capturado.</div>
+    </div>
+  </div>
+
+  <div class="sh">
+    <div class="sh-bar" style="background:var(--un)"></div>
+    <div class="sh-txt">Cómo reducir Uₙ — Mejorar la calidad del pipeline</div>
+  </div>
+
+  <div class="rec-item">
+    <div class="rec-num">5</div>
+    <div class="rec-body">
+      <div class="rec-titulo">Calificar cada oportunidad con criterios objetivos compartidos</div>
+      <div class="rec-desc">El problema de Uₙ alta generalmente comienza en la calificación. Cuando el criterio para incluir una oportunidad en el pipeline es la intuición del vendedor, el pipeline se infla. Se necesitan criterios objetivos que todo el equipo aplique igual: ¿hay acceso al decisor? ¿el presupuesto está confirmado? ¿la necesidad está validada? ¿hay un timing concreto?</div>
+      <div class="rec-accion">Implemente un scorecard de calificación de 4 variables (decisor, presupuesto, necesidad, timing). Solo ingresan al pipeline las oportunidades que pasan al menos 3 de 4 criterios.</div>
+    </div>
+  </div>
+  <div class="rec-item">
+    <div class="rec-num">6</div>
+    <div class="rec-body">
+      <div class="rec-titulo">Depurar el pipeline de oportunidades sin movimiento</div>
+      <div class="rec-desc">Una oportunidad que lleva más de 30 días sin avanzar no es una oportunidad en proceso — es incertidumbre estacionada que infla el pipeline y distorsiona el forecast. El equipo necesita un criterio claro para decidir: o se activa con una acción concreta esta semana, o sale del pipeline activo.</div>
+      <div class="rec-accion">En la próxima revisión de pipeline, identifique todas las oportunidades sin actividad en 30+ días. Para cada una: defina una acción de reactivación concreta o muévala a seguimiento pasivo y ajuste el forecast.</div>
+    </div>
+  </div>
+  <div class="rec-item">
+    <div class="rec-num">7</div>
+    <div class="rec-body">
+      <div class="rec-titulo">Diferenciar el proceso según el ciclo de venta de la oportunidad</div>
+      <div class="rec-desc">En un modelo híbrido coexisten ventas rápidas (transaccionales, ciclo de días) y proyectos complejos (ciclo de semanas o meses). Gestionarlos con el mismo proceso genera Uₙ diferente en cada tipo. Una venta rápida en pipeline por más de 2 semanas tiene Uₙ alta. Un proyecto complejo en pipeline por 3 semanas puede estar en proceso normal.</div>
+      <div class="rec-accion">Defina dos tracks de pipeline: "Venta rápida" (ciclo menor a 3 semanas) y "Proyecto" (ciclo mayor a 3 semanas). Asigne criterios de Uₙ y alertas de inactividad diferentes para cada track.</div>
+    </div>
+  </div>
+
+  <div class="page-ftr">
+    <div class="page-ftr-l">Guía de Trabajo · Fórmula de Ventas B2B · Modelo Híbrido</div>
+    <div class="page-ftr-r">formuladeventasb2b.com</div>
+  </div>
+</div>
+
+<!-- ══════════════ PARTE 4 — APLICACIÓN PRÁCTICA ══════════════ -->
+<div class="page">
+  <div class="page-hdr">
+    <div class="page-hdr-brand">Fórmula de Ventas B2B</div>
+    <div class="page-hdr-seccion">Parte 4 · Aplicación práctica</div>
+  </div>
+
+  <div class="parte-eyebrow">Parte 4 de 4</div>
+  <div class="parte-titulo">Cómo aplicar la fórmula:<br>del concepto al número real</div>
+  <div class="parte-intro">
+    La fórmula no es un ejercicio académico — es una herramienta de gestión que produce un número concreto y defendible: el forecast mensual de cada vendedor y del equipo. Esta parte le muestra cómo calcularla en los cuatro niveles de su operación comercial.
+  </div>
+
+  <div class="sh">
+    <div class="sh-bar" style="background:var(--navy)"></div>
+    <div class="sh-txt">Nivel 1 — Por cliente</div>
+  </div>
+  <p>La unidad de cálculo es el cliente. Para cada cliente, el vendedor debe determinar:</p>
+
+  <div class="ejemplo">
+    <div class="ejemplo-lbl">Ejemplo de cálculo · Nivel de cliente</div>
+    <div class="ejemplo-titulo">Cliente: Empresa ABC · Sector industrial · Modelo híbrido</div>
+    <div class="ejemplo-grid">
+      <div class="ejemplo-item">
+        <div class="ejemplo-item-lbl">R — Potencial recurrente</div>
+        <div class="ejemplo-item-val">$ 80.000.000</div>
+        <div class="ejemplo-item-sub">Pedido habitual trimestral</div>
+      </div>
+      <div class="ejemplo-item">
+        <div class="ejemplo-item-lbl">Uᵣ — Incertidumbre</div>
+        <div class="ejemplo-item-val">20%</div>
+        <div class="ejemplo-item-sub">Relación sólida, sin señales de riesgo</div>
+      </div>
+      <div class="ejemplo-item">
+        <div class="ejemplo-item-lbl">R · (1 − Uᵣ)</div>
+        <div class="ejemplo-item-val">$ 64.000.000</div>
+        <div class="ejemplo-item-sub">Recurrencia ajustada por riesgo</div>
+      </div>
+      <div class="ejemplo-item">
+        <div class="ejemplo-item-lbl">N — Nueva oportunidad</div>
+        <div class="ejemplo-item-val">$ 40.000.000</div>
+        <div class="ejemplo-item-sub">Expansión de línea de producto</div>
+      </div>
+      <div class="ejemplo-item">
+        <div class="ejemplo-item-lbl">Uₙ — Incertidumbre</div>
+        <div class="ejemplo-item-val">45%</div>
+        <div class="ejemplo-item-sub">Decisor accesible, presupuesto en revisión</div>
+      </div>
+      <div class="ejemplo-item">
+        <div class="ejemplo-item-lbl">N · (1 − Uₙ)</div>
+        <div class="ejemplo-item-val">$ 22.000.000</div>
+        <div class="ejemplo-item-sub">Pipeline ajustado por riesgo</div>
+      </div>
+    </div>
+    <div class="ejemplo-resultado">
+      <div class="ejemplo-resultado-num">$ 86.000.000</div>
+      <div class="ejemplo-resultado-txt">Venta esperada de este cliente<br><span style="color:rgba(255,255,255,.4);font-size:11px">$ 64M de recurrencia + $ 22M de pipeline · Con T aplicado al mes correspondiente</span></div>
+    </div>
+  </div>
+
+  <div class="sh">
+    <div class="sh-bar" style="background:var(--navy)"></div>
+    <div class="sh-txt">Nivel 2 — Por el asesor comercial</div>
+  </div>
+  <p>El vendedor aplica la fórmula a cada cliente de su cartera y suma los resultados. Esto produce su <strong>número defendible</strong>: el forecast que puede sustentar en la sesión de revisión con el director, cliente por cliente, variable por variable.</p>
+
+  <table class="tabla">
+    <thead>
+      <tr>
+        <th>Cliente</th>
+        <th>R · (1−Uᵣ)</th>
+        <th>N · (1−Uₙ)</th>
+        <th>Total esperado</th>
+        <th>T (mes)</th>
+        <th>Forecast mes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Empresa ABC</td><td>$ 64.000.000</td><td>$ 22.000.000</td><td>$ 86.000.000</td><td>25%</td><td>$ 21.500.000</td></tr>
+      <tr><td>Empresa XYZ</td><td>$ 120.000.000</td><td>$ 0</td><td>$ 120.000.000</td><td>33%</td><td>$ 40.000.000</td></tr>
+      <tr><td>Empresa DEF</td><td>$ 30.000.000</td><td>$ 54.000.000</td><td>$ 84.000.000</td><td>20%</td><td>$ 16.800.000</td></tr>
+      <tr><td style="font-weight:600;color:var(--navy)">Total asesor</td><td style="font-weight:600">$ 214.000.000</td><td style="font-weight:600">$ 76.000.000</td><td style="font-weight:600">$ 290.000.000</td><td>—</td><td style="font-weight:700;color:var(--navy)">$ 78.300.000</td></tr>
+    </tbody>
+  </table>
+
+  <p>Más allá del cálculo, lo que distingue a un asesor que <strong>aplica</strong> la fórmula de uno que solo la conoce es su rutina de trabajo. La fórmula debe convertirse en el ritmo semanal del asesor — no en un ejercicio que se hace una vez al mes para la reunión con el director.</p>
+
+  <div class="rutina-box">
+    <div class="rutina-dia">
+      <div class="rutina-momento">Lunes<span class="rutina-momento-sub">Apertura de semana</span></div>
+      <div class="rutina-contenido">
+        <div class="rutina-titulo">Revisar el estado de R y N de toda la cartera</div>
+        <div class="rutina-desc"><span class="rutina-var" style="background:#1A6FA0">R</span><span class="rutina-var" style="background:#1E7B5E">N</span>El asesor abre su cartera y revisa: ¿qué clientes tienen pedido pendiente esta semana? ¿qué oportunidades del pipeline tienen actividad programada? Define las 3 prioridades de la semana basándose en el GAP frente a su meta mensual.</div>
+      </div>
+    </div>
+    <div class="rutina-dia">
+      <div class="rutina-momento">Martes a Jueves<span class="rutina-momento-sub">Ejecución activa</span></div>
+      <div class="rutina-contenido">
+        <div class="rutina-titulo">Tomar las acciones que reducen Uᵣ y Uₙ</div>
+        <div class="rutina-desc"><span class="rutina-var" style="background:#8B3A8B">Uᵣ</span><span class="rutina-var" style="background:#C05A00">Uₙ</span>Visitas de chequeo a clientes con Uᵣ alta. Llamadas para confirmar decisor y presupuesto en oportunidades con Uₙ alta. Cada contacto debe tener un objetivo claro: avanzar una variable concreta, no "hacer seguimiento" en general.</div>
+      </div>
+    </div>
+    <div class="rutina-dia">
+      <div class="rutina-momento">Viernes<span class="rutina-momento-sub">Actualización y registro</span></div>
+      <div class="rutina-contenido">
+        <div class="rutina-titulo">Actualizar el nivel de incertidumbre de cada oportunidad</div>
+        <div class="rutina-desc"><span class="rutina-var" style="background:#8B3A8B">Uᵣ</span><span class="rutina-var" style="background:#C05A00">Uₙ</span>Con base en lo ocurrido en la semana, el asesor ajusta el Uᵣ y Uₙ de cada cliente u oportunidad. Si avanzó (confirmó presupuesto, resolvió una queja), la incertidumbre baja. Si no hubo avance o hubo una señal de riesgo, la incertidumbre sube o se mantiene.</div>
+      </div>
+    </div>
+    <div class="rutina-dia">
+      <div class="rutina-momento">Antes de la sesión<span class="rutina-momento-sub">Con el director</span></div>
+      <div class="rutina-contenido">
+        <div class="rutina-titulo">Preparar el número defendible</div>
+        <div class="rutina-desc"><span class="rutina-var" style="background:#5A5AA0">T</span>El asesor recalcula su forecast del mes con los datos actualizados y se prepara para sustentar cada cifra: por qué ese cliente tiene ese nivel de Uᵣ, qué acción tomó esta semana en cada oportunidad de mayor valor, y cuál es su plan para cerrar el GAP si existe.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sh">
+    <div class="sh-bar" style="background:var(--gold)"></div>
+    <div class="sh-txt">Las preguntas fundamentales del asesor B2B</div>
+  </div>
+  <p>Un asesor que usa la fórmula en su gestión diaria puede responder estas preguntas con datos, no con intuición. Estas son las preguntas que el director debería poder hacerle a cualquier asesor, en cualquier momento, y recibir una respuesta sustentada:</p>
+
+  <div class="pregunta"><strong>¿Cuánto voy a vender este mes?</strong> La suma de (R+N)·(1-U)·T de cada cliente activo en mi cartera para el mes en curso.</div>
+  <div class="pregunta"><strong>¿Qué tan confiable es ese número?</strong> Depende del nivel de U promedio de mi cartera. Si tengo Uᵣ alta en mis clientes principales o Uₙ alta en mi pipeline, el número tiene riesgo.</div>
+  <div class="pregunta"><strong>¿Qué debo hacer esta semana para mejorar el cierre del mes?</strong> Identificar las oportunidades con U más alta y tomar la acción específica que reduce esa incertidumbre — una visita de retención, una llamada al decisor, una propuesta ajustada.</div>
+  <div class="pregunta"><strong>¿Cuál es mi GAP frente a la meta y cómo lo cierro?</strong> GAP = Meta − Forecast. Si el GAP es positivo, debo o bien activar más oportunidades N, o bien reducir la U en oportunidades existentes, o bien recuperar R en clientes con riesgo.</div>
+  <div class="pregunta"><strong>¿Mis clientes activos están en riesgo?</strong> Revisando el nivel de Uᵣ de cada uno y las señales de alerta de los últimos 30 días.</div>
+
+  <div class="callout key">
+    <div class="callout-titulo">Lo que esto cambia para el director</div>
+    <p>Cuando el asesor trabaja con esta rutina, la sesión de revisión comercial deja de ser un reporte de actividades ("hice 12 visitas") y se convierte en una conversación sobre variables ("reduje la Uᵣ de mi cliente principal del 50% al 20% porque resolvimos su queja"). Esa es la diferencia entre gestión por intuición y gestión por la Fórmula.</p>
+  </div>
+
+  <div class="sh">
+    <div class="sh-bar" style="background:var(--navy)"></div>
+    <div class="sh-txt">Nivel 3 — Por el equipo (anual y mensual)</div>
+  </div>
+  <p>El director consolida los forecasts de todos los asesores. La suma produce el forecast del equipo. <strong>El GAP entre ese forecast y la meta es el indicador de gestión más importante</strong>: dice exactamente cuánto ingreso adicional debe generarse y desde qué variable (más R, más N, o reducción de U).</p>
+
+  <div class="callout info">
+    <div class="callout-titulo">El concepto de número defendible</div>
+    <p>Un forecast es <strong>defendible</strong> cuando cada número puede sustentarse en datos concretos: qué cliente, cuánto potencial, con qué nivel de incertidumbre y en qué mes. Si el vendedor no puede responder esas cuatro preguntas para cada oportunidad, el número no es defendible.</p>
+  </div>
+
+  <div class="sh">
+    <div class="sh-bar" style="background:var(--gold)"></div>
+    <div class="sh-txt">Próximo paso — Las 5 herramientas del modelo</div>
+  </div>
+  <p>La fórmula cobra vida a través de cinco herramientas concretas que convierten el concepto en operación diaria:</p>
+
+  <table class="tabla">
+    <thead><tr><th>Herramienta</th><th>Para qué sirve</th><th>Variable que gestiona</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Mapa de Ingresos Recurrentes</strong></td><td>Cuantificar y monitorear el potencial R de cada cliente activo</td><td>R y Uᵣ</td></tr>
+      <tr><td><strong>Pipeline Inteligente</strong></td><td>Calificar oportunidades y calcular el valor real ponderado del pipeline</td><td>N y Uₙ</td></tr>
+      <tr><td><strong>Planner de Ingresos</strong></td><td>Construir el forecast mensual consolidando R + N ponderado + T</td><td>T y GAP</td></tr>
+      <tr><td><strong>Mapa de Ejecución Comercial</strong></td><td>Traducir el análisis en acciones concretas con fecha y responsable</td><td>Todas las variables</td></tr>
+      <tr><td><strong>Tablero de Control Comercial</strong></td><td>Visualizar el estado del modelo y detectar alertas tempranas</td><td>Visión integral</td></tr>
+    </tbody>
+  </table>
+
+  <div class="cta-final">
+    <div class="cta-final-titulo">¿Quiere implementar esto en su equipo?</div>
+    <div class="cta-final-txt">Esta guía es el punto de partida. La implementación real de la Fórmula de Ventas B2B en su organización requiere adaptar cada herramienta a su modelo comercial específico, calibrar los niveles de incertidumbre con datos reales de su cartera y estructurar la rutina de revisión comercial mensual. Para eso estamos.</div>
+    <div class="cta-final-contacto">
+      <div>
+        <div class="cta-final-item-lbl">Consultor</div>
+        <div class="cta-final-item-val">Carlos Fernando Navarro</div>
+      </div>
+      <div>
+        <div class="cta-final-item-lbl">Email</div>
+        <div class="cta-final-item-val">carlos.navarro@formuladeventasb2b.com</div>
+      </div>
+      <div>
+        <div class="cta-final-item-lbl">Web</div>
+        <div class="cta-final-item-val">formuladeventasb2b.com</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-ftr">
+    <div class="page-ftr-l">Guía de Trabajo · Fórmula de Ventas B2B · Modelo Híbrido</div>
+    <div class="page-ftr-r">formuladeventasb2b.com</div>
+  </div>
+</div>
+
+</div><!-- /doc -->
+</div><!-- /doc-contenido -->
+
+<script>
+// ── CLAVE MAESTRA ──────────────────────────────────────
+// Para cambiar la clave, modifique únicamente esta línea:
+var CLAVE = 'FVB2B2026';
+// ───────────────────────────────────────────────────────
+
+function verificar(){
+  var inp = document.getElementById('inp-clave');
+  var err = document.getElementById('acceso-error');
+  if(inp.value === CLAVE){
+    document.getElementById('acceso').style.display = 'none';
+    document.getElementById('doc-contenido').style.display = 'block';
+    // Guardar sesión para no pedir clave al recargar en el mismo día
+    try{sessionStorage.setItem('fvb2b_ok','1');}catch(e){}
+  } else {
+    err.style.display = 'block';
+    inp.value = '';
+    inp.focus();
+  }
+}
+
+// Verificar si ya autenticó en esta sesión
+try{
+  if(sessionStorage.getItem('fvb2b_ok')==='1'){
+    document.getElementById('acceso').style.display='none';
+    document.getElementById('doc-contenido').style.display='block';
+  }
+}catch(e){}
+
+// Foco automático en el campo de clave
+window.addEventListener('load',function(){
+  var inp=document.getElementById('inp-clave');
+  if(inp) inp.focus();
+});
+</script>
+</body>
+</html>
